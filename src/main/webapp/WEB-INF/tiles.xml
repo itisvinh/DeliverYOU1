@@ -5,11 +5,11 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
 <tiles-definitions>
     <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
         <put-attribute name="title" value="..." />
-        <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
-        <put-attribute name="content" value="base" />
+        <put-attribute name="topNavBar" value="/WEB-INF/layout/top-navbar.jsp" />
+        <put-attribute name="body" value="base" />
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
     </definition>
-    <definition name="home" extends="baseLayout">
-        <put-attribute name="content" value="/WEB-INF/jsp/home.jsp"/>
+    <definition name="homePage" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
     </definition>
 </tiles-definitions>

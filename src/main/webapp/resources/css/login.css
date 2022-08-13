@@ -1,0 +1,151 @@
+:root {
+    --clr-text-primary: white;
+    --clr-text-secondary: rgba(255, 255, 255, 0.695);
+    --clr-box-shadow: rgba(0, 0, 0, 0.2);
+    --clr-background: rgba(255, 255, 255, 0.3);
+    --clr-input-label: rgb(171, 171, 171);
+    --input-focus-clr: rgb(218, 20, 218);
+    --clr-input-icon: rgb(117, 117, 117);
+    --font-size-normal: clamp(0.8rem, 5vw, 1rem);
+    --font-size-floating: clamp(0.7rem, 3vw, 0.8rem);
+}
+
+body {
+    background-image: url("https://fuvahmulah.mv/wp-content/uploads/2017/09/sunrise-bg-3.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.container-blurry-glass {
+    background: var(--clr-background) !important;
+    backdrop-filter: blur(3rem);
+    box-shadow: 0rem 0rem 0.6rem 0rem var(--clr-box-shadow);
+    padding: clamp(1rem, 8vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 27rem;
+    outline: 1px solid rgba(204, 204, 204, 0.741);
+    color: var(--clr-text-primary);
+    word-wrap: break-word;
+}
+
+.container-blurry-glass.no-children {
+    padding: 1rem clamp(1rem, 8vw, 3rem);
+}
+
+.input-group {
+    position: relative;
+    display: inline-block;
+}
+
+.input-group .input-content {
+    width: 100%;
+    border-radius: 0.5rem !important;
+    padding: 1.2rem 0.8rem 0.4rem 0.8rem;
+    outline: 1px solid var(--clr-box-shadow);
+    border: none;
+    border-collapse: separate;
+}
+
+.input-group .input-label {
+    position: absolute;
+    color: var(--clr-input-label);
+    font-size: var(--font-size-normal);
+    pointer-events: none;
+    left: 0.8rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: 0.2s ease all;
+}
+
+.checkbox-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-group .input-checkbox {
+    background-color: var(--input-focus-clr) !important;
+}
+
+.checkbox-group .input-checkbox:not(:checked) {
+    background-color: var(--clr-text-primary) !important;
+}
+
+.input-group .input-icon {
+    position: absolute;
+    color: var(--clr-input-icon);
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 5%;
+    border: 1px solid var(--clr-input-icon);
+    border-radius: 50% !important;
+    padding: 3px;
+    pointer-events: none;
+}
+
+.input-icon.clickable {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.input-icon.clickable:hover {
+    color: white;
+    border-color: var(--input-focus-clr);
+    background-color: var(--input-focus-clr);
+    box-shadow: 0rem 0rem 1rem 0.1rem rgba(255, 16, 39, 0.5);
+}
+
+.input-content:focus {
+    outline: 2px solid var(--input-focus-clr);
+}
+
+.input-content:focus ~ .input-label,
+.input-content:not(:focus):valid ~ .input-label {
+    top: 0.9rem;
+    bottom: 10px;
+    left: 0.8rem;
+    font-size: var(--font-size-floating);
+    opacity: 1;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-container .avatar-img {
+    width: min(6rem, 50%);
+    box-shadow: 0rem 0rem 1rem 0.1rem var(--clr-box-shadow);
+}
+
+.login-header {
+    font-weight: bold;
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    text-align: center;
+}
+
+.reset-passwd-lbl {
+    text-align: center;
+    font-size: 0.85rem;
+    pointer-events: all;
+    color: var(--clr-text-secondary);
+    cursor: pointer;
+}
+
+.reset-passwd-lbl:hover {
+    color: var(--clr-text-primary);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}

@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 @Controller
-@Transactional
+//@Transactional
 public class HomeController {
     @RequestMapping("/")
     public ModelAndView index(@RequestParam Map<String, String> params) {
-        ModelAndView  modelAndView = new ModelAndView("home");
+        ModelAndView  modelAndView = new ModelAndView("homePage");
         return modelAndView;
     }
 }

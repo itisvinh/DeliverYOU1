@@ -3,18 +3,21 @@ package com.deliveryou.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
+@EnableTransactionManagement
 @ComponentScan(basePackages = {
-        "com.deliveryou.controller",
-        "com.deliveryou.service",
-        "com.deliveryou.repository"
+        "com.deliveryou.controller"
+//        "com.deliveryou.service",
+//        "com.deliveryou.repository"
 })
 public class Dispatcher implements WebMvcConfigurer {
     @Override
@@ -30,5 +33,11 @@ public class Dispatcher implements WebMvcConfigurer {
         resolver.setPrefix("/WEB-INF/jsp/");
         resolver.setSuffix(".jsp");
         return resolver;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/js/**", "/css/**", "/img/**")
+                .addResourceLocations("/resources/js/", "/resources/css/", "/resources/images/");
     }
 }

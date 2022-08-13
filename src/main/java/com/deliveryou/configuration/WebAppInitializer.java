@@ -6,8 +6,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[] {
-            //HibernateConfiguration.class,
+            HibernateConfiguration.class,
             TilesConfiguration.class
+            //SpringSecurityConfiguration.class
         };
     }
 
