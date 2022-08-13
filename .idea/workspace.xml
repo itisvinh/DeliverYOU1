@@ -10,29 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/home_bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/homePage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/topNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/deliveryou_war.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/deliveryou_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/Dispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/HibernateConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/HibernateConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/WebAppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/WebAppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/base.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/topNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/topNavbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +73,8 @@
     "last_opened_file_path": "C:/Users/itiso/Desktop/DeliverYOU/src/main/webapp/resources/images",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "spring.configuration.checksum": "f484de8eb227ca44e668ba7ef1342b1a"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -100,6 +84,9 @@
       <recent name="C:\Users\itiso\Desktop\DeliverYOU\src\main\webapp" />
       <recent name="C:\Users\itiso\Desktop\DeliverYOU\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\itiso\Desktop\DeliverYOU\src\main\webapp\WEB-INF\layout" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\itiso\Desktop\DeliverYOU\src\main\webapp\resources\html" />
     </key>
   </component>
   <component name="RunManager">
@@ -199,7 +186,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660365470469</updated>
-      <workItem from="1660365472051" duration="1483000" />
+      <workItem from="1660365472051" duration="6659000" />
+      <workItem from="1660378352867" duration="1189000" />
     </task>
     <servers />
   </component>

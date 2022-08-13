@@ -7,3 +7,12 @@ window.onscroll = function(e) {
         navbar.classList.remove('bg-blurry')
     }
 }
+
+function displayLoginForm(urlPrefix) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        document.querySelector('.modal-content').innerHTML = this.responseText;
+    }
+    xhttp.open("GET", urlPrefix + "/login.jsp");
+    xhttp.send();
+}
