@@ -10,14 +10,14 @@
     --font-size-floating: clamp(0.7rem, 3vw, 0.8rem);
 }
 
-body.modal-open{
-    -webkit-filter: blur(4px);
-    -moz-filter: blur(4px);
-    -o-filter: blur(4px);
-    -ms-filter: blur(4px);
-    filter: blur(4px);
+body.modal-open > :is(#b-body, #b-footer, .local-navbar){
+    -webkit-filter: blur(1rem);
+    -moz-filter: blur(1rem);
+    -o-filter: blur(1rem);
+    -ms-filter: blur(1rem);
+    filter: blur(1rem);
     /*filter: url("https://gist.githubusercontent.com/amitabhaghosh197/b7865b409e835b5a43b5/raw/1a255b551091924971e7dee8935fd38a7fdf7311/blur".svg#blur);*/
-    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='16');
 }
 
 .container-blurry-glass {

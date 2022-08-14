@@ -14,11 +14,15 @@
 <%--        <script async src="<c:url value="/js/login.js"/>"></script>--%>
 
     </head>
-    <body class="modal-open">
+    <body>
         <tiles:insertAttribute name="topNavBar" />
 
-        <tiles:insertAttribute name="body" />
+        <div id="b-body">
+            <tiles:insertAttribute name="body" />
+        </div>
 
-        <tiles:insertAttribute name="footer" />
+        <div id="b-footer">
+            <tiles:insertAttribute name="footer" />
+        </div>
     </body>
 </html>
