@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.JstlView;
 //        "com.deliveryou.service",
 //        "com.deliveryou.repository"
 })
-//@Import({SpringSecurityConfiguration.class})
+@Import({SpringSecurityConfiguration.class})
 public class Dispatcher implements WebMvcConfigurer {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
