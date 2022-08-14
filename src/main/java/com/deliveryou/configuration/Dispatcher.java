@@ -12,6 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.servlet.ServletContextListener;
+import java.sql.DriverManager;
+
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
@@ -20,7 +25,6 @@ import org.springframework.web.servlet.view.JstlView;
 //        "com.deliveryou.service",
 //        "com.deliveryou.repository"
 })
-@Import({SpringSecurityConfiguration.class})
 public class Dispatcher implements WebMvcConfigurer {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -42,4 +46,14 @@ public class Dispatcher implements WebMvcConfigurer {
         registry.addResourceHandler("/js/**", "/css/**", "/img/**")
                 .addResourceLocations("/resources/js/", "/resources/css/", "/resources/images/");
     }
+
+    @PreDestroy
+    public void deregisterJdbcDriver() {
+        try {
+            DriverManager.deregisterDriver(DriverManager.getDrivers().nextElement());
+        } catch (Exception ex) {
+            System.out.println("[EXCEPTION] Deregister driver: " + ex.getMessage());
+        }
+    }
+
 }

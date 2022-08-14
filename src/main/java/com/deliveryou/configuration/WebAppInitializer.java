@@ -7,8 +7,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     protected Class<?>[] getRootConfigClasses() {
         return new Class[] {
             HibernateConfiguration.class,
-            TilesConfiguration.class
-            //SpringSecurityConfiguration.class
+            TilesConfiguration.class,
+            SpringSecurityConfiguration.class
         };
     }
 
