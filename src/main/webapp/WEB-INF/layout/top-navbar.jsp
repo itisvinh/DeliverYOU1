@@ -43,8 +43,8 @@
 <div class="modal fade" id="modalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center align-items-center" style="background-color: transparent; border: none">
-
-            <form action="" method="post">
+            <%--------------------------------login form-----------------------------------%>
+            <form action="javascript:void(0)" method="post" id="mainLoginForm" onsubmit="return ajaxSubmitForm(this, { urlPrefix:'<c:url value="/"/>'})">
                 <div class="container-blurry-glass m-3 rounded">
                     <div class="avatar-container">
                         <img class="avatar-img img-thumbnail rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"/>
@@ -60,13 +60,12 @@
                     <div class="input-group">
                         <input class="input-content" type="password" name="password" required/>
                         <label class="input-label">Password</label>
-                        <i class="input-icon clickable fa-solid fa-arrow-right-long"></i>
+                        <button id="submit-btn" type="submit" class="input-icon clickable fa-solid fa-arrow-right-long"></button>
                     </div>
 
-                    <div style="display: none" class="alert alert-danger alert-dismissible fade show" role="alert" >
+                    <div style="display: none; width: 100%;" class="alert alert-danger" role="alert" >
                         <i class="fa-solid fa-circle-info"></i>
                         <span class="alert-msg">message</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
 
                     <div class="checkbox-group">
@@ -81,12 +80,11 @@
                     <span>Don't have an account? <a href="#" class="text-info text-decoration-none">Sign up</a></span>
                 </div>
             </form>
-
+            <%--------------------------------end of login form-----------------------------------%>
         </div>
     </div>
 </div>
 <%--end of modal placeholder--%>
-
 
 <script async src="<c:url value="/js/login.js"/>"></script>
 <script async src="<c:url value="/js/topNavbar.js"/>"></script>

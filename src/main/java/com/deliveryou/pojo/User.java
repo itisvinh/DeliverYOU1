@@ -5,35 +5,40 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
-    public static String ROLE_ADMIN = "ROLE_ADMIN";
-    public static String ROLE_USER = "ROLE_USER";
-    public static String ROLE_DRIVER = "ROLE_DRIVER";
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "firstName")
-    private String firstName;
+    @Column(name = "firstname")
+    private String firstname;
     @Basic
-    @Column(name = "lastName")
-    private String lastName;
+    @Column(name = "lastname")
+    private String lastname;
     @Basic
     @Column(name = "email")
     private String email;
     @Basic
-    @Column(name = "phoneNumber")
+    @Column(name = "phone_number")
     private String phoneNumber;
     @Basic
     @Column(name = "password")
     private String password;
     @Basic
-    @Column(name = "role")
-    private String role;
+    @Column(name = "address")
+    private String address;
     @Basic
-    @Column(name = "isValid")
-    private byte isValid;
+    @Column(name = "citizen_id")
+    private String citizenId;
+    @Basic
+    @Column(name = "avatar")
+    private int avatar;
+    @Basic
+    @Column(name = "deleted")
+    private byte deleted;
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+    private Role role;
 
     public int getId() {
         return id;
@@ -43,20 +48,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -83,20 +88,36 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public byte getIsValid() {
-        return isValid;
+    public String getCitizenId() {
+        return citizenId;
     }
 
-    public void setIsValid(byte isValid) {
-        this.isValid = isValid;
+    public void setCitizenId(String citizenId) {
+        this.citizenId = citizenId;
+    }
+
+    public int getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
+    }
+
+    public byte getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(byte deleted) {
+        this.deleted = deleted;
     }
 
     @Override
@@ -107,13 +128,15 @@ public class User {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (isValid != user.isValid) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (avatar != user.avatar) return false;
+        if (deleted != user.deleted) return false;
+        if (firstname != null ? !firstname.equals(user.firstname) : user.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(user.lastname) : user.lastname != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (role != null ? !role.equals(user.role) : user.role != null) return false;
+        if (address != null ? !address.equals(user.address) : user.address != null) return false;
+        if (citizenId != null ? !citizenId.equals(user.citizenId) : user.citizenId != null) return false;
 
         return true;
     }
@@ -121,13 +144,23 @@ public class User {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (int) isValid;
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (citizenId != null ? citizenId.hashCode() : 0);
+        result = 31 * result + avatar;
+        result = 31 * result + (int) deleted;
         return result;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

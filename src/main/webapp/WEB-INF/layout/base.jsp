@@ -20,9 +20,5 @@
         <div id="b-body">
             <tiles:insertAttribute name="body" />
         </div>
-
-        <div id="b-footer">
-            <tiles:insertAttribute name="footer" />
-        </div>
     </body>
 </html>

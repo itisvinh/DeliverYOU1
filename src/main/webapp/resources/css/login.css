@@ -95,6 +95,10 @@ body.modal-open > :is(#b-body, #b-footer, .local-navbar){
     cursor: pointer;
 }
 
+.input-icon.unclickable {
+    pointer-events: none;
+}
+
 .input-icon.clickable:hover {
     color: white;
     border-color: var(--input-focus-clr);

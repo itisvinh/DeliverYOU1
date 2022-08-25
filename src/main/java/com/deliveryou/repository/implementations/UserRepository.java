@@ -2,8 +2,7 @@ package com.deliveryou.repository.implementations;
 
 import com.deliveryou.pojo.User;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.criteria.internal.CriteriaBuilderImpl;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -12,6 +11,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Repository
 public class UserRepository implements com.deliveryou.repository.interfaces.UserRepository {
@@ -47,5 +47,12 @@ public class UserRepository implements com.deliveryou.repository.interfaces.User
         }
 
         return session.createQuery(criteriaQuery).getSingleResult();
+    }
+
+    @Override
+    public List<User> getUserList() {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        Query query = session.createQuery("FROM User ");
+        return query.getResultList();
     }
 }

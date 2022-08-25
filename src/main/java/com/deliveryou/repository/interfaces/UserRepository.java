@@ -9,4 +9,5 @@ public interface UserRepository {
     boolean updateUser(User user);
     boolean deactivateUser(int id);
     User getUser(String phoneNumber);
+    List<User> getUserList();
 }

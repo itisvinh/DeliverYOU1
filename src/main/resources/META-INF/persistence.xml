@@ -5,5 +5,21 @@
              version="2.2">
     <persistence-unit name="default">
 
+        <class>com.deliveryou.pojo.Order</class>
+        <class>com.deliveryou.pojo.OrderImage</class>
+        <class>com.deliveryou.pojo.PaymentMethod</class>
+        <class>com.deliveryou.pojo.Product</class>
+        <class>com.deliveryou.pojo.Promotion</class>
+        <class>com.deliveryou.pojo.Rating</class>
+        <class>com.deliveryou.pojo.Role</class>
+        <class>com.deliveryou.pojo.Status</class>
+        <class>com.deliveryou.pojo.Tokens</class>
+        <class>com.deliveryou.pojo.User</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/deliveryou"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="@1234567890$$"/>
+        </properties>
     </persistence-unit>
 </persistence>
