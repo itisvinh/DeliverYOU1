@@ -1,7 +1,5 @@
 package com.deliveryou.service.implementations;
 
-import com.deliveryou.pojo.Role;
-import com.deliveryou.pojo.User;
 import com.deliveryou.repository.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

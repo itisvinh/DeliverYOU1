@@ -12,9 +12,9 @@ public class PostImage {
     @Basic
     @Column(name = "image")
     private String image;
-    @Basic
-    @Column(name = "post_id")
-    private int postId;
+    @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
+    private Post post;
 
     public int getId() {
         return id;
@@ -32,14 +32,6 @@ public class PostImage {
         this.image = image;
     }
 
-    public int getPostId() {
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,7 +40,6 @@ public class PostImage {
         PostImage postImage = (PostImage) o;
 
         if (id != postImage.id) return false;
-        if (postId != postImage.postId) return false;
         if (image != null ? !image.equals(postImage.image) : postImage.image != null) return false;
 
         return true;
@@ -58,7 +49,14 @@ public class PostImage {
     public int hashCode() {
         int result = id;
         result = 31 * result + (image != null ? image.hashCode() : 0);
-        result = 31 * result + postId;
         return result;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }

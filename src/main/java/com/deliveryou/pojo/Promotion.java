@@ -3,7 +3,7 @@ package com.deliveryou.pojo;
 import javax.persistence.*;
 
 @Entity
-public class Category {
+public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -11,6 +11,12 @@ public class Category {
     @Basic
     @Column(name = "name")
     private String name;
+    @Basic
+    @Column(name = "discount_amount")
+    private int discountAmount;
+    @Basic
+    @Column(name = "deleted")
+    private byte deleted;
     @Basic
     @Column(name = "description")
     private String description;
@@ -31,6 +37,22 @@ public class Category {
         this.name = name;
     }
 
+    public int getDiscountAmount() {
+        return discountAmount;
+    }
+
+    public void setDiscountAmount(int discountAmount) {
+        this.discountAmount = discountAmount;
+    }
+
+    public byte getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(byte deleted) {
+        this.deleted = deleted;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -44,11 +66,13 @@ public class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Category category = (Category) o;
+        Promotion promotion = (Promotion) o;
 
-        if (id != category.id) return false;
-        if (name != null ? !name.equals(category.name) : category.name != null) return false;
-        if (description != null ? !description.equals(category.description) : category.description != null)
+        if (id != promotion.id) return false;
+        if (discountAmount != promotion.discountAmount) return false;
+        if (deleted != promotion.deleted) return false;
+        if (name != null ? !name.equals(promotion.name) : promotion.name != null) return false;
+        if (description != null ? !description.equals(promotion.description) : promotion.description != null)
             return false;
 
         return true;
@@ -58,6 +82,8 @@ public class Category {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + discountAmount;
+        result = 31 * result + (int) deleted;
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }

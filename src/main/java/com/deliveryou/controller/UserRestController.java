@@ -1,6 +1,5 @@
 package com.deliveryou.controller;
 
-import com.deliveryou.pojo.Post;
 import com.deliveryou.pojo.deliveryobject.PostDeliveryObject;
 import com.deliveryou.util.JSONConverter;
 import org.springframework.http.HttpStatus;
@@ -9,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/user/api")

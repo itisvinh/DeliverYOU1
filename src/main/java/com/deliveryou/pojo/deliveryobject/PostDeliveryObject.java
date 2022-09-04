@@ -1,18 +1,8 @@
 package com.deliveryou.pojo.deliveryobject;
 
-import com.deliveryou.pojo.Address;
-import com.deliveryou.pojo.Category;
-import com.deliveryou.pojo.Post;
-import com.deliveryou.pojo.User;
-import com.deliveryou.util.JSONArrayDeserializer;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 public class PostDeliveryObject {
     @JsonProperty("senderProvince")

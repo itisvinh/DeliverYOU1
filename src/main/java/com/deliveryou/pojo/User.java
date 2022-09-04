@@ -3,7 +3,6 @@ package com.deliveryou.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
 public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

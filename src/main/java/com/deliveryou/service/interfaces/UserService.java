@@ -1,6 +1,5 @@
 package com.deliveryou.service.interfaces;
 
-import com.deliveryou.pojo.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;

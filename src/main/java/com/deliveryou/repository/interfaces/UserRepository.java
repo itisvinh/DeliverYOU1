@@ -1,7 +1,5 @@
 package com.deliveryou.repository.interfaces;
 
-import com.deliveryou.pojo.User;
-
 import java.util.List;
 
 public interface UserRepository {

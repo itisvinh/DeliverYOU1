@@ -1,6 +1,5 @@
 package com.deliveryou.repository.implementations;
 
-import com.deliveryou.pojo.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
