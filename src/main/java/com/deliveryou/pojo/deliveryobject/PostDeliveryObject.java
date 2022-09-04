@@ -1,5 +1,6 @@
 package com.deliveryou.pojo.deliveryobject;
 
+import com.deliveryou.pojo.Post;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -158,19 +159,4 @@ public class PostDeliveryObject {
                 '}';
     }
 
-    public Post convertToPost() {
-//        List<String> url_list = (urlList != null && urlList.length() > 0) ?
-//                Arrays.asList(urlList.split("<split/>")) : null;
-        return new Post(){{
-           setPostContent(postContent);
-           setSender(new User());
-           setCategory(Category.getCategoryByName(categoryName));
-
-           setSenderAddress(new Address(-1, senderProvince, senderDistrict, senderWard, senderStreet));
-           setReceiverAddress(new Address(-1, receiverProvince, receiverDistrict, receiverWard, receiverStreet));
-           setReceiverName(receiverName);
-           setReceiverPhone(receiverPhone);
-           setImageUrls(urlList);
-        }};
-    }
 }

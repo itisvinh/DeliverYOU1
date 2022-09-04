@@ -47,7 +47,10 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .usernameParameter("phone_number")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/user/app")
+                .successHandler( (request, response, authentication) -> {
+                    response.setStatus(HttpStatus.OK.value());
+                    response.sendRedirect("/deliveryou_war_exploded/user/app");
+                } )
                 .failureHandler( ((request, response, exception) -> {
                     response.setStatus(HttpStatus.UNAUTHORIZED.value());
                     Map<String, Object> data = new HashMap<>();
@@ -57,6 +60,10 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     response.getOutputStream()
                             .println(new ObjectMapper().writeValueAsString(data));
                 }) );
+
+        http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/user").access("hasRole('ROLE_USER')");
     }
 
     @Override

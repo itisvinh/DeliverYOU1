@@ -1,31 +1,35 @@
 package com.deliveryou.pojo;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "promotion")
 public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Basic
     @Column(name = "name")
     private String name;
     @Basic
     @Column(name = "discount_amount")
-    private int discountAmount;
+    private Integer discountAmount;
     @Basic
     @Column(name = "deleted")
-    private byte deleted;
+    private Byte deleted;
     @Basic
     @Column(name = "description")
     private String description;
+    @OneToMany(mappedBy = "promotion")
+    private List<Post> posts;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,19 +41,19 @@ public class Promotion {
         this.name = name;
     }
 
-    public int getDiscountAmount() {
+    public Integer getDiscountAmount() {
         return discountAmount;
     }
 
-    public void setDiscountAmount(int discountAmount) {
+    public void setDiscountAmount(Integer discountAmount) {
         this.discountAmount = discountAmount;
     }
 
-    public byte getDeleted() {
+    public Byte getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(byte deleted) {
+    public void setDeleted(Byte deleted) {
         this.deleted = deleted;
     }
 
@@ -68,10 +72,11 @@ public class Promotion {
 
         Promotion promotion = (Promotion) o;
 
-        if (id != promotion.id) return false;
-        if (discountAmount != promotion.discountAmount) return false;
-        if (deleted != promotion.deleted) return false;
+        if (id != null ? !id.equals(promotion.id) : promotion.id != null) return false;
         if (name != null ? !name.equals(promotion.name) : promotion.name != null) return false;
+        if (discountAmount != null ? !discountAmount.equals(promotion.discountAmount) : promotion.discountAmount != null)
+            return false;
+        if (deleted != null ? !deleted.equals(promotion.deleted) : promotion.deleted != null) return false;
         if (description != null ? !description.equals(promotion.description) : promotion.description != null)
             return false;
 
@@ -80,11 +85,19 @@ public class Promotion {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + discountAmount;
-        result = 31 * result + (int) deleted;
+        result = 31 * result + (discountAmount != null ? discountAmount.hashCode() : 0);
+        result = 31 * result + (deleted != null ? deleted.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }

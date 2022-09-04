@@ -1,5 +1,7 @@
 package com.deliveryou.configuration;
 
+import com.deliveryou.pojo.Address;
+import com.deliveryou.pojo.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

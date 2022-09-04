@@ -2,14 +2,15 @@ package com.deliveryou.pojo;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
+@Table(name = "post")
 public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id = -1;
     @Basic
     @Column(name = "receiver_name")
     private String receiverName;
@@ -22,9 +23,6 @@ public class Post {
     @Basic
     @Column(name = "order_date")
     private Timestamp orderDate;
-    @Basic
-    @Column(name = "category_id")
-    private int categoryId;
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
@@ -41,19 +39,22 @@ public class Post {
     @JoinColumn(name = "promotion_id", referencedColumnName = "id")
     private Promotion promotion;
     @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
+    private Category category;
+    @ManyToOne
     @JoinColumn(name = "sender_address_id", referencedColumnName = "id", nullable = false)
     private Address senderAddress;
     @ManyToOne
     @JoinColumn(name = "receiver_address_id", referencedColumnName = "id", nullable = false)
     private Address receiverAddress;
-    @OneToMany(mappedBy = "post")
-    private Collection<PostImage> postImages;
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+    private List<PostImage> postImages;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -89,14 +90,6 @@ public class Post {
         this.orderDate = orderDate;
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,8 +97,7 @@ public class Post {
 
         Post post = (Post) o;
 
-        if (id != post.id) return false;
-        if (categoryId != post.categoryId) return false;
+        if (id != null ? !id.equals(post.id) : post.id != null) return false;
         if (receiverName != null ? !receiverName.equals(post.receiverName) : post.receiverName != null) return false;
         if (receiverPhone != null ? !receiverPhone.equals(post.receiverPhone) : post.receiverPhone != null)
             return false;
@@ -117,12 +109,11 @@ public class Post {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (receiverName != null ? receiverName.hashCode() : 0);
         result = 31 * result + (receiverPhone != null ? receiverPhone.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
-        result = 31 * result + categoryId;
         return result;
     }
 
@@ -166,6 +157,14 @@ public class Post {
         this.promotion = promotion;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Address getSenderAddress() {
         return senderAddress;
     }
@@ -182,11 +181,11 @@ public class Post {
         this.receiverAddress = receiverAddress;
     }
 
-    public Collection<PostImage> getPostImages() {
+    public List<PostImage> getPostImages() {
         return postImages;
     }
 
-    public void setPostImages(Collection<PostImage> postImages) {
+    public void setPostImages(List<PostImage> postImages) {
         this.postImages = postImages;
     }
 }

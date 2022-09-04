@@ -61,21 +61,23 @@ function validatePassword(password) {
  */
 function ajaxSubmitForm(form, args) {
     const http = new XMLHttpRequest();
+    http.withCredentials = true;
     const params = 'phone_number=' + form.phone_number.value + '&password=' + form.password.value;
     http.open('POST', args.urlPrefix + "login", true);
 
     //Send the proper header information along with the request
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     http.onreadystatechange = function() {//Call a function when the state changes.
         const alert_msg = document.querySelector('div.alert .alert-msg')
         const alert_box = document.querySelector('div.alert')
 
-        if(http.readyState == 4 && http.status == 200) {
+        if(http.readyState === 4 && http.status === 200) {
             //alert(http.responseText);
             replaceClassToken(alert_box, "alert-danger", "alert-success")
             alert_msg.innerHTML = alert_msg_content_success_login
             alert_box.style.display = 'block'
+            window.location.href = args.urlPrefix + 'user/app'
         } else {
             replaceClassToken(alert_box, "alert-success", "alert-danger")
             alert_msg.innerHTML = alert_msg_content_err_login

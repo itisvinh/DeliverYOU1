@@ -3,11 +3,12 @@ package com.deliveryou.pojo;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Basic
     @Column(name = "firstname")
     private String firstname;
@@ -31,19 +32,19 @@ public class User {
     private String citizenId;
     @Basic
     @Column(name = "avatar")
-    private int avatar;
+    private Integer avatar;
     @Basic
     @Column(name = "deleted")
-    private byte deleted;
+    private Byte deleted;
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -103,19 +104,19 @@ public class User {
         this.citizenId = citizenId;
     }
 
-    public int getAvatar() {
+    public Integer getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(Integer avatar) {
         this.avatar = avatar;
     }
 
-    public byte getDeleted() {
+    public Byte getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(byte deleted) {
+    public void setDeleted(Byte deleted) {
         this.deleted = deleted;
     }
 
@@ -126,9 +127,7 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
-        if (avatar != user.avatar) return false;
-        if (deleted != user.deleted) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (firstname != null ? !firstname.equals(user.firstname) : user.firstname != null) return false;
         if (lastname != null ? !lastname.equals(user.lastname) : user.lastname != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
@@ -136,13 +135,15 @@ public class User {
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (address != null ? !address.equals(user.address) : user.address != null) return false;
         if (citizenId != null ? !citizenId.equals(user.citizenId) : user.citizenId != null) return false;
+        if (avatar != null ? !avatar.equals(user.avatar) : user.avatar != null) return false;
+        if (deleted != null ? !deleted.equals(user.deleted) : user.deleted != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
@@ -150,8 +151,8 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (citizenId != null ? citizenId.hashCode() : 0);
-        result = 31 * result + avatar;
-        result = 31 * result + (int) deleted;
+        result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
+        result = 31 * result + (deleted != null ? deleted.hashCode() : 0);
         return result;
     }
 

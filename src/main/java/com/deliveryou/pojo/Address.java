@@ -3,11 +3,12 @@ package com.deliveryou.pojo;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "address")
 public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Basic
     @Column(name = "province")
     private String province;
@@ -21,11 +22,11 @@ public class Address {
     @Column(name = "street")
     private String street;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,7 +69,7 @@ public class Address {
 
         Address address = (Address) o;
 
-        if (id != address.id) return false;
+        if (id != null ? !id.equals(address.id) : address.id != null) return false;
         if (province != null ? !province.equals(address.province) : address.province != null) return false;
         if (district != null ? !district.equals(address.district) : address.district != null) return false;
         if (ward != null ? !ward.equals(address.ward) : address.ward != null) return false;
@@ -79,7 +80,7 @@ public class Address {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (province != null ? province.hashCode() : 0);
         result = 31 * result + (district != null ? district.hashCode() : 0);
         result = 31 * result + (ward != null ? ward.hashCode() : 0);

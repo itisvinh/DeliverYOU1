@@ -18,25 +18,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
     @Autowired
     private Cloudinary cloudinary;
 
-    @GetMapping("/app")
+    @GetMapping("/user/app")
     public String userPage() {
         return "user";
     }
 
-    @RequestMapping("/app/user-posts-127FG8XsRgZ3230740279023749g13Yc")
+    @RequestMapping("/user/app/user-posts-127FG8XsRgZ3230740279023749g13Yc")
     public String userPostsFrame(ModelMap modelMap) {
         modelMap.addAttribute("user_post", new PostDeliveryObject());
         return "user_posts";
     }
 
-    @PostMapping("/add-post")
-    public ResponseEntity<String> addPost(@ModelAttribute(value = "user_post") PostDeliveryObject postDeliveryObject) {
-        System.out.println(postDeliveryObject);
-        return new ResponseEntity<String>("ok", HttpStatus.OK);
-    }
+//    @PostMapping("/add-post")
+//    public ResponseEntity<String> addPost(@ModelAttribute(value = "user_post") PostDeliveryObject postDeliveryObject) {
+//        System.out.println(postDeliveryObject);
+//        return new ResponseEntity<String>("ok", HttpStatus.OK);
+//    }
 }

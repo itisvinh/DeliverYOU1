@@ -1,10 +1,13 @@
 package com.deliveryou.repository.implementations;
 
+import com.deliveryou.pojo.Category;
+import com.deliveryou.pojo.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -46,6 +49,16 @@ public class UserRepository implements com.deliveryou.repository.interfaces.User
         }
 
         return session.createQuery(criteriaQuery).getSingleResult();
+    }
+
+    @Override
+    public User getUser(int id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        return (User) session
+                .createQuery("from User where id=:value")
+                .setParameter("value", id)
+                .getSingleResult();
     }
 
     @Override

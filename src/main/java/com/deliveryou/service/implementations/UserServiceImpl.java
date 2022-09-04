@@ -1,5 +1,7 @@
 package com.deliveryou.service.implementations;
 
+import com.deliveryou.pojo.Role;
+import com.deliveryou.pojo.User;
 import com.deliveryou.repository.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +17,8 @@ import java.util.List;
 import java.util.Set;
 
 @Service("UserDetailsService")
-public class UserService implements com.deliveryou.service.interfaces.UserService {
+@Transactional
+public class UserServiceImpl implements com.deliveryou.service.interfaces.UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -35,6 +38,10 @@ public class UserService implements com.deliveryou.service.interfaces.UserServic
                         setName("ROLE_USER");
                     }});
                 }} : null;
+    }
+
+    public User getUser(int id) {
+        return userRepository.getUser(id);
     }
 
     @Override

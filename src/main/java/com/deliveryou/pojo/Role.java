@@ -1,22 +1,33 @@
 package com.deliveryou.pojo;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "role")
 public class Role {
+    @Transient
+    public static final String USER = "ROLE_USER";
+    @Transient
+    public static final String ADMIN = "ROLE_ADMIN";
+    @Transient
+    public static final String SHIPPER = "ROLE_SHIPPER";
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Basic
     @Column(name = "name")
     private String name;
+    @OneToMany(mappedBy = "role")
+    private List<User> users;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -35,7 +46,7 @@ public class Role {
 
         Role role = (Role) o;
 
-        if (id != role.id) return false;
+        if (id != null ? !id.equals(role.id) : role.id != null) return false;
         if (name != null ? !name.equals(role.name) : role.name != null) return false;
 
         return true;
@@ -43,8 +54,16 @@ public class Role {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
