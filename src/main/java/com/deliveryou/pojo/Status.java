@@ -3,7 +3,7 @@ package com.deliveryou.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "status")
+@Table(name = "Status")
 public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

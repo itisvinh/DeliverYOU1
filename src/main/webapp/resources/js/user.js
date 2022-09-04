@@ -25,4 +25,9 @@ function closeModal(event) {
     const modal = document.querySelector('#main-modal')
     modal.style.display = 'none'
     modal.classList.toggle('show')
+
+    const btn_reset = modal.querySelector('#reset-tab-index-btn')
+    if (btn_reset) {
+        btn_reset.click()
+    }
 }

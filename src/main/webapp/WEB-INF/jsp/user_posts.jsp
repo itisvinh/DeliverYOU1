@@ -1,16 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8'>
+    <meta charset=utf-8>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel='stylesheet' type='text/css' media='screen' href='<c:url value="/css/user_posts.css"/>'>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-    <script defer src='<c:url value="/js/user_posts.js"/>'></script>
+    <link rel="stylesheet" href="<c:url value='/css/user_posts.css'/>">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="<c:url value='/js/user_posts.js'/>"></script>
 </head>
 <body>
 
@@ -83,7 +84,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <button class="btn btn-primary" data-toggle="modal" data-target=".main-area #exampleModalCenter">Go somewhere</button>
                         </div>
                     </div>
                 </div>
@@ -106,21 +107,122 @@
         </div>
 
         <div class="add-post-modal-content d-none">
+            <div class="modal-header">
+                <div class="progress-bar">
+                    <div class="progress-item active">Locations</div>
+                    <div class="progress-item">Recipient</div>
+                    <div class="progress-item">Products</div>
+                </div>
+            </div>
+
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
+                    <button type="button" id="reset-tab-index-btn" class="d-none" onclick="resetCurrentTabIndex()"></button>
+                    <div class="tab-container">
+                        <!-- ----------------------- -->
+                        <div class="tab">
+                            <button class="btn d-block" data-bs-toggle="collapse" data-bs-target="#pickup-loc-sel">Choose pick-up location:</button>
+                            <div id="pickup-loc-sel" class="loc-selectors collapse show">
+                                <div class="autocomplete">
+                                    <input class="province-sel" type="text" name="sender_province" placeholder="Select province"/>
+                                </div>
+                                <div class="autocomplete">
+                                    <input disabled class="district-sel" type="text" name="sender_district" placeholder="Select district"/>
+                                </div>
+                                <div class="autocomplete">
+                                    <input disabled class="ward-sel" type="text" name="sender_ward" placeholder="Select ward"/>
+                                </div>
+                                <input class='street-inp textfield' type="text" placeholder="Street" name="sender_street"/>
+                                <button onclick="resetLoc(this)" class="btn btn-danger rounded-pill">Clear</button>
+                            </div>
+
+                            <button class="btn d-block" data-bs-toggle="collapse" data-bs-target="#dropoff-loc-sel">Choose a drop-off location</button>
+                            <div id="dropoff-loc-sel" class="loc-selectors collapse show">
+                                <div class="autocomplete">
+                                    <input class="province-sel" type="text" name="receiver_province" placeholder="Select province"/>
+                                </div>
+                                <div class="autocomplete">
+                                    <input disabled="true" class="district-sel" type="text" name="receiver_district" placeholder="Select district"/>
+                                </div>
+                                <div class="autocomplete">
+                                    <input disabled class="ward-sel" type="text" name="receiver_ward" placeholder="Select ward"/>
+                                </div>
+                                <input class='street-inp textfield' type="text" placeholder="Street" name="receiver_street"/>
+                                <button onclick="resetLoc(this)" class="btn btn-danger rounded-pill">Clear</button>
+                            </div>
+                        </div>
+                        <!-- ----------------------- -->
+                        <div class="tab d-none">
+                            <div class="recepient-selectors">
+                                <div class="tf-title">Recipient's name:</div>
+                                <input id="rep-name" class='textfield' type="text" placeholder="Name" name="rep-name"/>
+                                <div class="tf-title">Recipient's phone number:</div>
+                                <input id="rep-phone" class='textfield' type="text" placeholder="Phone number" name="rep-phone"/>
+                            </div>
+                        </div>
+                        <!-- ----------------------- -->
+                        <div class="tab d-none">
+                            <div class="image-uploader container">
+                                <div class="row">
+                                    <div>
+                                        <!-- Upload image input-->
+                                        <div class="input-group mb-3 px-2 py-2 rounded-pill bg-dark shadow-md">
+                                            <input id="upload" type="file" onchange="readFiles(this);" class="form-control border-0" multiple>
+                                            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                                            <div class="input-group-append">
+                                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                            </div>
+                                        </div>
+                                        <!-- Uploaded image area-->
+                                        <div class="image-area mt-2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container mt-3">
+                                <p id="post_content">
+                                    <strong>Post content:</strong>
+                                    <span class="textarea" role="textbox" contenteditable></span>>
+                                </p>
+
+                                <button id="category_name" data-cat="other" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>Category: </span>
+                                    <span class="cat_name btn-label-content fw-light">Other</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="categorySelected(this)" class="dropdown-item" data-cat="food">Food</li>
+                                    <li onclick="categorySelected(this)" class="dropdown-item" data-cat="clothing">Clothing</li>
+                                    <li onclick="categorySelected(this)" class="dropdown-item" data-cat="electronics">Electronics</li>
+                                    <li onclick="categorySelected(this)" class="dropdown-item" data-cat="fragile">Fragile</li>
+                                    <li onclick="categorySelected(this)" class="dropdown-item" data-cat="other">Other</li>
+                                </ul>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- ----------------------- -->
+                    </div>
+
             <div class="modal-footer p-1">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                <button type="button" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal" onclick="previousTab(this)">Previous</button>
+
+                <button type="button" class="btn btn-primary" onclick="nextTab(this, '<c:url value="/user/api/add-post"></c:url>')" data-mode="next">Next</button>
             </div>
+
+            <style>
+                @import url('<c:url value="/css/user_posts_add_post.css"/>');
+            </style>
         </div>
 
-        <button onclick="displayAddPostModal(event)" class="float-btn">
-        <div>
-            <span>+</span>
-            <span class="hover-text">Create new post</span>
         </div>
+
+
+        <button onclick="displayAddPostModal(event)" class="float-btn">
+            <div>
+                <span>+</span>
+                <span class="hover-text">Create new post</span>
+            </div>
         </button>
+
+
     </div>
 
 
