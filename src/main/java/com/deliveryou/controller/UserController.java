@@ -1,21 +1,12 @@
 package com.deliveryou.controller;
 
 import com.cloudinary.Cloudinary;
-import com.deliveryou.pojo.deliveryobject.PostDeliveryObject;
-import org.hibernate.boot.jaxb.hbm.spi.JaxbHbmOuterJoinEnum;
+import com.deliveryou.deliveryobject.PostDeliveryObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class UserController {

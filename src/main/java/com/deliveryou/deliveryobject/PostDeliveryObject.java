@@ -1,6 +1,5 @@
-package com.deliveryou.pojo.deliveryobject;
+package com.deliveryou.deliveryobject;
 
-import com.deliveryou.pojo.Post;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;

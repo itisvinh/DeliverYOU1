@@ -2,15 +2,15 @@ package com.deliveryou.pojo;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Collection;
+import java.util.Objects;
 
 @Entity
-@Table(name = "post")
 public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private Integer id = -1;
+    private int id;
     @Basic
     @Column(name = "receiver_name")
     private String receiverName;
@@ -47,14 +47,16 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "receiver_address_id", referencedColumnName = "id", nullable = false)
     private Address receiverAddress;
-    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-    private List<PostImage> postImages;
+    @OneToMany(mappedBy = "post")
+    private Collection<PostAuction> postAuctions;
+    @OneToMany(mappedBy = "post")
+    private Collection<PostImage> postImages;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -84,37 +86,6 @@ public class Post {
 
     public Timestamp getOrderDate() {
         return orderDate;
-    }
-
-    public void setOrderDate(Timestamp orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Post post = (Post) o;
-
-        if (id != null ? !id.equals(post.id) : post.id != null) return false;
-        if (receiverName != null ? !receiverName.equals(post.receiverName) : post.receiverName != null) return false;
-        if (receiverPhone != null ? !receiverPhone.equals(post.receiverPhone) : post.receiverPhone != null)
-            return false;
-        if (content != null ? !content.equals(post.content) : post.content != null) return false;
-        if (orderDate != null ? !orderDate.equals(post.orderDate) : post.orderDate != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (receiverName != null ? receiverName.hashCode() : 0);
-        result = 31 * result + (receiverPhone != null ? receiverPhone.hashCode() : 0);
-        result = 31 * result + (content != null ? content.hashCode() : 0);
-        result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
-        return result;
     }
 
     public User getUser() {
@@ -181,11 +152,32 @@ public class Post {
         this.receiverAddress = receiverAddress;
     }
 
-    public List<PostImage> getPostImages() {
+    public Collection<PostAuction> getPostAuctions() {
+        return postAuctions;
+    }
+
+    public void setPostAuctions(Collection<PostAuction> postAuctions) {
+        this.postAuctions = postAuctions;
+    }
+
+    public Collection<PostImage> getPostImages() {
         return postImages;
     }
 
-    public void setPostImages(List<PostImage> postImages) {
+    public void setPostImages(Collection<PostImage> postImages) {
         this.postImages = postImages;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Post)) return false;
+        Post post = (Post) o;
+        return id == post.id && receiverName.equals(post.receiverName) && receiverPhone.equals(post.receiverPhone) && Objects.equals(content, post.content) && orderDate.equals(post.orderDate) && user.equals(post.user) && Objects.equals(shipper, post.shipper) && status.equals(post.status) && paymentMethod.equals(post.paymentMethod) && Objects.equals(promotion, post.promotion) && category.equals(post.category) && senderAddress.equals(post.senderAddress) && receiverAddress.equals(post.receiverAddress) && Objects.equals(postAuctions, post.postAuctions) && Objects.equals(postImages, post.postImages);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, receiverName, receiverPhone, content, orderDate, user, shipper, status, paymentMethod, promotion, category, senderAddress, receiverAddress, postAuctions, postImages);
     }
 }

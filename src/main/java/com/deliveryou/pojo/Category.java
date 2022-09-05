@@ -1,26 +1,14 @@
 package com.deliveryou.pojo;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "category")
 public class Category {
-    @Transient
-    public static final String OTHER = "Other";
-    @Transient
-    public static final String FOOD = "Food";
-    @Transient
-    public static final String CLOTHES = "Clothes";
-    @Transient
-    public static final String ELECTRONICS = "Electronics";
-    @Transient
-    public static final String FRAGILE = "Fragile";
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private Integer id;
+    private int id;
     @Basic
     @Column(name = "name")
     private String name;
@@ -28,13 +16,13 @@ public class Category {
     @Column(name = "description")
     private String description;
     @OneToMany(mappedBy = "category")
-    private List<Post> posts;
+    private Collection<Post> postsById;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -61,7 +49,7 @@ public class Category {
 
         Category category = (Category) o;
 
-        if (id != null ? !id.equals(category.id) : category.id != null) return false;
+        if (id != category.id) return false;
         if (name != null ? !name.equals(category.name) : category.name != null) return false;
         if (description != null ? !description.equals(category.description) : category.description != null)
             return false;
@@ -71,17 +59,17 @@ public class Category {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public Collection<Post> getPostsById() {
+        return postsById;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setPostsById(Collection<Post> postsById) {
+        this.postsById = postsById;
     }
 }

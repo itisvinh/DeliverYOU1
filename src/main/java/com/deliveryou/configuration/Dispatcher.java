@@ -24,9 +24,7 @@ import java.util.HashMap;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
-        "com.deliveryou.controller",
-        "com.deliveryou.service",
-        "com.deliveryou.repository"
+        "com.deliveryou",
 })
 public class Dispatcher implements WebMvcConfigurer {
     @Override

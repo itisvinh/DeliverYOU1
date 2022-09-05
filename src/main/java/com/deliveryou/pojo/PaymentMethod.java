@@ -1,20 +1,15 @@
 package com.deliveryou.pojo;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "payment_method", schema = "deliveryou")
+@Table(name = "payment_method", schema = "deliveryou", catalog = "")
 public class PaymentMethod {
-    @Transient
-    public static final String CASH_ON_DELIVERY = "COD";
-    @Transient
-    public static final String MOMO = "Momo";
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private Integer id;
+    private int id;
     @Basic
     @Column(name = "name")
     private String name;
@@ -22,13 +17,13 @@ public class PaymentMethod {
     @Column(name = "icon")
     private String icon;
     @OneToMany(mappedBy = "paymentMethod")
-    private List<Post> posts;
+    private Collection<Post> postsById;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -55,7 +50,7 @@ public class PaymentMethod {
 
         PaymentMethod that = (PaymentMethod) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (icon != null ? !icon.equals(that.icon) : that.icon != null) return false;
 
@@ -64,17 +59,17 @@ public class PaymentMethod {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (icon != null ? icon.hashCode() : 0);
         return result;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public Collection<Post> getPostsById() {
+        return postsById;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setPostsById(Collection<Post> postsById) {
+        this.postsById = postsById;
     }
 }

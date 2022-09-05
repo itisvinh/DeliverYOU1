@@ -1,7 +1,6 @@
 package com.deliveryou.configuration;
 
-import com.deliveryou.pojo.Address;
-import com.deliveryou.pojo.Post;
+import com.deliveryou.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -19,16 +19,28 @@ import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
 
 @Configuration
 @PropertySource("classpath:database.properties")
+@EnableTransactionManagement
 public class HibernateConfiguration {
     @Autowired
     private Environment env;
 
     @Bean
-    public LocalSessionFactoryBean getSessionFactory() {
+    public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setPackagesToScan(new String[] {
-                "com.deliveryou.pojo"
-        });
+        sessionFactory.setPackagesToScan("com.deliveryou.pojo");
+//        sessionFactory.setAnnotatedClasses(new Class[] {
+//                Address.class,
+//                Category.class,
+//                PaymentMethod.class,
+//                Post.class,
+//                PostAuction.class,
+//                PostImage.class,
+//                Promotion.class,
+//                Rating.class,
+//                Role.class,
+//                Status.class,
+//                User.class
+//        });
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
@@ -56,7 +68,7 @@ public class HibernateConfiguration {
         HibernateTransactionManager transactionManager
                 = new HibernateTransactionManager();
         transactionManager.setSessionFactory(
-                getSessionFactory().getObject());
+                sessionFactory().getObject());
         return transactionManager;
     }
 }

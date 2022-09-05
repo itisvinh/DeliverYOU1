@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class PaymentMethodService implements com.deliveryou.service.interfaces.PaymentMethodService {
+public class PaymentMethodServiceImpl implements com.deliveryou.service.interfaces.PaymentMethodService {
     @Autowired
     private PaymentMethodRepository paymentMethodRepository;
 

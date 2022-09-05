@@ -34,7 +34,7 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
                     setPhoneNumber("11111");
                     setPassword("$2a$10$BhOlFIl/qqu2pWDynzWBJehk9qmG/YLF25oVs2aEHOu3k8rBnrXby");
                     setEmail("he@gmail.com");
-                    setRole(new Role() {{
+                    setRoleByRoleId(new Role() {{
                         setName("ROLE_USER");
                     }});
                 }} : null;
@@ -81,7 +81,7 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
             throw new UsernameNotFoundException("No account is registered with this number");
 
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>() {{
-            add(new SimpleGrantedAuthority(user.getRole().getName()));
+            add(new SimpleGrantedAuthority(user.getRoleByRoleId().getName()));
         }};
 
         return new org.springframework.security.core.userdetails.User(user.getPhoneNumber(), user.getPassword(), authorities);

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class StatusService implements com.deliveryou.service.interfaces.StatusService {
+public class StatusServiceImpl implements com.deliveryou.service.interfaces.StatusService {
     @Autowired
     private StatusRepository statusRepository;
 

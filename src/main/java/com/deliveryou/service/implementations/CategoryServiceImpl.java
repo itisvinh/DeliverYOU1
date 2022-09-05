@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class CategoryService implements com.deliveryou.service.interfaces.CategoryService {
+public class CategoryServiceImpl implements com.deliveryou.service.interfaces.CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 

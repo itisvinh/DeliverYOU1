@@ -1,8 +1,7 @@
 package com.deliveryou.controller;
 
 import com.deliveryou.pojo.*;
-import com.deliveryou.pojo.deliveryobject.PostDeliveryObject;
-import com.deliveryou.service.implementations.UserServiceImpl;
+import com.deliveryou.deliveryobject.PostDeliveryObject;
 import com.deliveryou.service.interfaces.*;
 import com.deliveryou.util.JSONConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,19 +54,20 @@ public class UserRestController {
         // get category
         Category category = categoryService.getCategory(postDeliveryObject.getCategoryName());
         // create post
-        Post post = new Post() {{
-            setUser(userServiceImpl.getUser(1));
-            setSenderAddress(senderAddress);
-            setReceiverAddress(receiverAddress);
-            setReceiverName(postDeliveryObject.getReceiverName());
-            setReceiverPhone(postDeliveryObject.getReceiverPhone());
-            setContent(postDeliveryObject.getPostContent().trim());
-            setCategory(category);
-            setOrderDate(new Timestamp(new Date().getTime()));
-            setPromotion(null);
-            setPaymentMethod(paymentMethodService.getPaymentMethod(PaymentMethod.CASH_ON_DELIVERY));
-            setStatus(statusService.getStatus(Status.PENDING));
-        }};
+        Post post = null;
+//                = new Post() {{
+//            setUser(userServiceImpl.getUser(1));
+//            setSenderAddress(senderAddress);
+//            setReceiverAddress(receiverAddress);
+//            setReceiverName(postDeliveryObject.getReceiverName());
+//            setReceiverPhone(postDeliveryObject.getReceiverPhone());
+//            setContent(postDeliveryObject.getPostContent().trim());
+//            setCategory(category);
+//            setOrderDate(new Timestamp(new Date().getTime()));
+//            setPromotion(null);
+//            setPaymentMethod(paymentMethodService.getPaymentMethod(PaymentMethod.CASH_ON_DELIVERY));
+//            setStatus(statusService.getStatus(Status.PENDING));
+//        }};
         // add post
 
         // ----------------------------------------------------
@@ -81,5 +81,15 @@ public class UserRestController {
             return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
                 put("message", "failed to create the post");
             }}), HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/test")
+    public void performTest() {
+        addressService.addAddress(new Address() {{
+            setProvince("123213");
+            setDistrict("wdwer");
+            setWard("1232");
+            setStreet("dfgd3");
+        }});
     }
 }

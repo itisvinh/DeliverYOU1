@@ -1,13 +1,11 @@
 package com.deliveryou.repository.implementations;
 
-import com.deliveryou.pojo.Category;
 import com.deliveryou.pojo.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -16,7 +14,7 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
-public class UserRepository implements com.deliveryou.repository.interfaces.UserRepository {
+public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.UserRepository {
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
 
