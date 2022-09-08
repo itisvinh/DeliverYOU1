@@ -2,9 +2,22 @@ package com.deliveryou.pojo;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Category {
+    @Transient
+    public static final String OTHER = "Other";
+    @Transient
+    public static final String FOOD = "Food";
+    @Transient
+    public static final String CLOTHES = "Clothes";
+    @Transient
+    public static final String ELECTRONICS = "Electronics";
+    @Transient
+    public static final String FRAGILE = "Fragile";
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -16,7 +29,8 @@ public class Category {
     @Column(name = "description")
     private String description;
     @OneToMany(mappedBy = "category")
-    private Collection<Post> postsById;
+    private List<Post> posts;
+
 
     public int getId() {
         return id;
@@ -42,34 +56,24 @@ public class Category {
         this.description = description;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof Category)) return false;
         Category category = (Category) o;
-
-        if (id != category.id) return false;
-        if (name != null ? !name.equals(category.name) : category.name != null) return false;
-        if (description != null ? !description.equals(category.description) : category.description != null)
-            return false;
-
-        return true;
+        return id == category.id && name.equals(category.name) && Objects.equals(description, category.description) && Objects.equals(posts, category.posts);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
-    }
-
-    public Collection<Post> getPostsById() {
-        return postsById;
-    }
-
-    public void setPostsById(Collection<Post> postsById) {
-        this.postsById = postsById;
+        return Objects.hash(id, name, description, posts);
     }
 }

@@ -2,9 +2,21 @@ package com.deliveryou.pojo;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Status {
+    @Transient
+    public static final String CANCELED = "CANCELED";
+    @Transient
+    public static final String DELIVERED = "DELIVERED";
+    @Transient
+    public static final String ONGOING = "ONGOING";
+    @Transient
+    public static final String PENDING = "PENDING";
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "status_id")
@@ -13,7 +25,7 @@ public class Status {
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "status")
-    private Collection<Post> postsByStatusId;
+    private List<Post> posts;
 
     public int getStatusId() {
         return statusId;
@@ -31,31 +43,24 @@ public class Status {
         this.name = name;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof Status)) return false;
         Status status = (Status) o;
-
-        if (statusId != status.statusId) return false;
-        if (name != null ? !name.equals(status.name) : status.name != null) return false;
-
-        return true;
+        return statusId == status.statusId && name.equals(status.name) && Objects.equals(posts, status.posts);
     }
 
     @Override
     public int hashCode() {
-        int result = statusId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-    public Collection<Post> getPostsByStatusId() {
-        return postsByStatusId;
-    }
-
-    public void setPostsByStatusId(Collection<Post> postsByStatusId) {
-        this.postsByStatusId = postsByStatusId;
+        return Objects.hash(statusId, name, posts);
     }
 }

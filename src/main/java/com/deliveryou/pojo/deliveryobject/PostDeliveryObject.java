@@ -1,4 +1,4 @@
-package com.deliveryou.deliveryobject;
+package com.deliveryou.pojo.deliveryobject;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

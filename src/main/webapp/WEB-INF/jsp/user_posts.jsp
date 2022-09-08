@@ -30,7 +30,7 @@
 
 <main class="main-area">
 
-    <div class="tabs">
+    <div class="tabs" style="height: auto; min-height: 100%;">
         <input type="radio" id="tab1" name="tab-control" checked>
         <input type="radio" id="tab2" name="tab-control">
         <input type="radio" id="tab3" name="tab-control">
@@ -78,21 +78,66 @@
         <div class="content">
             <section>
                 <h2>Ongoing</h2>
-                <div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <button class="btn btn-primary" data-toggle="modal" data-target=".main-area #exampleModalCenter">Go somewhere</button>
-                        </div>
+                <div class="container">
+                    <div class="row">
+
+                        <c:forEach items="${ongoing}" var="stat_ongoings">
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="card shadow" style="width: 14rem;">
+                                    <img src="${stat_ongoings.postImages.get(0)}" class="card-img-top img-thumbnail m-auto">
+                                    <div class="card-body">
+                                        <div class="card-title d-flex" style="position: relative;">
+                                            <span>Date:</span>
+                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toGMTString()}</h6>
+                                        </div>
+                                        <div class="card-title d-flex" style="position: relative;">
+                                            <span>Time:</span>
+                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toString()}</h6>
+                                        </div>
+                                        <div>Content:</div>
+                                        <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                            ${stat_ongoings.content}
+                                        </p>
+                                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target=".main-area #mainPostDetailsModal" data-bs-backdrop="false">More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Pending</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dicta vero rerum? Eaque repudiandae architecto libero reprehenderit aliquam magnam ratione quidem? Nobis doloribus molestiae enim deserunt necessitatibus eaque quidem incidunt.
+                <div class="container">
+                    <div class="row">
+
+                        <c:forEach items="${pending}" var="stat_pendings">
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="card shadow" style="width: 14rem;">
+                                    <img src="${stat_pendings.postImages.get(0)}" class="card-img-top img-thumbnail m-auto">
+                                    <div class="card-body">
+                                        <div class="card-title d-flex" style="position: relative;">
+                                            <span>Date:</span>
+                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toGMTString()}</h6>
+                                        </div>
+                                        <div class="card-title d-flex" style="position: relative;">
+                                            <span>Time:</span>
+                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toString()}</h6>
+                                        </div>
+                                        <div>Content:</div>
+                                        <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                ${stat_pendings.content}
+                                        </p>
+                                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target=".main-area #mainPostDetailsModal" data-bs-backdrop="false">More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+
+                    </div>
+                </div>
             </section>
 
             <section>

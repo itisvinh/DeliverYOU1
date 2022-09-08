@@ -3,6 +3,7 @@ package com.deliveryou.pojo;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -48,9 +49,23 @@ public class Post {
     @JoinColumn(name = "receiver_address_id", referencedColumnName = "id", nullable = false)
     private Address receiverAddress;
     @OneToMany(mappedBy = "post")
-    private Collection<PostAuction> postAuctions;
-    @OneToMany(mappedBy = "post")
-    private Collection<PostImage> postImages;
+    private List<PostAuction> postAuctions;
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+    private List<PostImage> postImages;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Post)) return false;
+        Post post = (Post) o;
+        return id == post.id && receiverName.equals(post.receiverName) && receiverPhone.equals(post.receiverPhone) && Objects.equals(content, post.content) && orderDate.equals(post.orderDate) && user.equals(post.user) && Objects.equals(shipper, post.shipper) && status.equals(post.status) && paymentMethod.equals(post.paymentMethod) && Objects.equals(promotion, post.promotion) && category.equals(post.category) && senderAddress.equals(post.senderAddress) && receiverAddress.equals(post.receiverAddress) && Objects.equals(postAuctions, post.postAuctions) && Objects.equals(postImages, post.postImages);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, receiverName, receiverPhone, content, orderDate, user, shipper, status, paymentMethod, promotion, category, senderAddress, receiverAddress, postAuctions, postImages);
+    }
 
     public int getId() {
         return id;
@@ -86,6 +101,10 @@ public class Post {
 
     public Timestamp getOrderDate() {
         return orderDate;
+    }
+
+    public void setOrderDate(Timestamp orderDate) {
+        this.orderDate = orderDate;
     }
 
     public User getUser() {
@@ -152,32 +171,19 @@ public class Post {
         this.receiverAddress = receiverAddress;
     }
 
-    public Collection<PostAuction> getPostAuctions() {
+    public List<PostAuction> getPostAuctions() {
         return postAuctions;
     }
 
-    public void setPostAuctions(Collection<PostAuction> postAuctions) {
+    public void setPostAuctions(List<PostAuction> postAuctions) {
         this.postAuctions = postAuctions;
     }
 
-    public Collection<PostImage> getPostImages() {
+    public List<PostImage> getPostImages() {
         return postImages;
     }
 
-    public void setPostImages(Collection<PostImage> postImages) {
+    public void setPostImages(List<PostImage> postImages) {
         this.postImages = postImages;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Post)) return false;
-        Post post = (Post) o;
-        return id == post.id && receiverName.equals(post.receiverName) && receiverPhone.equals(post.receiverPhone) && Objects.equals(content, post.content) && orderDate.equals(post.orderDate) && user.equals(post.user) && Objects.equals(shipper, post.shipper) && status.equals(post.status) && paymentMethod.equals(post.paymentMethod) && Objects.equals(promotion, post.promotion) && category.equals(post.category) && senderAddress.equals(post.senderAddress) && receiverAddress.equals(post.receiverAddress) && Objects.equals(postAuctions, post.postAuctions) && Objects.equals(postImages, post.postImages);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, receiverName, receiverPhone, content, orderDate, user, shipper, status, paymentMethod, promotion, category, senderAddress, receiverAddress, postAuctions, postImages);
     }
 }

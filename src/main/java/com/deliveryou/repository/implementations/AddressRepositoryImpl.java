@@ -1,5 +1,6 @@
 package com.deliveryou.repository.implementations;
 
+import com.deliveryou.factory.ConstantPersistenceMap;
 import com.deliveryou.pojo.Address;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class AddressRepositoryImpl implements com.deliveryou.repository.interfac
     public int addAddress(Address address) {
         Session session = sessionFactory.getObject().getCurrentSession();
         try {
-            session.persist(address);
+            session.save(address);
             return address.getId();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -68,10 +69,11 @@ public class AddressRepositoryImpl implements com.deliveryou.repository.interfac
         Session session = sessionFactory.getObject().getCurrentSession();
 
         try {
-            return (Address) session
+            Address address = (Address) session
                     .createQuery("from Address where id=:value")
                     .setParameter("value", id)
                     .getSingleResult();
+            return address;
         } catch (NoResultException ex) {
         }
         return null;

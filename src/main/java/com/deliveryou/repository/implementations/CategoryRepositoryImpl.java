@@ -1,5 +1,6 @@
 package com.deliveryou.repository.implementations;
 
+import com.deliveryou.factory.ConstantPersistenceMap;
 import com.deliveryou.pojo.Category;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,11 @@ public class CategoryRepositoryImpl implements com.deliveryou.repository.interfa
     public Category getCategory(String name) {
         Session session = sessionFactory.getObject().getCurrentSession();
 
-        return (Category) session
+        Category category = (Category) session
                 .createQuery("from Category where name like :value")
                 .setParameter("value", name)
                 .getSingleResult();
+        Category res = (Category) ConstantPersistenceMap.access(category);
+        return res;
     }
 }

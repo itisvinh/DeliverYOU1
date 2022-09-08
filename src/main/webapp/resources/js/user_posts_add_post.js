@@ -236,6 +236,7 @@ function showToast(content, toastType) {
 
 function postAddedSuccessfully() {
     document.elementFromPoint(1,1).click()
+    document.querySelector('.frame-container .frame').contentWindow.location.reload();
 }
 
 function validatePostInfo(p_loc, d_loc, recepient, files) {
@@ -311,7 +312,7 @@ function addPost(endpoint) {
                     category_name: cat_name.innerHTML
                 }
                 createNewPost(endpoint, post).then(data => {
-                    if (data) {
+                    if (data && data.post) {
                         postAddedSuccessfully()
                     }
                 })

@@ -1,6 +1,7 @@
 package com.deliveryou.service.implementations;
 
 import com.deliveryou.pojo.Post;
+import com.deliveryou.pojo.Status;
 import com.deliveryou.repository.interfaces.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,14 @@ public class PostServiceImpl implements com.deliveryou.service.interfaces.PostSe
     }
 
     @Override
+    @Transactional
     public List<Post> getAllPosts() {
         return postRepositoryImpl.getAllPosts();
+    }
+
+    @Override
+    @Transactional
+    public List<Post> getPostsWithinRange(Status status, int startResult, int maxResults) {
+        return postRepositoryImpl.getPostsWithinRange(status, startResult, maxResults);
     }
 }

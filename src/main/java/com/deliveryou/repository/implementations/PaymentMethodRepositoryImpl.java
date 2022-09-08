@@ -1,5 +1,7 @@
 package com.deliveryou.repository.implementations;
 
+import com.deliveryou.factory.ConstantPersistenceMap;
+import com.deliveryou.pojo.Category;
 import com.deliveryou.pojo.PaymentMethod;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,10 @@ public class PaymentMethodRepositoryImpl implements com.deliveryou.repository.in
     public PaymentMethod getPaymentMethod(String name) {
         Session session = sessionFactory.getObject().getCurrentSession();
 
-        return (PaymentMethod) session
+        PaymentMethod paymentMethod = (PaymentMethod) session
                 .createQuery("from PaymentMethod where name like :value")
                 .setParameter("value", name)
                 .getSingleResult();
+        return (PaymentMethod) ConstantPersistenceMap.access(paymentMethod);
     }
 }

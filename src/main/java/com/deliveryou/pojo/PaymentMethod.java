@@ -2,10 +2,17 @@ package com.deliveryou.pojo;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name = "payment_method", schema = "deliveryou", catalog = "")
+@Table(name = "payment_method", schema = "deliveryou")
 public class PaymentMethod {
+    @Transient
+    public static final String CASH_ON_DELIVERY = "COD";
+    @Transient
+    public static final String MOMO = "Momo";
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -17,7 +24,7 @@ public class PaymentMethod {
     @Column(name = "icon")
     private String icon;
     @OneToMany(mappedBy = "paymentMethod")
-    private Collection<Post> postsById;
+    private List<Post> posts;
 
     public int getId() {
         return id;
@@ -43,33 +50,24 @@ public class PaymentMethod {
         this.icon = icon;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof PaymentMethod)) return false;
         PaymentMethod that = (PaymentMethod) o;
-
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (icon != null ? !icon.equals(that.icon) : that.icon != null) return false;
-
-        return true;
+        return id == that.id && name.equals(that.name) && Objects.equals(icon, that.icon) && Objects.equals(posts, that.posts);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (icon != null ? icon.hashCode() : 0);
-        return result;
-    }
-
-    public Collection<Post> getPostsById() {
-        return postsById;
-    }
-
-    public void setPostsById(Collection<Post> postsById) {
-        this.postsById = postsById;
+        return Objects.hash(id, name, icon, posts);
     }
 }

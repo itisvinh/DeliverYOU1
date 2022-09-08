@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class StatusServiceImpl implements com.deliveryou.service.interfaces.StatusService {
@@ -15,5 +17,10 @@ public class StatusServiceImpl implements com.deliveryou.service.interfaces.Stat
     public Status getStatus(String name) {
         name = name.trim();
         return statusRepository.getStatus(name);
+    }
+
+    @Override
+    public List<Status> getAllStatus() {
+        return statusRepository.getAllStatus();
     }
 }

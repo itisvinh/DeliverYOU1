@@ -1,9 +1,10 @@
 package com.deliveryou.controller;
 
 import com.deliveryou.pojo.*;
-import com.deliveryou.deliveryobject.PostDeliveryObject;
+import com.deliveryou.pojo.deliveryobject.PostDeliveryObject;
 import com.deliveryou.service.interfaces.*;
 import com.deliveryou.util.JSONConverter;
+import com.deliveryou.util.ConditionalChain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -32,47 +33,55 @@ public class UserRestController {
 
     @PostMapping(path = "/add-post", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addPost(@RequestBody PostDeliveryObject postDeliveryObject) {
-
         // create sender address
-        Address senderAddress = new Address() {{
-            setProvince(postDeliveryObject.getSenderProvince());
-            setDistrict(postDeliveryObject.getSenderDistrict());
-            setWard(postDeliveryObject.getSenderWard());
-            setStreet(postDeliveryObject.getSenderStreet());
-        }};
-        // add sender address
-        addressService.addAddress(senderAddress);
+        Address senderAddress = new Address();
         // create receiver address
-        Address receiverAddress = new Address() {{
-            setProvince(postDeliveryObject.getReceiverProvince());
-            setDistrict(postDeliveryObject.getReceiverDistrict());
-            setWard(postDeliveryObject.getReceiverWard());
-            setStreet(postDeliveryObject.getReceiverStreet());
-        }};
-        // add receiver address
-        addressService.addAddress(receiverAddress);
+        Address receiverAddress = new Address();
         // get category
         Category category = categoryService.getCategory(postDeliveryObject.getCategoryName());
         // create post
-        Post post = null;
-//                = new Post() {{
-//            setUser(userServiceImpl.getUser(1));
-//            setSenderAddress(senderAddress);
-//            setReceiverAddress(receiverAddress);
-//            setReceiverName(postDeliveryObject.getReceiverName());
-//            setReceiverPhone(postDeliveryObject.getReceiverPhone());
-//            setContent(postDeliveryObject.getPostContent().trim());
-//            setCategory(category);
-//            setOrderDate(new Timestamp(new Date().getTime()));
-//            setPromotion(null);
-//            setPaymentMethod(paymentMethodService.getPaymentMethod(PaymentMethod.CASH_ON_DELIVERY));
-//            setStatus(statusService.getStatus(Status.PENDING));
-//        }};
-        // add post
+        Post post = new Post();
+        StringBuilder postCreatedSuccessfully = new StringBuilder("");
 
-        // ----------------------------------------------------
-        boolean postCreatedSuccessfully = (postServiceImpl.addPost(post) == -1) ? false : true;
-        if (postCreatedSuccessfully)
+        ConditionalChain
+                .begin("creating post chain")
+                .then(() -> {
+                    senderAddress.setProvince(postDeliveryObject.getSenderProvince());
+                    senderAddress.setDistrict(postDeliveryObject.getSenderDistrict());
+                    senderAddress.setWard(postDeliveryObject.getSenderWard());
+                    senderAddress.setStreet(postDeliveryObject.getSenderStreet());
+                    // add sender address
+                    return addressService.addAddress(senderAddress) > 0;
+                })
+                .then(() -> {
+                    receiverAddress.setProvince(postDeliveryObject.getReceiverProvince());
+                    receiverAddress.setDistrict(postDeliveryObject.getReceiverDistrict());
+                    receiverAddress.setWard(postDeliveryObject.getReceiverWard());
+                    receiverAddress.setStreet(postDeliveryObject.getReceiverStreet());
+                    // add receiver address
+                    return addressService.addAddress(receiverAddress) > 0;
+                })
+                .then(() -> {
+                    post.setUser(userServiceImpl.getUser(1));
+                    post.setSenderAddress(senderAddress);
+                    post.setReceiverAddress(receiverAddress);
+                    post.setReceiverName(postDeliveryObject.getReceiverName());
+                    post.setReceiverPhone(postDeliveryObject.getReceiverPhone());
+                    post.setContent(postDeliveryObject.getPostContent().trim());
+                    post.setCategory(category);
+                    post.setOrderDate(new Timestamp(new Date().getTime()));
+                    post.setPromotion(null);
+                    post.setPaymentMethod(paymentMethodService.getPaymentMethod(PaymentMethod.CASH_ON_DELIVERY));
+                    post.setStatus(statusService.getStatus(Status.PENDING));
+                    // add post
+                    boolean res = postServiceImpl.addPost(post) > 0;
+                    if (!res)
+                        postCreatedSuccessfully.append("1");
+                    return res;
+                })
+                .finish();
+
+        if (postCreatedSuccessfully.toString().equals(""))
             return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
                 put("message", "post is created successfully");
                 put("post", post);
@@ -83,13 +92,4 @@ public class UserRestController {
             }}), HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/test")
-    public void performTest() {
-        addressService.addAddress(new Address() {{
-            setProvince("123213");
-            setDistrict("wdwer");
-            setWard("1232");
-            setStreet("dfgd3");
-        }});
-    }
 }

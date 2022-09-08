@@ -20,6 +20,7 @@ public class CategoryServiceImpl implements com.deliveryou.service.interfaces.Ca
     @Override
     public Category getCategory(String name) {
         name = name.trim();
-        return categoryRepository.getCategory(name);
+        Category category = categoryRepository.getCategory(name);
+        return category;
     }
 }

@@ -2,9 +2,18 @@ package com.deliveryou.pojo;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Role {
+    @Transient
+    public static final String REGULAR_USER = "ROLE_USER";
+    @Transient
+    public static final String ADMIN = "ROLE_ADMIN";
+    @Transient
+    public static final String SHIPPER = "ROLE_SHIPPER";
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -13,7 +22,8 @@ public class Role {
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "roleByRoleId")
-    private Collection<User> usersById;
+    private List<User> users;
+
 
     public int getId() {
         return id;
@@ -31,31 +41,24 @@ public class Role {
         this.name = name;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof Role)) return false;
         Role role = (Role) o;
-
-        if (id != role.id) return false;
-        if (name != null ? !name.equals(role.name) : role.name != null) return false;
-
-        return true;
+        return id == role.id && name.equals(role.name) && Objects.equals(users, role.users);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-    public Collection<User> getUsersById() {
-        return usersById;
-    }
-
-    public void setUsersById(Collection<User> usersById) {
-        this.usersById = usersById;
+        return Objects.hash(id, name, users);
     }
 }

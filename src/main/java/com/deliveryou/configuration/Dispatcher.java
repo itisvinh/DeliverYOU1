@@ -1,10 +1,11 @@
 package com.deliveryou.configuration;
 
 import com.cloudinary.Cloudinary;
+import com.deliveryou.factory.ConstantPersistenceMap;
+import com.deliveryou.util.ConditionalChain;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -14,9 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.servlet.ServletContextListener;
 import java.sql.DriverManager;
 import java.util.HashMap;
 
@@ -24,7 +23,9 @@ import java.util.HashMap;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
-        "com.deliveryou",
+        "com.deliveryou.controller",
+        "com.deliveryou.repository",
+        "com.deliveryou.service"
 })
 public class Dispatcher implements WebMvcConfigurer {
     @Override
@@ -49,15 +50,15 @@ public class Dispatcher implements WebMvcConfigurer {
         return resolver;
     }
 
-    @Bean
-    public Cloudinary cloudinary() {
-        return new Cloudinary(new HashMap() {{
-            put("cloud_name", "de26tcplz");
-            put("api_key", "263981385366449");
-            put("api_secret", "5un8GhQMBEyOGgzKDW1g1D_FHBo");
-            put("secure", true);
-        }});
-    }
+//    @Bean
+//    public Cloudinary cloudinary() {
+//        return new Cloudinary(new HashMap() {{
+//            put("cloud_name", "de26tcplz");
+//            put("api_key", "263981385366449");
+//            put("api_secret", "5un8GhQMBEyOGgzKDW1g1D_FHBo");
+//            put("secure", true);
+//        }});
+//    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
