@@ -71,7 +71,12 @@ public class UserController {
     @Transactional
     @RequestMapping("/shipper/app/shipper-posts-12iefv92yygCGYC6758ygcfGUXCTUYX8769ckvb")
     public String shipperPostsFrame(ModelMap modelMap) {
+        List<Post> pendingPosts = postServiceImpl.getPendingPosts();
+        System.out.println(pendingPosts);
 
+        pendingPosts.forEach(post -> LazyLoadInitializer.lazyLoad(post.getPostImages()));
+
+        modelMap.addAttribute("pending_posts", pendingPosts);
         return "shipper_posts";
     }
 
@@ -84,6 +89,12 @@ public class UserController {
         User user = userDetailsService.getUser(phone);
         modelMap.addAttribute("current_user", user);
         return "user";
+    }
+
+    @GetMapping("/user/app/user-profile-29347283hvUVUVUv982uvuVUYV39e8")
+    @Transactional
+    public String shipperProfile(ModelMap modelMap) {
+        return "user_profile";
     }
 
 }

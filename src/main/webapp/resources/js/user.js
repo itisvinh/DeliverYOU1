@@ -31,3 +31,9 @@ function closeModal(event) {
         btn_reset.click()
     }
 }
+
+function changeFrameContent(url) {
+    const frame = document.querySelector('.frame-container .frame')
+    frame.src = url
+    // frame.contentWindow.location.reload();
+}

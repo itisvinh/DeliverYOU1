@@ -72,4 +72,12 @@ public class PostAuction {
     public int hashCode() {
         return Objects.hash(id, requestTime, shippingFee, post, shipper);
     }
+
+    public PostAuctionKey getId() {
+        return id;
+    }
+
+    public void setId(PostAuctionKey id) {
+        this.id = id;
+    }
 }

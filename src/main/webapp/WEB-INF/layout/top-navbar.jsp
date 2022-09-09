@@ -7,7 +7,7 @@
         <a class="navbar-brand" href="#!">
             <!-- <span style="color: #5e9693;">Psycho</span>
             <span style="color: #fff;">logist</span> -->
-            <img class="brand-logo" src='/img/brand_name.svg' alt="logo" />
+            <img class="brand-logo" src='<c:url value="/img/brand_logo.png"/>' alt="logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>

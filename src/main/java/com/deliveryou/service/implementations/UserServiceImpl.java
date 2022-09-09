@@ -47,14 +47,19 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
 
     @Override
     @Transactional
-    public void addUser(User user) {
+    public int addUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.addUser(user);
+        return userRepository.addUser(user);
     }
 
     @Override
     public List<User> getUserList() {
         return userRepository.getUserList();
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        return userRepository.updateUser(user);
     }
 
 //    @Override

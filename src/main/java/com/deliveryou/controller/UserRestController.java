@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/user/api")
 public class UserRestController {
     @Autowired
     private PostService postServiceImpl;
@@ -40,7 +39,7 @@ public class UserRestController {
     private PostImageService postImageService;
 
     @Transactional
-    @PostMapping(path = "/add-post", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/user/api/add-post", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addPost(@RequestBody PostDeliveryObject postDeliveryObject) {
         // create sender address
         Address senderAddress = new Address();
@@ -71,7 +70,9 @@ public class UserRestController {
                     return addressService.addAddress(receiverAddress) > 0;
                 })
                 .then(() -> {
-                    post.setUser(userServiceImpl.getUser(2));
+                    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                    String phone = authentication.getName();
+                    post.setUser(userServiceImpl.getUser(phone));
                     post.setSenderAddress(senderAddress);
                     post.setReceiverAddress(receiverAddress);
                     post.setReceiverName(postDeliveryObject.getReceiverName());
@@ -121,7 +122,7 @@ public class UserRestController {
     }
 
     @Transactional
-    @GetMapping(path = "/get-total-posts", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/user/api/get-total-posts", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity totalPosts() {
         long totalPost = postServiceImpl.getTotalPosts();
         return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
@@ -130,19 +131,22 @@ public class UserRestController {
     }
 
     @Transactional
-    @GetMapping(path = "/get-post/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/common/api/get-post/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getPost(@PathVariable("id") int id) {
         Post post = postServiceImpl.getPost(id);
 
         if (post != null) {
             return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
                 put("post_created", post.getOrderDate().toString());
+                put("sname", post.getUser().getFirstname());
+                put("sphone", post.getUser().getPhoneNumber());
                 put("pickup_loc", post.getSenderAddress().toString());
-                put("dropoff_loc", post.getReceiverAddress().toString());
                 put("rname", post.getReceiverName());
                 put("rphone", post.getReceiverPhone());
+                put("dropoff_loc", post.getReceiverAddress().toString());
                 put("content", post.getContent());
                 put("img_list", post.getPostImages().stream().map(postImage -> postImage.getImage()).collect(Collectors.toList()));
+                put("cat_name", post.getCategory().getName());
             }}), HttpStatus.OK);
         } else {
             return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
@@ -152,7 +156,7 @@ public class UserRestController {
     }
 
     @Transactional
-    @GetMapping(path = "/get-current-user", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/user/api/get-current-user", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String phone = authentication.getName();
@@ -170,6 +174,15 @@ public class UserRestController {
                 put("error", "failed to get user");
             }}), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @Transactional
+    @PostMapping(path = "/user/api/update-user", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateUser(@RequestBody User user) {
+        userServiceImpl.updateUser(user);
+        return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
+            put("user", user);
+        }}), HttpStatus.OK);
     }
 
 }

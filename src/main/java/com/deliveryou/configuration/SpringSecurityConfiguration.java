@@ -76,7 +76,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").authenticated()
                 .antMatchers("/user/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/shipper/**").authenticated()
-                .antMatchers("/shipper/**").access("hasRole('ROLE_SHIPPER')");
+                .antMatchers("/shipper/**").access("hasRole('ROLE_SHIPPER')")
+                .antMatchers("/common/**").authenticated();
 
         http.authorizeRequests()
                 .antMatchers("/test/**").permitAll();

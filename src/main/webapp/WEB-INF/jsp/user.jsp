@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -115,7 +116,12 @@
                 <hr style="overflow-y: auto;">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="default-active" onclick="selectNavItem(this)">
-                        <a href="#" class="nav-link link-dark active p-2">
+                        <c:set value="#" var="post_link"/>
+                        <sec:authorize access="hasRole('ROLE_USER')">
+                            <c:url value="/user/app/user-posts-127FG8XsRgZ3230740279023749g13Yc" var="post_url"/>
+                            <c:set value="${post_url}" var="post_link"/>
+                        </sec:authorize>
+                        <a href="javascript:void(0)" onclick="changeFrameContent('${post_link}')" class="nav-link link-dark active p-2">
                                   <span class="nav-icon">
                                       <svg width="100%" height="100%"><use xlink:href="#table"></use></svg>
                                   </span>
@@ -131,7 +137,12 @@
                         </a>
                     </li>
                     <li onclick="selectNavItem(this)">
-                        <a href="#" class="nav-link link-dark p-2">
+                        <c:set value="#" var="profile_link"/>
+                        <sec:authorize access="hasRole('ROLE_USER')">
+                            <c:url value="/user/app/user-profile-29347283hvUVUVUv982uvuVUYV39e8" var="profile_url"/>
+                            <c:set value="${profile_url}" var="profile_link"/>
+                        </sec:authorize>
+                        <a href="javascript:void(0)" onclick="changeFrameContent('${profile_link}')" class="nav-link link-dark p-2">
                                   <span class="nav-icon">
                                       <svg width="100%" height="100%"><use xlink:href="#people-circle"></use></svg>
                                   </span>
@@ -142,7 +153,7 @@
                 <hr>
 
                 <div class="logout-section">
-                    <img src="/img/logout.svg"/>
+                    <img src="<c:url value="/img/logout.svg"/>"/>
                     <span>Log out</span>
                 </div>
 
@@ -165,7 +176,13 @@
         <!-- ------------------------------------------------------------------------- -->
 
             <main class="frame-container">
-                <iframe class="frame" src='<c:url value="/user/app/user-posts-127FG8XsRgZ3230740279023749g13Yc"/>'></iframe>
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <c:set value="/user/app/user-posts-127FG8XsRgZ3230740279023749g13Yc" var="user_f"/>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_SHIPPER')">
+                    <c:set value="/shipper/app/shipper-posts-12iefv92yygCGYC6758ygcfGUXCTUYX8769ckvb" var="user_f"/>
+                </sec:authorize>
+                <iframe class="frame" src='<c:url value="${user_f}"/>'></iframe>
             </main>
 
         </div>

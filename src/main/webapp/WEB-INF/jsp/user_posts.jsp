@@ -89,19 +89,19 @@
                                     <div class="card shadow" style="width: 14rem;">
                                         <img src="${stat_ongoings.postImages.get(0)}" class="card-img-top img-thumbnail m-auto">
                                         <div class="card-body">
-                                            <div class="card-title d-flex" style="position: relative;">
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
                                                 <span>Date:</span>
-                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toGMTString()}</h6>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_ongoings.orderDate.toGMTString()}</h6>
                                             </div>
-                                            <div class="card-title d-flex" style="position: relative;">
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
                                                 <span>Time:</span>
-                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toString()}</h6>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_ongoings.orderDate.toString()}</h6>
                                             </div>
                                             <div>Content:</div>
                                             <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
                                                     ${stat_ongoings.content}
                                             </p>
-                                            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target=".main-area #mainPostDetailsModal" data-bs-backdrop="false">More</button>
+                                            <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>')" data-post-id=${stat_ongoings.id}>More</button>
                                         </div>
                                     </div>
                                 </div>
@@ -122,22 +122,22 @@
                                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                                     <div class="card shadow" style="width: 14rem;">
 
-                                        <img src="${ (stat_pendings.postImages != null && stat_pendings.postImages.size() > 0) ? stat_pendings.postImages.get(0) : no_img}" class="card-img-top img-thumbnail m-auto">
+                                        <img src="${ (stat_pendings.postImages != null && stat_pendings.postImages.size() > 0) ? stat_pendings.postImages.get(0).image : no_img}" class="card-img-top img-thumbnail m-auto">
 
                                         <div class="card-body">
-                                            <div class="card-title d-flex" style="position: relative;">
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
                                                 <span>Date:</span>
-                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toGMTString()}</h6>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_pendings.orderDate.toGMTString()}</h6>
                                             </div>
-                                            <div class="card-title d-flex" style="position: relative;">
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
                                                 <span>Time:</span>
-                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toString()}</h6>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_pendings.orderDate.toString()}</h6>
                                             </div>
                                             <div>Content:</div>
                                             <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
                                                     ${stat_pendings.content}
                                             </p>
-                                            <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/user/api/get-post/"/>')" data-post-id=${stat_pendings.id}>More</button>
+                                            <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>')" data-post-id=${stat_pendings.id}>More</button>
                                         </div>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
                             <div class="container mt-3">
                                 <p id="post_content">
                                     <strong>Post content:</strong>
-                                    <span class="textarea" role="textbox" contenteditable></span>>
+                                    <span class="textarea" role="textbox" contenteditable></span>
                                 </p>
 
                                 <button id="category_name" data-cat="other" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

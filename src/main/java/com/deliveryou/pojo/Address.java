@@ -86,4 +86,9 @@ public class Address {
         result = 31 * result + (street != null ? street.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return String.join(", ", street, ward, district, province);
+    }
 }

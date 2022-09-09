@@ -70,5 +70,13 @@ public class PostRepositoryImpl implements com.deliveryou.repository.interfaces.
         return -1;
     }
 
+    @Override
+    public List<Post> getPendingPosts() {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        return session.createQuery("from Post where status.name = :status")
+                .setParameter("status", Status.PENDING).getResultList();
+    }
+
 
 }

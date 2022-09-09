@@ -12,4 +12,5 @@ public interface PostRepository {
     int addPost(Post post);
 
     long getTotalPosts();
+    List<Post> getPendingPosts();
 }

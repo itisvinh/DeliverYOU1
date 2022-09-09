@@ -14,4 +14,6 @@ public interface PostService {
 
     Post getPost(int id);
 
+    List<Post> getPendingPosts();
+
 }

@@ -66,31 +66,30 @@
 
                 <div class="row">
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card shadow" style="width: 14rem;">
-                            <img src="/img/home_bg.jpg" class="card-img-top img-thumbnail m-auto">
-                            <div class="card-body">
-                                <div class="card-title d-flex" style="position: relative;">
-                                    <span>Date:</span>
-                                    <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">7
-                                        Sep, 2022</h6>
+                    <c:if test="${pending_posts.size() > 0}">
+                        <c:forEach items="${pending_posts}" var="pending_post">
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="card shadow" style="width: 14rem;">
+                                    <img src="${pending_post.postImages.get(0).image}" class="card-img-top img-thumbnail m-auto">
+                                    <div class="card-body">
+                                        <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                            <span>Date:</span>
+                                            <h6 class="text-end" style="flex-grow: 1;">${pending_post.orderDate.toGMTString()}</h6>
+                                        </div>
+                                        <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                            <span>Time:</span>
+                                            <h6 class="text-end" style="flex-grow: 1;">${pending_post.orderDate.toString()}</h6>
+                                        </div>
+                                        <div>Content:</div>
+                                        <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                ${pending_post.content}
+                                        </p>
+                                        <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>')" data-post-id=${pending_post.id}>More</button>
+                                    </div>
                                 </div>
-                                <div class="card-title d-flex" style="position: relative;">
-                                    <span>Time:</span>
-                                    <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">
-                                        20:56</h6>
-                                </div>
-                                <div>Content:</div>
-                                <p class="card-text mt-2"
-                                   style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
-                                    lkcnlkbndf
-                                </p>
-                                <button class="btn btn-primary w-100" data-bs-toggle="modal"
-                                        data-bs-target=".main-area #mainPostDetailsModal"
-                                        data-bs-backdrop="false">More</button>
                             </div>
-                        </div>
-                    </div>
+                        </c:forEach>
+                    </c:if>
 
                 </div>
 
@@ -112,43 +111,43 @@
         </section>
     </div>
 
-    <div id="mainPostModal" class="modal fade show d-block" tabindex="-1">
+    <div id="mainPostModal" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header" style="height: 2rem;">
                     <button type="button" class="btn-close" aria-label="Close" onclick="closeModal()"></button>
                 </div>
                 <div class="modal-body h-auto" style="overflow-y: auto; max-height: 15rem;">
-                    <div class="d-flex flex-wrap" style="border: 2px dashed rgb(210, 210, 210); gap: .2rem">
-                        <img class="img-thumbnail" style="width: 6rem; height: 6rem;" src="https://img.freepik.com/free-vector/hand-drawn-colorless-people-avatar-pack_23-2148083711.jpg?w=2000"/>
+                    <div id="img-container" class="d-flex flex-wrap" style="border: 2px dashed rgb(210, 210, 210); gap: .2rem">
+                        <img class="img-thumbnail" style="width: 6rem; height: 6rem;" src=""/>
                     </div>
                     <div class="d-flex flex-wrap">
                         <div class="fw-bold me-2">Sender:</div>
-                        <div class="text-end" style="flex-grow: 1;">Anne</div>
+                        <div id="sender-name" class="text-end" style="flex-grow: 1;">Anne</div>
                     </div>
                     <div class="d-flex flex-wrap">
                         <div class="mx-2">Phone:</div>
-                        <div class="text-end" style="flex-grow: 1;">Anne</div>
+                        <div id="sender-phone" class="text-end" style="flex-grow: 1;">Anne</div>
                     </div>
                     <div class="d-flex flex-wrap">
                         <div class="mx-2">Address:</div>
-                        <div class="text-end" style="flex-grow: 1;">Anne</div>
+                        <div id="sender-address" class="text-end" style="flex-grow: 1;">Anne</div>
                     </div>
                     <div class="d-flex flex-wrap mt-2">
                         <div class="fw-bold me-2">Recipent:</div>
-                        <div class="text-end" style="flex-grow: 1;">Anne</div>
+                        <div id="receiver-name" class="text-end" style="flex-grow: 1;">Anne</div>
                     </div>
                     <div class="d-flex flex-wrap">
                         <div class="mx-2">Phone:</div>
-                        <div class="text-end" style="flex-grow: 1;">Anne</div>
+                        <div id="receiver-phone"  class="text-end" style="flex-grow: 1;">Anne</div>
                     </div>
                     <div class="d-flex flex-wrap">
                         <div class="mx-2">Address:</div>
-                        <div class="text-end" style="flex-grow: 1;">Anne</div>
+                        <div id="receiver-address"  class="text-end" style="flex-grow: 1;">Anne</div>
                     </div>
                     <div class="d-flex flex-wrap mt-2">
                         <div class="fw-bold me-2">Category:</div>
-                        <div class="text-end" style="flex-grow: 1;">Other</div>
+                        <div id="cat-name" class="text-end" style="flex-grow: 1;">Other</div>
                     </div>
                 </div>
                 <div class="modal-footer h-auto p-0">

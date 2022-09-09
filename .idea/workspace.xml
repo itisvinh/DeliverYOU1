@@ -10,35 +10,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostImageRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostImageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/util/LazyLoadInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/shipper_posts.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/shipper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostAuctionsRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostAuctionsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostAuctionsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_profile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/brand_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/TestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Address.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/AddressRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/AddressRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/CategoryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/CategoryRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/PostAuction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/PostAuction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/shipper_posts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/shipper_posts.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/user.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/user_posts.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/user_posts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/user_posts_add_post.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/user_posts_add_post.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/user_posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/user_posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/user_posts_add_post.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/user_posts_add_post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/shipper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/shipper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +50,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Interface" />
         <option value="spring-beans.schema" />
+        <option value="JavaScript File" />
+        <option value="Interface" />
         <option value="Class" />
         <option value="Jsp File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -105,7 +106,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "database.data.extractors.current.export.id": "SQL Inserts",
-    "last_opened_file_path": "C:/Users/itiso/Downloads",
+    "last_opened_file_path": "C:/Users/itiso/Desktop/DeliverYOU/src/main/webapp/resources/images",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
@@ -263,7 +264,8 @@
       <workItem from="1662480068912" duration="605000" />
       <workItem from="1662529464881" duration="35000" />
       <workItem from="1662529761245" duration="23553000" />
-      <workItem from="1662606474622" duration="32446000" />
+      <workItem from="1662606474622" duration="39583000" />
+      <workItem from="1662703008135" duration="9504000" />
     </task>
     <servers />
   </component>
@@ -288,6 +290,11 @@
           <url>jar://$USER_HOME$/.jdks/corretto-11.0.15/lib/src.zip!/java.base/java/lang/Double.java</url>
           <line>505</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

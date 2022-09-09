@@ -9,6 +9,8 @@ public interface UserService extends UserDetailsService {
     User getUser(String phoneNumber);
 
     User getUser(int id);
-    void addUser(User user);
+    int addUser(User user);
     List<User> getUserList();
+
+    boolean updateUser(User user);
 }

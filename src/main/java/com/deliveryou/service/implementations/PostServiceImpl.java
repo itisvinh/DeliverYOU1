@@ -41,4 +41,9 @@ public class PostServiceImpl implements com.deliveryou.service.interfaces.PostSe
     public Post getPost(int id) {
         return postRepositoryImpl.getPost(id);
     }
+
+    @Override
+    public List<Post> getPendingPosts() {
+        return postRepositoryImpl.getPendingPosts();
+    }
 }
