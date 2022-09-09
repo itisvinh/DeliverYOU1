@@ -10,4 +10,8 @@ public interface PostService {
     List<Post> getAllPosts();
     List<Post> getPostsWithinRange(Status status, int startResult, int maxResults);
 
+    long getTotalPosts();
+
+    Post getPost(int id);
+
 }

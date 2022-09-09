@@ -74,6 +74,8 @@
             </li>
         </ul>
 
+        <c:set scope="session" var="no_img" value="https://media.istockphoto.com/vectors/default-image-icon-vector-missing-picture-page-for-website-design-or-vector-id1357365823?k=20&m=1357365823&s=612x612&w=0&h=ZH0MQpeUoSHM3G2AWzc8KkGYRg4uP_kuu0Za8GFxdFc="/>
+
         <div class="slider"><div class="indicator"></div></div>
         <div class="content">
             <section>
@@ -81,28 +83,30 @@
                 <div class="container">
                     <div class="row">
 
-                        <c:forEach items="${ongoing}" var="stat_ongoings">
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                                <div class="card shadow" style="width: 14rem;">
-                                    <img src="${stat_ongoings.postImages.get(0)}" class="card-img-top img-thumbnail m-auto">
-                                    <div class="card-body">
-                                        <div class="card-title d-flex" style="position: relative;">
-                                            <span>Date:</span>
-                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toGMTString()}</h6>
+                        <c:if test="${ongoing.size() > 0}">
+                            <c:forEach items="${ongoing}" var="stat_ongoings">
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                    <div class="card shadow" style="width: 14rem;">
+                                        <img src="${stat_ongoings.postImages.get(0)}" class="card-img-top img-thumbnail m-auto">
+                                        <div class="card-body">
+                                            <div class="card-title d-flex" style="position: relative;">
+                                                <span>Date:</span>
+                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toGMTString()}</h6>
+                                            </div>
+                                            <div class="card-title d-flex" style="position: relative;">
+                                                <span>Time:</span>
+                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toString()}</h6>
+                                            </div>
+                                            <div>Content:</div>
+                                            <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                    ${stat_ongoings.content}
+                                            </p>
+                                            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target=".main-area #mainPostDetailsModal" data-bs-backdrop="false">More</button>
                                         </div>
-                                        <div class="card-title d-flex" style="position: relative;">
-                                            <span>Time:</span>
-                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_ongoings.orderDate.toString()}</h6>
-                                        </div>
-                                        <div>Content:</div>
-                                        <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
-                                            ${stat_ongoings.content}
-                                        </p>
-                                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target=".main-area #mainPostDetailsModal" data-bs-backdrop="false">More</button>
                                     </div>
                                 </div>
-                            </div>
-                        </c:forEach>
+                            </c:forEach>
+                        </c:if>
 
                     </div>
                 </div>
@@ -113,28 +117,32 @@
                 <div class="container">
                     <div class="row">
 
-                        <c:forEach items="${pending}" var="stat_pendings">
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                                <div class="card shadow" style="width: 14rem;">
-                                    <img src="${stat_pendings.postImages.get(0)}" class="card-img-top img-thumbnail m-auto">
-                                    <div class="card-body">
-                                        <div class="card-title d-flex" style="position: relative;">
-                                            <span>Date:</span>
-                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toGMTString()}</h6>
+                        <c:if test="${pending.size() > 0}">
+                            <c:forEach items="${pending}" var="stat_pendings">
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                    <div class="card shadow" style="width: 14rem;">
+
+                                        <img src="${ (stat_pendings.postImages != null && stat_pendings.postImages.size() > 0) ? stat_pendings.postImages.get(0) : no_img}" class="card-img-top img-thumbnail m-auto">
+
+                                        <div class="card-body">
+                                            <div class="card-title d-flex" style="position: relative;">
+                                                <span>Date:</span>
+                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toGMTString()}</h6>
+                                            </div>
+                                            <div class="card-title d-flex" style="position: relative;">
+                                                <span>Time:</span>
+                                                <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toString()}</h6>
+                                            </div>
+                                            <div>Content:</div>
+                                            <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                    ${stat_pendings.content}
+                                            </p>
+                                            <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/user/api/get-post/"/>')" data-post-id=${stat_pendings.id}>More</button>
                                         </div>
-                                        <div class="card-title d-flex" style="position: relative;">
-                                            <span>Time:</span>
-                                            <h6 class="d-inline-block text-dark" style="position: absolute; right: 0">${stat_pendings.orderDate.toString()}</h6>
-                                        </div>
-                                        <div>Content:</div>
-                                        <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
-                                                ${stat_pendings.content}
-                                        </p>
-                                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target=".main-area #mainPostDetailsModal" data-bs-backdrop="false">More</button>
                                     </div>
                                 </div>
-                            </div>
-                        </c:forEach>
+                            </c:forEach>
+                        </c:if>
 
                     </div>
                 </div>
@@ -235,7 +243,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li onclick="categorySelected(this)" class="dropdown-item" data-cat="food">Food</li>
-                                    <li onclick="categorySelected(this)" class="dropdown-item" data-cat="clothing">Clothing</li>
+                                    <li onclick="categorySelected(this)" class="dropdown-item" data-cat="clothes">Clothing</li>
                                     <li onclick="categorySelected(this)" class="dropdown-item" data-cat="electronics">Electronics</li>
                                     <li onclick="categorySelected(this)" class="dropdown-item" data-cat="fragile">Fragile</li>
                                     <li onclick="categorySelected(this)" class="dropdown-item" data-cat="other">Other</li>
@@ -249,7 +257,7 @@
             <div class="modal-footer p-1">
                 <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal" onclick="previousTab(this)">Previous</button>
 
-                <button type="button" class="btn btn-primary" onclick="nextTab(this, '<c:url value="/user/api/add-post"></c:url>')" data-mode="next">Next</button>
+                <button type="button" class="btn btn-primary" onclick="nextTab(this, '<c:url value="/user/api"></c:url>')" data-mode="next">Next</button>
             </div>
 
             <style>
@@ -267,6 +275,84 @@
             </div>
         </button>
 
+    <div>
+        <div class="modal fade" id="mainPostDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header" style="height: 2rem;">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeDetailsModal()"></button>
+                    </div>
+                    <div class="modal-body p-0">
+
+                        <div class="modal-tab-container">
+                            <div class="modal-tab-header">
+                                <button class="modal-tab fw-bold" onclick="tab_clicked(this)" data-tab-index=0 >Details</button>
+                                <button class="modal-tab" onclick="tab_clicked(this)" data-tab-index=1 >Auctions</button>
+                            </div>
+                            <div class="modal-tab-body">
+                                <div id="modal-tab-details" class="modal-tab-content d-none">
+
+                                    <div class="container-fluid d-flex flex-column mt-2" style="gap: .2rem;">
+                                        <div id="modal-img-container" class="d-flex flex-wrap mb-2" style="border: 2px dashed rgb(203, 203, 203); gap: .5rem">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucpvmQPFPFFQ2PomrKQh9zw7AV_OROfs6pg&usqp=CAU" class="rounded-2" style="width: 4rem; height: 4rem;"/>
+                                        </div>
+                                        <div class="d-flex flex-wrap w-100">
+                                            <div class="fw-bold me-2">Post created:</div>
+                                            <div id="modal-post-created">7/09/2022</div>
+                                        </div>
+                                        <div class="d-flex flex-wrap w-100">
+                                            <div class="fw-bold me-2">Pickup location:</div>
+                                            <div id="modal-pickup-loc">465 nvc, ap , sk</div>
+                                        </div>
+                                        <div class="d-flex flex-wrap w-100">
+                                            <div class="fw-bold me-2">Drop-off location:</div>
+                                            <div id="modal-dropoff-loc">465 nvc, ap , sk</div>
+                                        </div>
+                                        <div class="d-flex flex-wrap w-100">
+                                            <div class="fw-bold me-2">Recipient's name:</div>
+                                            <div id="modal-rep-name">Anne</div>
+                                        </div>
+                                        <div class="d-flex flex-wrap w-100">
+                                            <div class="fw-bold me-2">Recipient's phone:</div>
+                                            <div id="modal-rep-phone">21312323</div>
+                                        </div>
+                                        <div class="fw-bold">Content:</div>
+                                        <div id="modal-post-content" class="mb-3" style="overflow-y: auto; word-wrap: break-word; max-height: 4rem;">
+                                            content kofnfdlgknfgndlfnldfgn dgdfg dfd dgdf dfgd dg ddfg
+                                            content kofnfdlgknfgndlfnldfgn dgdfg dfd dgdf dfgd dg ddfg
+                                            content kofnfdlgknfgndlfnldfgn dgdfg dfd dgdf dfgd dg ddfg
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div id="modal-tab-auctions" class="modal-tab-content d-non">
+
+                                    <div class="container-fluid d-flex flex-column p-1" style="gap: .4rem;">
+
+                                        <div class="card rounded-3 p-2 d-flex flex-row" style="align-items: center; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                            <img src="https://cf.ppt-online.org/files/slide/s/skmlQrY3gCnpTvhceW5aOXDLK2F14biVGMutHU/slide-18.jpg"
+                                                 class="rounded-circle img-thumbnail me-3 shadow" style="width: 4rem; height: 4rem;"/>
+                                            <div class="d-flex flex-column w-100" style="gap: .2rem;">
+                                                <h6 class="m-0 ms-1">Kayla Mcqueen</h6>
+                                                <div class="ms-1">34.000</div>
+                                                <button class="w-100 btn btn-info rounded-pill text-white p-0">Choose this driver</button>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </div>
 

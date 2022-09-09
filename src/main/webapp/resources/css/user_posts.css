@@ -557,6 +557,49 @@ body {
     object-fit: cover
 }
 
+/* --------------------- */
+#mainPostDetailsModal .modal-body {
+    min-height: 22rem !important;
+    height: 22rem;
+}
+
+#mainPostDetailsModal .modal-content {
+    overflow: hidden;
+}
+
+.modal-tab-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-tab-container .modal-tab-header {
+    width: 100%;
+    display: flex;
+}
+
+.modal-tab-container .modal-tab-header .modal-tab {
+    width: 100%;
+    border: none;
+    height: 2.2rem;
+    background: #e9e9e9;
+}
+
+.modal-tab-container .modal-tab-header .modal-tab:hover {
+    background: #d6d6d6;
+}
+
+.modal-tab-container .modal-tab-body {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-tab-container .modal-tab-body .modal-tab-content {
+    width: 100%;
+    height: 100%;
+}
+
 
 
 

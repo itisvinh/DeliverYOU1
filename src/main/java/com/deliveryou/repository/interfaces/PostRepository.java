@@ -10,4 +10,6 @@ public interface PostRepository {
     List<Post> getPostsWithinRange(Status status, int startResult, int maxResults);
     Post getPost(int id);
     int addPost(Post post);
+
+    long getTotalPosts();
 }

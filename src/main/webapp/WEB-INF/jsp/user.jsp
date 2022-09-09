@@ -93,20 +93,20 @@
 
                 <div class="profile-container">
                     <div class="profile">
-                        <img src="https://preview.colorlib.com/theme/sidebar/colorlib-sidebar-v01/images/xperson_profile.jpg.pagespeed.ic.qod3L9VTVt.webp" alt="Image" class="img-fluid profile-img" data-pagespeed-url-hash="3097809491" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                        <h4 class="name">Debby Williams</h4>
-                        <span class="country">New York, USA</span>
+                        <img src="${current_user.avatar}" alt="Image"  class="img-fluid profile-img" data-pagespeed-url-hash="3097809491" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                        <h4 class="name">${current_user.firstname}</h4>
+                        <span class="country">${current_user.address.district}</span>
                     </div>
                     <div class="member-stats d-flex justify-content-center mt-4">
-                        <div class="col d-flex flex-column align-items-center">
+                        <div class="m-age col d-flex flex-column align-items-center">
                             <div>
                                 <strong class="number">0</strong>
                             </div>
                             <span class="number-label">Member age</span>
                         </div>
-                        <div class="col d-flex flex-column align-items-center">
+                        <div class="m-posts col d-flex flex-column align-items-center">
                             <div>
-                                <strong class="number">1</strong>
+                                <strong class="number">${total_posts > 0 ? total_posts : 0}</strong>
                             </div>
                             <span class="number-label">Posts</span>
                         </div>

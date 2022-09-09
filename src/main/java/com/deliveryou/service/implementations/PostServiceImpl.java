@@ -31,4 +31,14 @@ public class PostServiceImpl implements com.deliveryou.service.interfaces.PostSe
     public List<Post> getPostsWithinRange(Status status, int startResult, int maxResults) {
         return postRepositoryImpl.getPostsWithinRange(status, startResult, maxResults);
     }
+
+    @Override
+    public long getTotalPosts() {
+        return postRepositoryImpl.getTotalPosts();
+    }
+
+    @Override
+    public Post getPost(int id) {
+        return postRepositoryImpl.getPost(id);
+    }
 }

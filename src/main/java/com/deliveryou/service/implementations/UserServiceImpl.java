@@ -26,18 +26,19 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
 
     @Override
     public User getUser(String phoneNumber) {
-        return phoneNumber.equalsIgnoreCase("11111") ?
-                new User() {{
-                    setId(1);
-                    setFirstname("heilen");
-                    setLastname("carls");
-                    setPhoneNumber("11111");
-                    setPassword("$2a$10$BhOlFIl/qqu2pWDynzWBJehk9qmG/YLF25oVs2aEHOu3k8rBnrXby");
-                    setEmail("he@gmail.com");
-                    setRoleByRoleId(new Role() {{
-                        setName("ROLE_USER");
-                    }});
-                }} : null;
+        return userRepository.getUser(phoneNumber);
+//        return phoneNumber.equalsIgnoreCase("11111") ?
+//                new User() {{
+//                    setId(1);
+//                    setFirstname("12");
+//                    setLastname("carls");
+//                    setPhoneNumber("11111");
+//                    setPassword("$2a$10$BhOlFIl/qqu2pWDynzWBJehk9qmG/YLF25oVs2aEHOu3k8rBnrXby");
+//                    setEmail("he@gmail.com");
+//                    setRole(new Role() {{
+//                        setName("ROLE_USER");
+//                    }});
+//                }} : null;
     }
 
     public User getUser(int id) {
@@ -81,7 +82,7 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
             throw new UsernameNotFoundException("No account is registered with this number");
 
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>() {{
-            add(new SimpleGrantedAuthority(user.getRoleByRoleId().getName()));
+            add(new SimpleGrantedAuthority(user.getRole().getName()));
         }};
 
         return new org.springframework.security.core.userdetails.User(user.getPhoneNumber(), user.getPassword(), authorities);

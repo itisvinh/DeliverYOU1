@@ -77,7 +77,8 @@ function ajaxSubmitForm(form, args) {
             replaceClassToken(alert_box, "alert-danger", "alert-success")
             alert_msg.innerHTML = alert_msg_content_success_login
             alert_box.style.display = 'block'
-            window.location.href = args.urlPrefix + 'user/app'
+            // window.location.href = http.responseURL
+            console.log(http.responseURL)
         } else {
             replaceClassToken(alert_box, "alert-success", "alert-danger")
             alert_msg.innerHTML = alert_msg_content_err_login

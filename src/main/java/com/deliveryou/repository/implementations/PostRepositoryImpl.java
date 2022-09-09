@@ -38,6 +38,12 @@ public class PostRepositoryImpl implements com.deliveryou.repository.interfaces.
 
     @Override
     public Post getPost(int id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        try {
+            return session.get(Post.class, id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return null;
     }
 
@@ -47,6 +53,17 @@ public class PostRepositoryImpl implements com.deliveryou.repository.interfaces.
         try {
             session.save(post);
             return post.getId();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return -1;
+    }
+
+    @Override
+    public long getTotalPosts() {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        try {
+            return (Long) session.createQuery("select count(*) from Post").getSingleResult();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

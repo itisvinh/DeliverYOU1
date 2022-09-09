@@ -1,6 +1,5 @@
 package com.deliveryou.repository.implementations;
 
-import com.deliveryou.factory.ConstantPersistenceMap;
 import com.deliveryou.pojo.Address;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;

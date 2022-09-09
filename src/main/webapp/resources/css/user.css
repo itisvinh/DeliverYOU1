@@ -85,7 +85,9 @@
 
 .profile-container .profile .profile-img{
     border-radius: 50%;
-    width: 40%;
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: .65rem;
 }
 
 .side-bar .nav li .nav-icon {
@@ -211,7 +213,8 @@
 }
 
 .side-bar.collapsed .profile-container .profile .profile-img {
-    width: 2.2rem;
+    width: 2.2rem !important;
+    height: 2.2rem !important;
 }
 
 

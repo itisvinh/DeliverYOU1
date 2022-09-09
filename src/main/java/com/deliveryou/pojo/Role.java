@@ -1,9 +1,6 @@
 package com.deliveryou.pojo;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Role {
@@ -21,9 +18,6 @@ public class Role {
     @Basic
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "roleByRoleId")
-    private List<User> users;
-
 
     public int getId() {
         return id;
@@ -41,24 +35,23 @@ public class Role {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Role)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+
         Role role = (Role) o;
-        return id == role.id && name.equals(role.name) && Objects.equals(users, role.users);
+
+        if (id != role.id) return false;
+        if (name != null ? !name.equals(role.name) : role.name != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, users);
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }

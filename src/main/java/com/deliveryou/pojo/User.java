@@ -1,7 +1,6 @@
 package com.deliveryou.pojo;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class User {
@@ -25,30 +24,20 @@ public class User {
     @Column(name = "password")
     private String password;
     @Basic
-    @Column(name = "address")
-    private String address;
-    @Basic
     @Column(name = "citizen_id")
     private String citizenId;
     @Basic
     @Column(name = "avatar")
-    private int avatar;
+    private String avatar;
     @Basic
     @Column(name = "deleted")
     private byte deleted;
-    @OneToMany(mappedBy = "user")
-    private Collection<Post> postsById;
-    @OneToMany(mappedBy = "shipper")
-    private Collection<Post> postsById_0;
-    @OneToMany(mappedBy = "shipper")
-    private Collection<PostAuction> postAuctionsById;
-    @OneToMany(mappedBy = "user")
-    private Collection<Rating> ratingsById;
-    @OneToMany(mappedBy = "shipper")
-    private Collection<Rating> ratingsById_0;
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
-    private Role roleByRoleId;
+    private Role role;
+    @ManyToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
+    private Address address;
 
     public int getId() {
         return id;
@@ -98,14 +87,6 @@ public class User {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getCitizenId() {
         return citizenId;
     }
@@ -114,12 +95,11 @@ public class User {
         this.citizenId = citizenId;
     }
 
-
-    public int getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
@@ -131,51 +111,70 @@ public class User {
         this.deleted = deleted;
     }
 
-    public Collection<Post> getPostsById() {
-        return postsById;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+        if (deleted != user.deleted) return false;
+        if (firstname != null ? !firstname.equals(user.firstname) : user.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(user.lastname) : user.lastname != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (citizenId != null ? !citizenId.equals(user.citizenId) : user.citizenId != null) return false;
+        if (avatar != null ? !avatar.equals(user.avatar) : user.avatar != null) return false;
+
+        return true;
     }
 
-    public void setPostsById(Collection<Post> postsById) {
-        this.postsById = postsById;
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (citizenId != null ? citizenId.hashCode() : 0);
+        result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
+        result = 31 * result + (int) deleted;
+        return result;
     }
 
-    public Collection<Post> getPostsById_0() {
-        return postsById_0;
+    public Role getRole() {
+        return role;
     }
 
-    public void setPostsById_0(Collection<Post> postsById_0) {
-        this.postsById_0 = postsById_0;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public Collection<PostAuction> getPostAuctionsById() {
-        return postAuctionsById;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setPostAuctionsById(Collection<PostAuction> postAuctionsById) {
-        this.postAuctionsById = postAuctionsById;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public Collection<Rating> getRatingsById() {
-        return ratingsById;
-    }
-
-    public void setRatingsById(Collection<Rating> ratingsById) {
-        this.ratingsById = ratingsById;
-    }
-
-    public Collection<Rating> getRatingsById_0() {
-        return ratingsById_0;
-    }
-
-    public void setRatingsById_0(Collection<Rating> ratingsById_0) {
-        this.ratingsById_0 = ratingsById_0;
-    }
-
-    public Role getRoleByRoleId() {
-        return roleByRoleId;
-    }
-
-    public void setRoleByRoleId(Role roleByRoleId) {
-        this.roleByRoleId = roleByRoleId;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", citizenId='" + citizenId + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", deleted=" + deleted +
+                ", role=" + role +
+                ", address=" + address +
+                '}';
     }
 }

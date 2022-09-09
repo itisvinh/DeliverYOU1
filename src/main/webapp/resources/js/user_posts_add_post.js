@@ -234,9 +234,25 @@ function showToast(content, toastType) {
     })
 }
 
-function postAddedSuccessfully() {
+async function getTotalPosts(endpoint) {
+    return fetch(endpoint + "/get-total-posts")
+        .then(res => res.json())
+        .catch(reason => {
+            console.log("[FETCH ERROR]", "cannot fetch the total number of posts")
+            return undefined
+        })
+}
+
+function postAddedSuccessfully(endpoint) {
     document.elementFromPoint(1,1).click()
     document.querySelector('.frame-container .frame').contentWindow.location.reload();
+
+    getTotalPosts(endpoint).then(data => {
+        if (data && data.count > -1) {
+            document.querySelector('.profile-container .member-stats .m-posts .number').innerHTML = data.count
+        }
+    })
+
 }
 
 function validatePostInfo(p_loc, d_loc, recepient, files) {
@@ -312,8 +328,10 @@ function addPost(endpoint) {
                     category_name: cat_name.innerHTML
                 }
                 createNewPost(endpoint, post).then(data => {
-                    if (data && data.post) {
-                        postAddedSuccessfully()
+                    if (data && data.code === 201) {
+                        postAddedSuccessfully(endpoint)
+                    } else {
+                        showToast("Exception occurred at the server", ToastType.ERROR)
                     }
                 })
             }
@@ -322,7 +340,7 @@ function addPost(endpoint) {
 }
 
 function createNewPost(endpoint, post) {
-    return fetch(endpoint, {
+    return fetch(endpoint + "/add-post", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -344,7 +362,10 @@ function createNewPost(endpoint, post) {
             urlList: post.files
         })
     })
-        .then(res => res.json())
+        .then(res => {
+            console.log("RES", res)
+            return res.json()
+        })
         .then(data => {
             console.log("POST", data)
             showToast("Created successfully", ToastType.INFO)
