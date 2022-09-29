@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="container-blurry-glass no-children m-3 rounded text-center">
-                    <span>Don't have an account? <a href="#" class="text-info text-decoration-none">Sign up</a></span>
+                    <span>Don't have an account? <a href="<c:url value="/register"/>" class="text-info text-decoration-none">Sign up</a></span>
                 </div>
             </form>
             <%--------------------------------end of login form-----------------------------------%>
