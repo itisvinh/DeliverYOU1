@@ -14,4 +14,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     <definition name="userPage" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/user.jsp"/>
     </definition>
+    <definition name="register" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/signUp_Form.jsp"/>
+    </definition>
 </tiles-definitions>

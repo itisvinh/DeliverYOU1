@@ -1,0 +1,443 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"deliveryou:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c399dbe6-ef6d-4fd2-9a90-2b346dded811\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostAuctionsRepositoryImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostAuctionsRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostAuctionsServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_profile.jsp\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/images/brand_logo.png\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/controller/TestController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/controller/TestController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Address.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Address.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/PostAuction.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/PostAuction.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Role.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Role.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostRepositoryImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostRepositoryImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/shipper_posts.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/shipper_posts.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/css/user_posts_add_post.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/css/user_posts_add_post.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/js/login.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/js/login.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/js/shipper.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/js/shipper.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/js/user.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/js/user.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"CSS File\" />\r\n        <option value=\"spring-beans.schema\" />\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"Jsp File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"JpbToolWindowState\">\r\n    <option name=\"myId2FirstActivated\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"true\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"myId2Visible\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"false\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2DHoetHyE8SGsg8PNxksjjgngZB\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"JPA.DatabaseSchemaImportDialog\": \"7dcb3bf1-e6d4-466b-8804-fd058a49a61d\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"database.data.extractors.current.export.id\": \"SQL Inserts\",\r\n    \"last_opened_file_path\": \"C:/Users/itiso/Desktop/DeliverYOU/src/main/webapp/resources/images\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"spring.configuration.checksum\": \"8f8d480fba94c049c8bd91840a23d2a2\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"mysql\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\itiso\\Desktop\\DeliverYOU\\src\\main\\webapp\\resources\\images\" />\r\n      <recent name=\"C:\\Users\\itiso\\Desktop\\DeliverYOU\\src\\main\\java\\com\\deliveryou\" />\r\n      <recent name=\"C:\\Users\\itiso\\Desktop\\DeliverYOU\\src\\main\\java\\com\\deliveryou\\configuration\" />\r\n      <recent name=\"C:\\Users\\itiso\\Desktop\\DeliverYOU\\src\\main\\webapp\" />\r\n      <recent name=\"C:\\Users\\itiso\\Desktop\\DeliverYOU\\src\\main\\webapp\\WEB-INF\\jsp\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\itiso\\Desktop\\DeliverYOU\\src\\main\\webapp\\WEB-INF\\jsp\" />\r\n      <recent name=\"C:\\Users\\itiso\\Desktop\\DeliverYOU\\src\\main\\webapp\\resources\\html\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.deliveryou.repository.interfaces\" />\r\n      <recent name=\"com.deliveryou.repository.implementations\" />\r\n      <recent name=\"com.deliveryou.service.implementations\" />\r\n      <recent name=\"com.deliveryou.pojo\" />\r\n    </key>\r\n    <key name=\"ImportMappingsDialog.RecentPackages\">\r\n      <recent name=\"com.deliveryou.pojo\" />\r\n      <recent name=\"\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 9.0.65\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 9.0.65\" ALTERNATIVE_JRE_ENABLED=\"true\" ALTERNATIVE_JRE_PATH=\"corretto-11\" nameIsGenerated=\"true\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"deliveryou:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/deliveryou_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"9c93aace-f207-40fd-9652-69f7c3d37092\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"63456\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"deliveryou:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SQLScriptSettings\">\r\n    <option name=\"outputLayout\" value=\"File per object by schema and database.groovy\" />\r\n    <option name=\"outputPath\" value=\"C:\\Users\\itiso\\Downloads\" />\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c399dbe6-ef6d-4fd2-9a90-2b346dded811\" name=\"Changes\" comment=\"\" />\r\n      <created>1660365470469</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1660365470469</updated>\r\n      <workItem from=\"1660365472051\" duration=\"6659000\" />\r\n      <workItem from=\"1660378352867\" duration=\"5889000\" />\r\n      <workItem from=\"1660455878842\" duration=\"5065000\" />\r\n      <workItem from=\"1660476229163\" duration=\"8670000\" />\r\n      <workItem from=\"1660559209753\" duration=\"3767000\" />\r\n      <workItem from=\"1660611466747\" duration=\"11339000\" />\r\n      <workItem from=\"1660697666843\" duration=\"12634000\" />\r\n      <workItem from=\"1661057619873\" duration=\"1784000\" />\r\n      <workItem from=\"1661239936332\" duration=\"12001000\" />\r\n      <workItem from=\"1661421366532\" duration=\"3863000\" />\r\n      <workItem from=\"1661935784231\" duration=\"12580000\" />\r\n      <workItem from=\"1662011786707\" duration=\"9924000\" />\r\n      <workItem from=\"1662089133917\" duration=\"23242000\" />\r\n      <workItem from=\"1662179822601\" duration=\"19483000\" />\r\n      <workItem from=\"1662264451597\" duration=\"24472000\" />\r\n      <workItem from=\"1662306724625\" duration=\"1074000\" />\r\n      <workItem from=\"1662371717506\" duration=\"12491000\" />\r\n      <workItem from=\"1662480068912\" duration=\"605000\" />\r\n      <workItem from=\"1662529464881\" duration=\"35000\" />\r\n      <workItem from=\"1662529761245\" duration=\"23553000\" />\r\n      <workItem from=\"1662606474622\" duration=\"39583000\" />\r\n      <workItem from=\"1662703008135\" duration=\"9504000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>jar://$USER_HOME$/.jdks/corretto-11.0.15/lib/src.zip!/java.base/java/lang/Double.java</url>\r\n          <line>505</line>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java</url>\r\n          <line>29</line>\r\n          <option name=\"timeStamp\" value=\"5\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="ArtifactsWorkspaceSettings">
+     <artifacts-to-build>
+-      <artifact name="deliveryou:war exploded" />
++      <artifact name="DeliverYOU:war exploded" />
+     </artifacts-to-build>
+   </component>
+   <component name="AutoImportSettings">
+@@ -10,36 +10,23 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostAuctionsRepositoryImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostAuctionsRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostAuctionsServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_profile.jsp" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/brand_logo.png" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2f6fac77-4e71-4553-b53c-70d0289463d0.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/Dispatcher.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/TestController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Address.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/PostAuction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/PostAuction.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/Role.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/PostRepositoryImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/User.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/PostRepository.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostServiceImpl.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/shipper_posts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/shipper_posts.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/user_posts_add_post.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/user_posts_add_post.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/shipper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/shipper.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/user.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -49,16 +36,21 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="CSS File" />
+         <option value="spring-beans.schema" />
+         <option value="JavaScript File" />
++        <option value="Jsp File" />
++        <option value="CSS File" />
+         <option value="Interface" />
+         <option value="Class" />
+-        <option value="Jsp File" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="JpbToolWindowState">
+@@ -95,31 +87,34 @@
+     </option>
+   </component>
+   <component name="ProjectId" id="2DHoetHyE8SGsg8PNxksjjgngZB" />
++  <component name="ProjectLevelVcsManager">
++    <ConfirmationsSetting value="1" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "JPA.DatabaseSchemaImportDialog": "7dcb3bf1-e6d4-466b-8804-fd058a49a61d",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "database.data.extractors.current.export.id": "SQL Inserts",
+-    "last_opened_file_path": "C:/Users/itiso/Desktop/DeliverYOU/src/main/webapp/resources/images",
+-    "list.type.of.created.stylesheet": "CSS",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
+-    "spring.configuration.checksum": "8f8d480fba94c049c8bd91840a23d2a2"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;7dcb3bf1-e6d4-466b-8804-fd058a49a61d&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Inserts&quot;,
++    &quot;last_opened_file_path&quot;: &quot;D:/Java/Lap_Trinh_Java/Delete_v2/DeliverYOU&quot;,
++    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
++    &quot;spring.configuration.checksum&quot;: &quot;66225626ac9ed5d3e24ffd60ba058441&quot;
+   },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "mysql"
++  &quot;keyToStringList&quot;: {
++    &quot;DatabaseDriversLRU&quot;: [
++      &quot;mysql&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\itiso\Desktop\DeliverYOU\src\main\webapp\resources\images" />
+@@ -147,9 +142,9 @@
+     <configuration name="Tomcat 9.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.65" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="corretto-11" nameIsGenerated="true">
+       <option name="UPDATING_POLICY" value="restart-server" />
+       <deployment>
+-        <artifact name="deliveryou:war exploded">
++        <artifact name="DeliverYOU:war exploded">
+           <settings>
+-            <option name="CONTEXT_PATH" value="/deliveryou_war_exploded" />
++            <option name="CONTEXT_PATH" value="/DeliverYOU_war_exploded" />
+           </settings>
+         </artifact>
+       </deployment>
+@@ -228,6 +223,7 @@
+         <option name="Make" enabled="true" />
+         <option name="BuildArtifacts" enabled="true">
+           <artifact name="deliveryou:war exploded" />
++          <artifact name="DeliverYOU:war exploded" />
+         </option>
+       </method>
+     </configuration>
+@@ -266,6 +262,13 @@
+       <workItem from="1662529761245" duration="23553000" />
+       <workItem from="1662606474622" duration="39583000" />
+       <workItem from="1662703008135" duration="9504000" />
++      <workItem from="1663294356824" duration="20056000" />
++      <workItem from="1663550097140" duration="12621000" />
++      <workItem from="1663638739356" duration="9624000" />
++      <workItem from="1663831472170" duration="3704000" />
++      <workItem from="1663837908685" duration="3781000" />
++      <workItem from="1664331753050" duration="594000" />
++      <workItem from="1664421223308" duration="2145000" />
+     </task>
+     <servers />
+   </component>
+@@ -290,11 +293,6 @@
+           <url>jar://$USER_HOME$/.jdks/corretto-11.0.15/lib/src.zip!/java.base/java/lang/Double.java</url>
+           <line>505</line>
+           <option name="timeStamp" value="4" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java</url>
+-          <line>29</line>
+-          <option name="timeStamp" value="5" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+Index: src/main/java/com/deliveryou/repository/interfaces/UserRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.deliveryou.repository.interfaces;\r\n\r\nimport com.deliveryou.pojo.User;\r\n\r\nimport java.util.List;\r\n\r\npublic interface UserRepository {\r\n    int addUser(User user);\r\n    boolean updateUser(User user);\r\n    boolean deactivateUser(int id);\r\n    User getUser(String phoneNumber);\r\n    User getUser(int id);\r\n    List<User> getUserList();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java b/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java
+--- a/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java	
++++ b/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java	
+@@ -5,7 +5,7 @@
+ import java.util.List;
+ 
+ public interface UserRepository {
+-    int addUser(User user);
++    boolean addUser(User user);
+     boolean updateUser(User user);
+     boolean deactivateUser(int id);
+     User getUser(String phoneNumber);
+Index: src/main/java/com/deliveryou/service/interfaces/UserService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.deliveryou.service.interfaces;\r\n\r\nimport com.deliveryou.pojo.User;\r\nimport org.springframework.security.core.userdetails.UserDetailsService;\r\n\r\nimport java.util.List;\r\n\r\npublic interface UserService extends UserDetailsService {\r\n    User getUser(String phoneNumber);\r\n\r\n    User getUser(int id);\r\n    int addUser(User user);\r\n    List<User> getUserList();\r\n\r\n    boolean updateUser(User user);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/deliveryou/service/interfaces/UserService.java b/src/main/java/com/deliveryou/service/interfaces/UserService.java
+--- a/src/main/java/com/deliveryou/service/interfaces/UserService.java	
++++ b/src/main/java/com/deliveryou/service/interfaces/UserService.java	
+@@ -9,7 +9,7 @@
+     User getUser(String phoneNumber);
+ 
+     User getUser(int id);
+-    int addUser(User user);
++    boolean addUser(User user);
+     List<User> getUserList();
+ 
+     boolean updateUser(User user);
+Index: src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.deliveryou.service.implementations;\r\n\r\nimport com.deliveryou.pojo.Role;\r\nimport com.deliveryou.pojo.User;\r\nimport com.deliveryou.repository.interfaces.UserRepository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.security.core.GrantedAuthority;\r\nimport org.springframework.security.core.authority.SimpleGrantedAuthority;\r\nimport org.springframework.security.core.userdetails.UserDetails;\r\nimport org.springframework.security.core.userdetails.UsernameNotFoundException;\r\nimport org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\r\nimport org.springframework.stereotype.Service;\r\nimport org.springframework.transaction.annotation.Transactional;\r\n\r\nimport java.util.HashSet;\r\nimport java.util.List;\r\nimport java.util.Set;\r\n\r\n@Service(\"UserDetailsService\")\r\n@Transactional\r\npublic class UserServiceImpl implements com.deliveryou.service.interfaces.UserService {\r\n    @Autowired\r\n    private UserRepository userRepository;\r\n    @Autowired\r\n    private BCryptPasswordEncoder bCryptPasswordEncoder;\r\n\r\n    @Override\r\n    public User getUser(String phoneNumber) {\r\n        return userRepository.getUser(phoneNumber);\r\n//        return phoneNumber.equalsIgnoreCase(\"11111\") ?\r\n//                new User() {{\r\n//                    setId(1);\r\n//                    setFirstname(\"12\");\r\n//                    setLastname(\"carls\");\r\n//                    setPhoneNumber(\"11111\");\r\n//                    setPassword(\"$2a$10$BhOlFIl/qqu2pWDynzWBJehk9qmG/YLF25oVs2aEHOu3k8rBnrXby\");\r\n//                    setEmail(\"he@gmail.com\");\r\n//                    setRole(new Role() {{\r\n//                        setName(\"ROLE_USER\");\r\n//                    }});\r\n//                }} : null;\r\n    }\r\n\r\n    public User getUser(int id) {\r\n        return userRepository.getUser(id);\r\n    }\r\n\r\n    @Override\r\n    @Transactional\r\n    public int addUser(User user) {\r\n        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));\r\n        return userRepository.addUser(user);\r\n    }\r\n\r\n    @Override\r\n    public List<User> getUserList() {\r\n        return userRepository.getUserList();\r\n    }\r\n\r\n    @Override\r\n    public boolean updateUser(User user) {\r\n        return userRepository.updateUser(user);\r\n    }\r\n\r\n//    @Override\r\n//    @Transactional(readOnly = true)\r\n//    public UserDetails loadUserByPhoneNumber(String phoneNumber) {\r\n//        User user = this.getUser(phoneNumber);\r\n//\r\n//        if (user == null)\r\n//            throw new PhoneNumberNotFoundException(\"No account is registered with this number\");\r\n//\r\n//        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>() {{\r\n//            add(new SimpleGrantedAuthority(user.getRole()));\r\n//        }};\r\n//\r\n//        return new org.springframework.security.core.userdetails.User(user.getPhoneNumber(), user.getPassword(), authorities);\r\n//    }\r\n\r\n\r\n    @Override\r\n    @Transactional(readOnly = true)\r\n    public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {\r\n        User user = this.getUser(phoneNumber);\r\n\r\n        if (user == null)\r\n            throw new UsernameNotFoundException(\"No account is registered with this number\");\r\n\r\n        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>() {{\r\n            add(new SimpleGrantedAuthority(user.getRole().getName()));\r\n        }};\r\n\r\n        return new org.springframework.security.core.userdetails.User(user.getPhoneNumber(), user.getPassword(), authorities);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java b/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java
+--- a/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java	
++++ b/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java	
+@@ -1,8 +1,12 @@
+ package com.deliveryou.service.implementations;
+ 
++import com.cloudinary.Cloudinary;
++import com.cloudinary.utils.ObjectUtils;
+ import com.deliveryou.pojo.Role;
+ import com.deliveryou.pojo.User;
++import com.deliveryou.repository.interfaces.RoleRepository;
+ import com.deliveryou.repository.interfaces.UserRepository;
++import org.apache.velocity.runtime.log.Log;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.security.core.GrantedAuthority;
+ import org.springframework.security.core.authority.SimpleGrantedAuthority;
+@@ -12,8 +16,10 @@
+ import org.springframework.stereotype.Service;
+ import org.springframework.transaction.annotation.Transactional;
+ 
++import java.io.IOException;
+ import java.util.HashSet;
+ import java.util.List;
++import java.util.Map;
+ import java.util.Set;
+ 
+ @Service("UserDetailsService")
+@@ -23,6 +29,10 @@
+     private UserRepository userRepository;
+     @Autowired
+     private BCryptPasswordEncoder bCryptPasswordEncoder;
++    @Autowired
++    private RoleRepository roleRepository;
++    @Autowired
++    private Cloudinary cloudinary;
+ 
+     @Override
+     public User getUser(String phoneNumber) {
+@@ -47,9 +57,21 @@
+ 
+     @Override
+     @Transactional
+-    public int addUser(User user) {
++    public boolean addUser(User user) {
+         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+-        return userRepository.addUser(user);
++        user.setRole(roleRepository.getRole(1));
++
++        user.setDeleted((byte) 0);
++
++        try {
++            Map r = this.cloudinary.uploader().upload(user.getFile().getBytes(),
++                    ObjectUtils.asMap("resource_type", "auto"));
++            user.setAvatar((String) r.get("secure_url"));
++            return this.userRepository.addUser(user);
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++        return false;
+     }
+ 
+     @Override
+Index: .idea/dataSources.local.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"dataSourceStorageLocal\" created-in=\"IU-221.5921.22\">\r\n    <data-source name=\"tempdb@localhost\" uuid=\"2f6fac77-4e71-4553-b53c-70d0289463d0\">\r\n      <database-info product=\"MySQL\" version=\"8.0.29\" jdbc-version=\"4.2\" driver-name=\"MySQL Connector/J\" driver-version=\"mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)\" dbms=\"MYSQL\" exact-version=\"8.0.29\" exact-driver-version=\"8.0\">\r\n        <extra-name-characters>#@</extra-name-characters>\r\n        <identifier-quote-string>`</identifier-quote-string>\r\n      </database-info>\r\n      <case-sensitivity plain-identifiers=\"lower\" quoted-identifiers=\"lower\" />\r\n      <secret-storage>master_key</secret-storage>\r\n      <user-name>root</user-name>\r\n      <schema-mapping>\r\n        <introspection-scope>\r\n          <node kind=\"schema\" qname=\"@\" />\r\n        </introspection-scope>\r\n      </schema-mapping>\r\n    </data-source>\r\n    <data-source name=\"deliveryou@localhost\" uuid=\"7dcb3bf1-e6d4-466b-8804-fd058a49a61d\">\r\n      <database-info product=\"MySQL\" version=\"8.0.29\" jdbc-version=\"4.2\" driver-name=\"MySQL Connector/J\" driver-version=\"mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)\" dbms=\"MYSQL\" exact-version=\"8.0.29\" exact-driver-version=\"8.0\">\r\n        <extra-name-characters>#@</extra-name-characters>\r\n        <identifier-quote-string>`</identifier-quote-string>\r\n      </database-info>\r\n      <case-sensitivity plain-identifiers=\"lower\" quoted-identifiers=\"lower\" />\r\n      <secret-storage>master_key</secret-storage>\r\n      <user-name>root</user-name>\r\n      <schema-mapping>\r\n        <introspection-scope>\r\n          <node kind=\"schema\" qname=\"@\" />\r\n        </introspection-scope>\r\n      </schema-mapping>\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.local.xml b/.idea/dataSources.local.xml
+--- a/.idea/dataSources.local.xml	
++++ b/.idea/dataSources.local.xml	
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="dataSourceStorageLocal" created-in="IU-221.5921.22">
++  <component name="dataSourceStorageLocal" created-in="IU-221.5787.30">
+     <data-source name="tempdb@localhost" uuid="2f6fac77-4e71-4553-b53c-70d0289463d0">
+       <database-info product="MySQL" version="8.0.29" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.29" exact-driver-version="8.0">
+         <extra-name-characters>#@</extra-name-characters>
+@@ -16,12 +16,25 @@
+       </schema-mapping>
+     </data-source>
+     <data-source name="deliveryou@localhost" uuid="7dcb3bf1-e6d4-466b-8804-fd058a49a61d">
+-      <database-info product="MySQL" version="8.0.29" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.29" exact-driver-version="8.0">
++      <database-info product="MySQL" version="8.0.27" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.27" exact-driver-version="8.0">
+         <extra-name-characters>#@</extra-name-characters>
+         <identifier-quote-string>`</identifier-quote-string>
+       </database-info>
+       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+       <secret-storage>master_key</secret-storage>
++      <user-name>root</user-name>
++      <schema-mapping>
++        <introspection-scope>
++          <node kind="schema" negative="1" />
++        </introspection-scope>
++      </schema-mapping>
++    </data-source>
++    <data-source name="DeliverYOU/Hibernate" uuid="91e8455b-9e9f-4f00-9025-07572258c442">
++      <database-info product="MySQL" version="8.0.27" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.27" exact-driver-version="8.0">
++        <extra-name-characters>#@</extra-name-characters>
++        <identifier-quote-string>`</identifier-quote-string>
++      </database-info>
++      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+       <user-name>root</user-name>
+       <schema-mapping>
+         <introspection-scope>
+Index: src/main/webapp/WEB-INF/tiles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<!DOCTYPE tiles-definitions PUBLIC \"-//Apache\r\nSoftware Foundation//DTD Tiles Configuration 3.0//EN\"\r\n        \"http://tiles.apache.org/dtds/tiles-config_3_0.dtd\">\r\n<tiles-definitions>\r\n    <definition name=\"baseLayout\" template=\"/WEB-INF/layout/base.jsp\">\r\n        <put-attribute name=\"title\" value=\"...\" />\r\n        <put-attribute name=\"topNavBar\" value=\"/WEB-INF/layout/top-navbar.jsp\" />\r\n        <put-attribute name=\"body\" value=\"base\" />\r\n    </definition>\r\n    <definition name=\"homePage\" extends=\"baseLayout\">\r\n        <put-attribute name=\"body\" value=\"/WEB-INF/jsp/home.jsp\"/>\r\n    </definition>\r\n    <definition name=\"userPage\" extends=\"baseLayout\">\r\n        <put-attribute name=\"body\" value=\"/WEB-INF/jsp/user.jsp\"/>\r\n    </definition>\r\n</tiles-definitions>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/tiles.xml b/src/main/webapp/WEB-INF/tiles.xml
+--- a/src/main/webapp/WEB-INF/tiles.xml	
++++ b/src/main/webapp/WEB-INF/tiles.xml	
+@@ -14,4 +14,7 @@
+     <definition name="userPage" extends="baseLayout">
+         <put-attribute name="body" value="/WEB-INF/jsp/user.jsp"/>
+     </definition>
++    <definition name="register" extends="baseLayout">
++        <put-attribute name="body" value="/WEB-INF/jsp/signUp_Form.jsp"/>
++    </definition>
+ </tiles-definitions>
+\ No newline at end of file
+Index: src/main/webapp/WEB-INF/jsp/login.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n\r\n\r\n\r\n<form action=\"\">\r\n    <div class=\"container-blurry-glass m-3 rounded\">\r\n        <div class=\"avatar-container\">\r\n            <img class=\"avatar-img img-thumbnail rounded-circle\" src=\"https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg\"/>\r\n        </div>\r\n        <div class=\"login-header\">Welcome</div>\r\n\r\n        <div class=\"input-group\">\r\n            <input class=\"input-content\" type=\"text\" name=\"phone_number\" onkeyup=\"autoValidatePhoneNumber(this.value)\" required/>\r\n            <label class=\"input-label\">Phone number</label>\r\n            <i class=\"input-icon fa-solid fa-phone-flip\"></i>\r\n        </div>\r\n\r\n        <div class=\"input-group\">\r\n            <input class=\"input-content\" type=\"password\" name=\"password\" required/>\r\n            <label class=\"input-label\">Password</label>\r\n            <i class=\"input-icon clickable fa-solid fa-arrow-right-long\"></i>\r\n        </div>\r\n\r\n        <div style=\"display: none\" class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" >\r\n            <i class=\"fa-solid fa-circle-info\"></i>\r\n            <span class=\"alert-msg\">message</span>\r\n            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>\r\n        </div>\r\n\r\n        <div class=\"checkbox-group\">\r\n            <input class=\"input-checkbox form-check-input\" type=\"checkbox\" id=\"check1\" name=\"remember_me\" value=\"remember\" checked>\r\n            <span>Remember me</span>\r\n        </div>\r\n\r\n        <a href=\"#\" class=\"reset-passwd-lbl\">Forgot password?</a>\r\n    </div>\r\n\r\n    <div class=\"container-blurry-glass no-children m-3 rounded text-center\">\r\n        <span>Don't have an account? <a href=\"#\" class=\"text-info text-decoration-none\">Sign up</a></span>\r\n    </div>\r\n</form>\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/jsp/login.jsp b/src/main/webapp/WEB-INF/jsp/login.jsp
+--- a/src/main/webapp/WEB-INF/jsp/login.jsp	
++++ b/src/main/webapp/WEB-INF/jsp/login.jsp	
+@@ -37,7 +37,7 @@
+     </div>
+ 
+     <div class="container-blurry-glass no-children m-3 rounded text-center">
+-        <span>Don't have an account? <a href="#" class="text-info text-decoration-none">Sign up</a></span>
++        <span>Don't have an account? <a href="<c:url value="/test"/> " class="text-info text-decoration-none">Sign up</a></span>
+     </div>
+ </form>
+ 
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DataSourceManagerImpl\" format=\"xml\" multifile-model=\"true\">\r\n    <data-source source=\"LOCAL\" name=\"tempdb@localhost\" uuid=\"2f6fac77-4e71-4553-b53c-70d0289463d0\">\r\n      <driver-ref>mysql.8</driver-ref>\r\n      <synchronize>true</synchronize>\r\n      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>\r\n      <jdbc-url>jdbc:mysql://localhost:3306/tempdb</jdbc-url>\r\n      <working-dir>$ProjectFileDir$</working-dir>\r\n    </data-source>\r\n    <data-source source=\"LOCAL\" name=\"deliveryou@localhost\" uuid=\"7dcb3bf1-e6d4-466b-8804-fd058a49a61d\">\r\n      <driver-ref>mysql.8</driver-ref>\r\n      <synchronize>true</synchronize>\r\n      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>\r\n      <jdbc-url>jdbc:mysql://localhost:3306/deliveryou</jdbc-url>\r\n      <working-dir>$ProjectFileDir$</working-dir>\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+--- a/.idea/dataSources.xml	
++++ b/.idea/dataSources.xml	
+@@ -15,5 +15,14 @@
+       <jdbc-url>jdbc:mysql://localhost:3306/deliveryou</jdbc-url>
+       <working-dir>$ProjectFileDir$</working-dir>
+     </data-source>
++    <data-source source="LOCAL" name="DeliverYOU/Hibernate" uuid="91e8455b-9e9f-4f00-9025-07572258c442">
++      <driver-ref>mysql.8</driver-ref>
++      <synchronize>true</synchronize>
++      <imported>true</imported>
++      <remarks>Hibernate</remarks>
++      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
++      <jdbc-url>jdbc:mysql://localhost:3306/deliveryou</jdbc-url>
++      <working-dir>$ProjectFileDir$</working-dir>
++    </data-source>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"FrameworkDetectionExcludesConfiguration\">\r\n    <file type=\"web\" url=\"file://$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"corretto-11\" project-jdk-type=\"JavaSDK\" />\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"jpab\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -11,7 +11,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="corretto-11" project-jdk-type="JavaSDK" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-11" project-jdk-type="JavaSDK" />
+   <component name="ProjectType">
+     <option name="id" value="jpab" />
+   </component>
+Index: src/main/webapp/WEB-INF/layout/top-navbar.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<%@ taglib prefix=\"form\" uri=\"http://www.springframework.org/tags/form\" %>\r\n<%@ page contentType=\"text/html\" language=\"java\" pageEncoding=\"utf-8\" %>\r\n\r\n<nav class=\"local-navbar navbar navbar-expand-sm navbar-light sticky-top mask-custom shadow-0\">\r\n    <div class=\"container\">\r\n        <a class=\"navbar-brand\" href=\"#!\">\r\n            <!-- <span style=\"color: #5e9693;\">Psycho</span>\r\n            <span style=\"color: #fff;\">logist</span> -->\r\n            <img class=\"brand-logo\" src='<c:url value=\"/img/brand_logo.png\"/>' alt=\"logo\" />\r\n        </a>\r\n        <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <i class=\"fas fa-bars\"></i>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav me-auto\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" href=\"#!\">About</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" href=\"#!\">Team</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" href=\"#!\">Contact</a>\r\n                </li>\r\n            </ul>\r\n            <ul class=\"navbar-nav d-flex flex-row\">\r\n                <li class=\"nav-item me-3 me-lg-0\">\r\n                    <a class=\"nav-link\" href=\"#!\">\r\n                        <i class=\"fas fa-shopping-cart\"></i>\r\n                    </a>\r\n                </li>\r\n                <li class=\"nav-item me-3 me-lg-0\">\r\n                    <button class=\"btn btn-dark rounded-pill\" data-bs-toggle=\"modal\" data-bs-target=\"#modalCenter\">Log In</button>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<!-- Navbar -->\r\n\r\n<%--modal placeholder--%>\r\n<div class=\"modal fade\" id=\"modalCenter\" tabindex=\"-1\" aria-labelledby=\"exampleModalCenterTitle\" style=\"display: none;\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-dialog-centered\">\r\n        <div class=\"modal-content d-flex justify-content-center align-items-center\" style=\"background-color: transparent; border: none\">\r\n            <%--------------------------------login form-----------------------------------%>\r\n            <form action=\"javascript:void(0)\" method=\"post\" id=\"mainLoginForm\" onsubmit=\"return ajaxSubmitForm(this, { urlPrefix:'<c:url value=\"/\"/>'})\">\r\n                <div class=\"container-blurry-glass m-3 rounded\">\r\n                    <div class=\"avatar-container\">\r\n                        <img class=\"avatar-img img-thumbnail rounded-circle\" src=\"https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg\"/>\r\n                    </div>\r\n                    <div class=\"login-header\">Welcome</div>\r\n\r\n                    <div class=\"input-group\">\r\n                        <input class=\"input-content\" type=\"text\" name=\"phone_number\" onkeyup=\"autoValidatePhoneNumber(this.value)\" required/>\r\n                        <label class=\"input-label\">Phone number</label>\r\n                        <i class=\"input-icon fa-solid fa-phone-flip\"></i>\r\n                    </div>\r\n\r\n                    <div class=\"input-group\">\r\n                        <input class=\"input-content\" type=\"password\" name=\"password\" required/>\r\n                        <label class=\"input-label\">Password</label>\r\n                        <button id=\"submit-btn\" type=\"submit\" class=\"input-icon clickable fa-solid fa-arrow-right-long\"></button>\r\n                    </div>\r\n\r\n                    <div style=\"display: none; width: 100%;\" class=\"alert alert-danger\" role=\"alert\" >\r\n                        <i class=\"fa-solid fa-circle-info\"></i>\r\n                        <span class=\"alert-msg\">message</span>\r\n                    </div>\r\n\r\n                    <div class=\"checkbox-group\">\r\n                        <input class=\"input-checkbox form-check-input\" type=\"checkbox\" id=\"check1\" name=\"remember_me\" value=\"remember\" checked>\r\n                        <span>Remember me</span>\r\n                    </div>\r\n\r\n                    <a href=\"#\" class=\"reset-passwd-lbl\">Forgot password?</a>\r\n                </div>\r\n\r\n                <div class=\"container-blurry-glass no-children m-3 rounded text-center\">\r\n                    <span>Don't have an account? <a href=\"#\" class=\"text-info text-decoration-none\">Sign up</a></span>\r\n                </div>\r\n            </form>\r\n            <%--------------------------------end of login form-----------------------------------%>\r\n        </div>\r\n    </div>\r\n</div>\r\n<%--end of modal placeholder--%>\r\n\r\n<script async src=\"<c:url value=\"/js/login.js\"/>\"></script>\r\n<script async src=\"<c:url value=\"/js/topNavbar.js\"/>\"></script>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/layout/top-navbar.jsp b/src/main/webapp/WEB-INF/layout/top-navbar.jsp
+--- a/src/main/webapp/WEB-INF/layout/top-navbar.jsp	
++++ b/src/main/webapp/WEB-INF/layout/top-navbar.jsp	
+@@ -77,7 +77,7 @@
+                 </div>
+ 
+                 <div class="container-blurry-glass no-children m-3 rounded text-center">
+-                    <span>Don't have an account? <a href="#" class="text-info text-decoration-none">Sign up</a></span>
++                    <span>Don't have an account? <a href="<c:url value="/register"/> " class="text-info text-decoration-none">Sign up</a></span>
+                 </div>
+             </form>
+             <%--------------------------------end of login form-----------------------------------%>

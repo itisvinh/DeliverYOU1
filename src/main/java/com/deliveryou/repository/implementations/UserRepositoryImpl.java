@@ -21,12 +21,12 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
-    public int addUser(User user) {
+    public boolean addUser(User user) {
         Session session = sessionFactory.getObject().getCurrentSession();
 
         session.save(user);
 
-        return user.getId();
+        return true;
     }
 
     @Override
