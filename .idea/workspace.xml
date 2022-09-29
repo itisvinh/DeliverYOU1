@@ -9,19 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="Register_upload Avatar to cloudinary" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,6 +249,14 @@
       <workItem from="1663497414786" duration="183000" />
       <workItem from="1664090464445" duration="596000" />
     </task>
+    <task id="LOCAL-00001" summary="Register_upload Avatar to cloudinary">
+      <created>1664445596270</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664445596270</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +274,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Register_upload Avatar to cloudinary" />
+    <option name="LAST_COMMIT_MESSAGE" value="Register_upload Avatar to cloudinary" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
