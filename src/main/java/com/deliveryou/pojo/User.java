@@ -1,5 +1,7 @@
 package com.deliveryou.pojo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 
 @Entity
@@ -35,9 +37,31 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
-    @ManyToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
-    private Address address;
+//    @ManyToOne
+//    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
+    @Basic
+    @Column(name = "address")
+    private String address;
+    @Transient
+    private MultipartFile file;
+    @Transient
+    private String confirmPassword;
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 
     public int getId() {
         return id;
@@ -153,11 +177,11 @@ public class User {
         this.role = role;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

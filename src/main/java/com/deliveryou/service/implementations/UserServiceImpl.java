@@ -1,7 +1,10 @@
 package com.deliveryou.service.implementations;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
+import com.deliveryou.repository.interfaces.RoleRepository;
 import com.deliveryou.repository.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,8 +15,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Service("UserDetailsService")
@@ -21,6 +26,10 @@ import java.util.Set;
 public class UserServiceImpl implements com.deliveryou.service.interfaces.UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private Cloudinary cloudinary;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -47,9 +56,20 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
 
     @Override
     @Transactional
-    public int addUser(User user) {
+    public boolean addUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        return userRepository.addUser(user);
+        Role role = roleRepository.getRole(2);
+        user.setRole(role);
+        try {
+            Map r = cloudinary.uploader().upload(user.getFile().getBytes(),
+                    ObjectUtils.asMap("resource_type", "auto"));
+            user.setAvatar((String) r.get("secure_url"));
+
+            return userRepository.addUser(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override

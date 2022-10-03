@@ -5,7 +5,7 @@ import com.deliveryou.pojo.User;
 import java.util.List;
 
 public interface UserRepository {
-    int addUser(User user);
+    boolean addUser(User user);
     boolean updateUser(User user);
     boolean deactivateUser(int id);
     User getUser(String phoneNumber);

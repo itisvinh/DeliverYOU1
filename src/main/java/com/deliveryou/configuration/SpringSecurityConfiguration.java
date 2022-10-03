@@ -1,5 +1,6 @@
 package com.deliveryou.configuration;
 
+import com.cloudinary.Cloudinary;
 import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
 import com.deliveryou.service.interfaces.UserService;
@@ -86,5 +87,14 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    }
+    @Bean
+    public Cloudinary cloudinary() {
+        return new Cloudinary(new HashMap() {{
+            put("cloud_name", "quocnv0707");
+            put("api_key", "252896799917597");
+            put("api_secret", "LhJpqRPCnCr6AxVsaSnsG7TpjtA");
+            put("secure", true);
+        }});
     }
 }
