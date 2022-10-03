@@ -1,0 +1,34 @@
+Index: src/main/java/com/deliveryou/controller/QuocTestController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.deliveryou.controller;\r\n\r\nimport com.deliveryou.pojo.User;\r\nimport com.deliveryou.service.interfaces.UserService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Controller;\r\nimport org.springframework.ui.Model;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.ModelAttribute;\r\nimport org.springframework.web.bind.annotation.PostMapping;\r\n\r\n@Controller\r\npublic class QuocTestController {\r\n\r\n    @Autowired\r\n    private UserService userService;\r\n    @GetMapping(\"/register\")\r\n    public String showRegistrationForm(Model model) {\r\n        model.addAttribute(\"user\", new User());\r\n        return \"signUp_Form\";\r\n    }\r\n    @PostMapping(\"/register\")\r\n    public String register(@ModelAttribute(value = \"user\") User user){\r\n        if (this.userService.addUser(user)){\r\n            return \"redirect:/\";\r\n        }\r\n        return \"register\";\r\n    }\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/com/deliveryou/controller/QuocTestController.java b/src/main/java/com/deliveryou/controller/QuocTestController.java
+--- a/src/main/java/com/deliveryou/controller/QuocTestController.java	
++++ b/src/main/java/com/deliveryou/controller/QuocTestController.java	
+@@ -7,6 +7,7 @@
+ import org.springframework.ui.Model;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.ModelAttribute;
++import org.springframework.web.bind.annotation.PathVariable;
+ import org.springframework.web.bind.annotation.PostMapping;
+ 
+ @Controller
+@@ -27,4 +28,17 @@
+         return "register";
+     }
+ 
++    //----------------QUOC----------------------//
++    @GetMapping("/shipperTest")
++    public String listShipper(Model model){
++        model.addAttribute("shippers", userService.getShipperList());
++        return "listShipper";
++    }
++    @GetMapping("shipperTest/{shipperId}")
++    public String shipperDetails(Model model, @PathVariable(value = "shipperId") int id){
++        model.addAttribute("shipper", this.userService.getShipperById(id));
++        return "shipperDetail";
++    }
++
++
+ }

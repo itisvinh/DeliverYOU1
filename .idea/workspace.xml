@@ -9,7 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="">
+    <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="Register_upload Avatar to cloudinary">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2f6fac77-4e71-4553-b53c-70d0289463d0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +31,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="quoc" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7a70de67-a697-48e2-943f-f4c6ade35d9f" />
+        <option name="url" value="https://github.com/itisvinh/DeliverYOU.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -66,6 +80,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2DHoetHyE8SGsg8PNxksjjgngZB" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -77,13 +94,13 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Inserts&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/itiso/Desktop/DeliverYOU/src/main/webapp/resources/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Java/Lap_Trinh_Java/CS1901SpringDemo/SaleWebV1&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;8f8d480fba94c049c8bd91840a23d2a2&quot;
+    &quot;spring.configuration.checksum&quot;: &quot;66225626ac9ed5d3e24ffd60ba058441&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -241,7 +258,18 @@
       <workItem from="1663404679305" duration="596000" />
       <workItem from="1663497414786" duration="183000" />
       <workItem from="1664090464445" duration="596000" />
+      <workItem from="1664464385656" duration="593000" />
+      <workItem from="1664501565992" duration="20830000" />
+      <workItem from="1664765296758" duration="1155000" />
     </task>
+    <task id="LOCAL-00001" summary="Register_upload Avatar to cloudinary">
+      <created>1664445596270</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664445596270</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
