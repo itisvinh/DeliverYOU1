@@ -39,9 +39,9 @@ public class User {
     private Role role;
 //    @ManyToOne
 //    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
-    @Basic
-    @Column(name = "address")
-    private String address;
+    @ManyToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
     @Transient
     private MultipartFile file;
     @Transient
@@ -177,11 +177,11 @@ public class User {
         this.role = role;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

@@ -1,12 +1,19 @@
 package com.deliveryou.service.implementations;
 
+import com.deliveryou.pojo.Post;
 import com.deliveryou.pojo.PostAuction;
+import com.deliveryou.pojo.PostAuctionKey;
+import com.deliveryou.pojo.User;
 import com.deliveryou.repository.interfaces.PostAuctionsRepository;
 import com.deliveryou.service.interfaces.PostAuctionsService;
+import com.deliveryou.service.interfaces.PostService;
+import com.deliveryou.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -14,9 +21,13 @@ import java.util.List;
 public class PostAuctionsServiceImpl implements PostAuctionsService {
     @Autowired
     private PostAuctionsRepository postAuctionsRepositoryImpl;
+    @Autowired
+    private PostService postServiceImpl;
+    @Autowired
+    private UserService userServiceImpl;
 
     @Override
-    public int addPostAuction(PostAuction postAuction) {
+    public PostAuctionKey addPostAuction(PostAuction postAuction) {
         return postAuctionsRepositoryImpl.addPostAuction(postAuction);
     }
 

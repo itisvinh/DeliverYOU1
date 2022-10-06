@@ -15,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -70,13 +72,14 @@ public class UserController {
 
     @Transactional
     @RequestMapping("/shipper/app/shipper-posts-12iefv92yygCGYC6758ygcfGUXCTUYX8769ckvb")
-    public String shipperPostsFrame(ModelMap modelMap) {
+    public String shipperPostsFrame(Principal principal, ModelMap modelMap) {
         List<Post> pendingPosts = postServiceImpl.getPendingPosts();
         System.out.println(pendingPosts);
 
         pendingPosts.forEach(post -> LazyLoadInitializer.lazyLoad(post.getPostImages()));
 
         modelMap.addAttribute("pending_posts", pendingPosts);
+        modelMap.addAttribute("u_phone", principal.getName());
         return "shipper_posts";
     }
 

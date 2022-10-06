@@ -2,6 +2,7 @@ package com.deliveryou.service.implementations;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.deliveryou.exception.UnimplementedException;
 import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
 import com.deliveryou.repository.interfaces.RoleRepository;
@@ -80,6 +81,11 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
     @Override
     public boolean updateUser(User user) {
         return userRepository.updateUser(user);
+    }
+
+    @Override
+    public int getIdByPhoneNumber(String phone) {
+        return userRepository.getIdByPhone(phone);
     }
 
 //    @Override

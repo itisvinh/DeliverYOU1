@@ -13,4 +13,6 @@ public interface UserService extends UserDetailsService {
     List<User> getUserList();
 
     boolean updateUser(User user);
+
+    int getIdByPhoneNumber(String phone);
 }

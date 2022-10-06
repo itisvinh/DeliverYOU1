@@ -74,4 +74,19 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
         Query query = session.createQuery("FROM User ");
         return query.getResultList();
     }
+
+    @Override
+    public int getIdByPhone(String phone) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        try {
+            Object o = session.createQuery("select id from User where phoneNumber = :p")
+                    .setParameter("p", phone)
+                    .getSingleResult();
+            return (int)o;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }

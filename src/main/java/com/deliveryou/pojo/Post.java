@@ -39,7 +39,7 @@ public class Post {
     @JoinColumn(name = "promotion_id", referencedColumnName = "id")
     private Promotion promotion;
     @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "category_id", referencedColumnName = "id",  nullable = false)
     private Category category;
     @ManyToOne
     @JoinColumn(name = "sender_address_id", referencedColumnName = "id", nullable = false)

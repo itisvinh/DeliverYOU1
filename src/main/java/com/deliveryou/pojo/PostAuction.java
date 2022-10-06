@@ -20,12 +20,12 @@ public class PostAuction {
 
     @ManyToOne
     @MapsId("postId")
-    @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "post_id")
     private Post post;
 
     @ManyToOne
     @MapsId("shipperId")
-    @JoinColumn(name = "shipper_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "shipper_id")
     private User shipper;
 
     public Timestamp getRequestTime() {

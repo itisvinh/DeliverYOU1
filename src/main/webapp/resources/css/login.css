@@ -79,6 +79,8 @@ body.modal-open > :is(#b-body, #b-footer, .local-navbar){
 }
 
 .input-group .input-icon {
+    width: 1.8rem;
+    height: 1.8rem;
     position: absolute;
     color: var(--clr-input-icon);
     top: 50%;
@@ -88,6 +90,9 @@ body.modal-open > :is(#b-body, #b-footer, .local-navbar){
     border-radius: 50% !important;
     padding: 3px;
     pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input-icon.clickable {
@@ -122,10 +127,12 @@ body.modal-open > :is(#b-body, #b-footer, .local-navbar){
 .avatar-container {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .avatar-container .avatar-img {
-    width: min(6rem, 50%);
+    width: clamp(3rem, 30vw, 6rem);
+    height: clamp(3rem, 30vw, 6rem);
     box-shadow: 0rem 0rem 1rem 0.1rem var(--clr-box-shadow);
 }
 
@@ -156,4 +163,42 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.step-nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.step-nav-container .step-nav {
+    background-color: white;
+    color: black;
+    border: 1px solid var(--clr-input-label);
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.step-nav-container .step-nav:hover {
+    background-color: var(--input-focus-clr);
+    color: white;
+    border: 1px solid var(--input-focus-clr);
+}
+
+.tab-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tab-container .tab {
+    transition: all 0.8s ease;
 }

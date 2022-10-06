@@ -15,10 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -37,6 +35,8 @@ public class UserRestController {
     private StatusService statusService;
     @Autowired
     private PostImageService postImageService;
+    @Autowired
+    private PostAuctionsService postAuctionsServiceImpl;
 
     @Transactional
     @PostMapping(path = "/user/api/add-post", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -185,4 +185,47 @@ public class UserRestController {
         }}), HttpStatus.OK);
     }
 
+//    @PostMapping("/common/api/get-id-by-phone")
+//    public ResponseEntity idByPhoneNumber() {
+//        return userServiceImpl.getIdByPhoneNumber();
+//    }
+
+    @Transactional
+    @PostMapping("/shipper/api/add-post-auction")
+    public ResponseEntity addPostAuction(@RequestBody Map<String, String> map) {
+        int postId;
+        int fee;
+        String shipperPhone;
+
+        try {
+            shipperPhone = map.get("shipper_phone");
+            postId = Integer.valueOf(map.get("post_id")); //***
+            fee = Integer.valueOf(map.get("fee")); //***
+        } catch (Exception ex) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+        Post post = postServiceImpl.getPost(postId);
+        User user = userServiceImpl.getUser(shipperPhone);
+
+        if (post != null && user != null) {
+
+            PostAuctionKey k = new PostAuctionKey();
+            k.setPostId(post.getId());
+            k.setShipperId(user.getId());
+
+            PostAuction p = new PostAuction();
+            p.setId(k);
+            p.setRequestTime(Timestamp.valueOf(LocalDateTime.now()));
+            p.setShippingFee(fee);
+            p.setPost(post);
+            p.setShipper(user);
+
+            PostAuctionKey res = postAuctionsServiceImpl.addPostAuction(p);
+            if (res != null)
+                return new ResponseEntity(HttpStatus.OK);
+        }
+
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

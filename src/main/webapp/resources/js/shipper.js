@@ -54,6 +54,7 @@ function displayDetailsModal(button, endpoint) {
                 d_loc.innerHTML = data.dropoff_loc
 
                 category.innerHTML = data.cat_name
+                modal.setAttribute("data-postId", postId)
 
                 doDisplayDetailsModal(modal)
             }
@@ -82,3 +83,18 @@ function doDisplayDetailsModal(modal) {
 //     modal.classList.remove('show')
 //     modal.style.display = 'none'
 // }
+
+function addPostAuction() {
+    const modal = document.querySelector('#mainPostModal')
+    const modal_footer = modal.querySelector('.modal-footer')
+    const user_phone = document.querySelector("#current_user_phone_number").dataset.currentUserPhone
+
+    const postId = modal.dataset.postId
+    const fee = modal_footer.querySelector('.input-group .form-control').value
+
+    const upload_obj = {
+        shipper_phone: user_phone,
+        post_id: postId,
+        fee
+    }
+}

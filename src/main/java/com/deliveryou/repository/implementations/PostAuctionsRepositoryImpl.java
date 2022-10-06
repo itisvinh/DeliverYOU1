@@ -21,22 +21,15 @@ public class PostAuctionsRepositoryImpl implements PostAuctionsRepository {
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
-    public int addPostAuction(PostAuction postAuction) {
+    @Transactional
+    public PostAuctionKey addPostAuction(PostAuction postAuction) {
         Session session = sessionFactory.getObject().getCurrentSession();
-
-        PostAuction p = new PostAuction();
-        PostAuctionKey k = new PostAuctionKey();
-        k.setPostId(15);
-        k.setShipperId(3);
-        p.setId(k);
-        p.setRequestTime(Timestamp.valueOf(LocalDateTime.now()));
-        p.setShippingFee(20000);
-
-        session.save(p);
-        return 1;
+        session.save(postAuction);
+        return postAuction.getId();
     }
 
     @Override
+    @Transactional
     public List<PostAuction> getPostAuctions(int post_id) {
         Session session = sessionFactory.getObject().getCurrentSession();
 

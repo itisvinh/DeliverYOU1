@@ -11,4 +11,6 @@ public interface UserRepository {
     User getUser(String phoneNumber);
     User getUser(int id);
     List<User> getUserList();
+
+    int getIdByPhone(String phone);
 }

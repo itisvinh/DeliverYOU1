@@ -155,12 +155,13 @@
                         <span class="input-group-text">Delivery fee?</span>
                         <input type="text" class="form-control" placeholder="10 000 vnd">
                     </div>
-                    <button type="button" class="w-100 btn btn-primary">Deliver this</button>
+                    <button type="button" class="w-100 btn btn-primary" onclick="addPostAuction(this)">Deliver this</button>
                 </div>
             </div>
         </div>
 
     </div>
-
+</div>
+<div style="display: none;" id="current_user_phone_number" data-currentUserPhone="${u_phone}"></div>
 </body>
 </html>
