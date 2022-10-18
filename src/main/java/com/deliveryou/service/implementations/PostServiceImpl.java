@@ -43,7 +43,22 @@ public class PostServiceImpl implements com.deliveryou.service.interfaces.PostSe
     }
 
     @Override
-    public List<Post> getPendingPosts() {
-        return postRepositoryImpl.getPendingPosts();
+    public List<Post> getPendingPostsForShipper(String shipperPhone) {
+        return postRepositoryImpl.getPendingPosts(shipperPhone);
+    }
+
+    @Override
+    public List<Post> getAwaitUserAcceptPostForShipper(String shipperPhone) {
+        return postRepositoryImpl.getNotAcceptedPost(shipperPhone);
+    }
+
+    @Override
+    public List<Post> getUserAcceptedPostsForShipper(String shipperPhone) {
+        return postRepositoryImpl.getUserAcceptedPostsForShipper(shipperPhone);
+    }
+
+    @Override
+    public boolean updatePostState(Post post) {
+        return postRepositoryImpl.updatePostState(post);
     }
 }

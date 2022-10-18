@@ -14,6 +14,18 @@ public class PostAuction {
     @Column(name = "request_time")
     private Timestamp requestTime;
 
+    public boolean isUserAccepted() {
+        return userAccepted;
+    }
+
+    public void setUserAccepted(boolean userAccepted) {
+        this.userAccepted = userAccepted;
+    }
+
+    @Basic
+    @Column(name = "user_accepted")
+    private boolean userAccepted = false;
+
     @Basic
     @Column(name = "shipping_fee")
     private int shippingFee;
@@ -60,18 +72,7 @@ public class PostAuction {
         this.shipper = shipper;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PostAuction)) return false;
-        PostAuction that = (PostAuction) o;
-        return shippingFee == that.shippingFee && Objects.equals(id, that.id) && requestTime.equals(that.requestTime) && post.equals(that.post) && shipper.equals(that.shipper);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, requestTime, shippingFee, post, shipper);
-    }
 
     public PostAuctionKey getId() {
         return id;
@@ -79,5 +80,18 @@ public class PostAuction {
 
     public void setId(PostAuctionKey id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PostAuction)) return false;
+        PostAuction that = (PostAuction) o;
+        return userAccepted == that.userAccepted && shippingFee == that.shippingFee && Objects.equals(id, that.id) && requestTime.equals(that.requestTime) && post.equals(that.post) && shipper.equals(that.shipper);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, requestTime, userAccepted, shippingFee, post, shipper);
     }
 }

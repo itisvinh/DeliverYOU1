@@ -12,5 +12,13 @@ public interface PostRepository {
     int addPost(Post post);
 
     long getTotalPosts();
-    List<Post> getPendingPosts();
+//    List<Post> getPendingPosts();
+
+    List<Post> getPendingPosts(String shipperPhone);
+
+    List<Post> getNotAcceptedPost(String shipperPhone);
+
+    List<Post> getUserAcceptedPostsForShipper(String shipperPhone);
+
+    boolean updatePostState(Post post);
 }

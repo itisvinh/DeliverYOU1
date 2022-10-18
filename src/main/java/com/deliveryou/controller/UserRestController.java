@@ -2,6 +2,7 @@ package com.deliveryou.controller;
 
 import com.deliveryou.pojo.*;
 import com.deliveryou.pojo.deliveryobject.PostDeliveryObject;
+import com.deliveryou.serializer.PostAuctionListSerializer;
 import com.deliveryou.service.interfaces.*;
 import com.deliveryou.util.JSONConverter;
 import com.deliveryou.util.ConditionalChain;
@@ -14,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -191,7 +193,7 @@ public class UserRestController {
 //    }
 
     @Transactional
-    @PostMapping("/shipper/api/add-post-auction")
+    @PostMapping("/user/api/add-post-auction")
     public ResponseEntity addPostAuction(@RequestBody Map<String, String> map) {
         int postId;
         int fee;
@@ -223,9 +225,136 @@ public class UserRestController {
 
             PostAuctionKey res = postAuctionsServiceImpl.addPostAuction(p);
             if (res != null)
-                return new ResponseEntity(HttpStatus.OK);
+                return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
+                    put("successful", "new post auction has been created");
+                }}), HttpStatus.OK);
         }
 
-        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
+            put("error", "Failed to create post auction");
+        }}), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+
+    // Get pending post auctions of the post (post-id)
+    // If the post is assigned with a post auction, returns that one
+    @Transactional
+    @PostMapping(value = "/user/api/get-post-auctions", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getPendingPostAuctions(@RequestBody Map<String, String> map) {
+        try {
+            int postId = Integer.valueOf(map.get("post-id"));
+            List<PostAuction> list = postAuctionsServiceImpl.getPostAuctions(postId);
+            if (list != null)
+                return new ResponseEntity(JSONConverter.convert(list, new PostAuctionListSerializer()), HttpStatus.OK);
+            return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
+                put("list", "[]");
+            }}), HttpStatus.OK);
+
+        } catch (NumberFormatException numberFormatException) {
+            numberFormatException.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Transactional
+    @PostMapping(value = "/user/api/get-total-post-auctions-of", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getNumberOfPostAuctions(@RequestBody Map<String, String> map) {
+        try {
+            int postId = Integer.valueOf(map.get("post-id"));
+            long total = postAuctionsServiceImpl.getNumberOfPostAuctions(postId);
+
+            if (total == -1)
+                return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            else
+                return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
+                    put("total", total);
+                }}), HttpStatus.OK);
+
+        } catch (NumberFormatException numberFormatException) {
+            numberFormatException.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Transactional
+    @PostMapping(value = "/user/api/accept-post-auction", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity acceptPostAuction(Principal principal, @RequestBody Map<String, String> map) {
+        try {
+            int shipperId = Integer.valueOf(map.get("shipper-id"));
+            int postId = Integer.valueOf(map.get("post-id"));
+
+
+            Post post = postServiceImpl.getPost(postId);
+
+            if (post != null && !post.getUser().getPhoneNumber().trim().equals(principal.getName().trim()))
+                return new ResponseEntity(HttpStatus.UNAUTHORIZED);
+
+            Status status = statusService.getStatus(Status.ONGOING);
+            PostAuctionKey postAuctionKey = new PostAuctionKey(postId, shipperId);
+            PostAuction postAuction = postAuctionsServiceImpl.getPostAuction(postAuctionKey);
+            final Status prevPostStatus = post.getStatus();
+            final boolean prevUserAccepted = postAuction.isUserAccepted();
+
+            if (post != null && postAuction != null) {
+                post.setStatus(status);
+                postAuction.setUserAccepted(true);
+
+                boolean result = ConditionalChain.begin("Accept Post Auction")
+                        .then(() -> {
+                            return postAuctionsServiceImpl.updatePostAuction(postAuction);
+                        }, () -> {
+                            postAuction.setUserAccepted(prevUserAccepted);
+                            return postAuctionsServiceImpl.updatePostAuction(postAuction);
+                        })
+                        .then(() -> {
+                            return postServiceImpl.updatePostState(post);
+                        }).finish();
+
+                return result ? new ResponseEntity(HttpStatus.OK) : new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+
+            } else
+                return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        } catch (NumberFormatException numberFormatException) {
+            numberFormatException.printStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @Transactional
+    @PostMapping(value = "/shipper/api/confirm-finish-delivering", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity confirmFinishDelivering(Principal principal, @RequestBody Map<String, String> map) {
+        final ResponseEntity _500 = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        final ResponseEntity _200 = new ResponseEntity(HttpStatus.OK);
+        final ResponseEntity _400 = new ResponseEntity(HttpStatus.BAD_REQUEST);
+        final ResponseEntity _401 = new ResponseEntity(HttpStatus.UNAUTHORIZED);
+
+        try {
+            int postId = Integer.valueOf(map.get("post-id"));
+            Post post = postServiceImpl.getPost(postId);
+            Status status = statusService.getStatus(Status.DELIVERED);
+
+            if (post != null) {
+                if (!post.getShipper().getPhoneNumber().trim().equals(principal.getName().trim()))
+                    return _401;
+
+                if (status == null)
+                    return _500;
+                else {
+                    post.setStatus(status);
+                    return postServiceImpl.updatePostState(post) ? _200 : _500;
+                }
+
+            } else {
+                return _400;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return _500;
+        }
+
+    }
+
 }

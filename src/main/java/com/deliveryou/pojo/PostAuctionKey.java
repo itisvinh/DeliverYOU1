@@ -10,6 +10,13 @@ public class PostAuctionKey implements Serializable {
     @Column(name = "shipper_id")
     private int shipperId;
 
+    public PostAuctionKey() {}
+
+    public PostAuctionKey(int postId, int shipperId) {
+        this.postId = postId;
+        this.shipperId = shipperId;
+    }
+
     public int getPostId() {
         return postId;
     }

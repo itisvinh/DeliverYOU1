@@ -60,6 +60,7 @@
         <div class="indicator"></div>
     </div>
     <div class="content">
+        <%---------------------------------------------------------------------%>
         <section>
             <h2>Feeds</h2>
             <div class="container-fluid">
@@ -84,7 +85,44 @@
                                         <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
                                                 ${pending_post.content}
                                         </p>
-                                        <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>')" data-post-id=${pending_post.id}>More</button>
+                                        <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>', 'feed')" data-post-id=${pending_post.id}>More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
+
+                </div>
+
+            </div>
+        </section>
+        <%---------------------------------------------------------------------%>
+
+        <section>
+            <h2>Pending</h2>
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <c:if test="${await_acceptance_posts.size() > 0}">
+                        <c:forEach items="${await_acceptance_posts}" var="aa_post">
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="card shadow" style="width: 14rem;">
+                                    <img src="${aa_post.postImages.get(0).image}" class="card-img-top img-thumbnail m-auto">
+                                    <div class="card-body">
+                                        <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                            <span>Date:</span>
+                                            <h6 class="text-end" style="flex-grow: 1;">${aa_post.orderDate.toGMTString()}</h6>
+                                        </div>
+                                        <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                            <span>Time:</span>
+                                            <h6 class="text-end" style="flex-grow: 1;">${aa_post.orderDate.toString()}</h6>
+                                        </div>
+                                        <div>Content:</div>
+                                        <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                ${aa_post.content}
+                                        </p>
+                                        <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>', 'pending')" data-post-id=${aa_post.id}>More</button>
                                     </div>
                                 </div>
                             </div>
@@ -96,18 +134,42 @@
             </div>
         </section>
 
-        <section>
-            <h2>Pending</h2>
-            fLorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dicta vero rerum? Eaque repudiandae
-            architecto libero reprehenderit aliquam magnam ratione quidem? Nobis doloribus molestiae enim
-            deserunt necessitatibus eaque quidem incidunt.
-        </section>
+        <%---------------------------------------------------------------------%>
 
         <section>
             <h2>History</h2>
-            fLorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dicta vero rerum? Eaque repudiandae
-            architecto libero reprehenderit aliquam magnam ratione quidem? Nobis doloribus molestiae enim
-            deserunt necessitatibus eaque quidem incidunt.
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <c:if test="${accepted_posts.size() > 0}">
+                        <c:forEach items="${accepted_posts}" var="accepted_post">
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="card shadow" style="width: 14rem;">
+                                    <img src="${accepted_post.postImages.get(0).image}" class="card-img-top img-thumbnail m-auto">
+                                    <div class="card-body">
+                                        <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                            <span>Date:</span>
+                                            <h6 class="text-end" style="flex-grow: 1;">${accepted_post.orderDate.toGMTString()}</h6>
+                                        </div>
+                                        <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                            <span>Time:</span>
+                                            <h6 class="text-end" style="flex-grow: 1;">${accepted_post.orderDate.toString()}</h6>
+                                        </div>
+                                        <div>Content:</div>
+                                        <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                ${accepted_post.content}
+                                        </p>
+                                        <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>', 'history')" data-post-id=${accepted_post.id}>More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
+
+                </div>
+
+            </div>
         </section>
     </div>
 
@@ -151,11 +213,19 @@
                     </div>
                 </div>
                 <div class="modal-footer h-auto p-0">
-                    <div class="input-group">
-                        <span class="input-group-text">Delivery fee?</span>
-                        <input type="text" class="form-control" placeholder="10 000 vnd">
+
+                    <div id="group-set-fee">
+                        <div id="shipper-delivery-fee" class="input-group">
+                            <span class="input-group-text">Delivery fee?</span>
+                            <input id="shipper-delivery-fee-input" type="text" class="form-control" placeholder="10 000 (VND)">
+                        </div>
+                        <button type="button" class="w-100 btn btn-primary" onclick="addPostAuction('<c:url value="/user/api"/>'); validateFee()">Deliver this</button>
                     </div>
-                    <button type="button" class="w-100 btn btn-primary" onclick="addPostAuction(this)">Deliver this</button>
+
+                    <div id="group-confirm-finish" class="d-none">
+                        <button type="button" class="w-100 btn btn-warning" onclick="confirmFinishDelivering('<c:url value="/user/api"/>')">Deliver this</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -163,5 +233,42 @@
     </div>
 </div>
 <div style="display: none;" id="current_user_phone_number" data-currentUserPhone="${u_phone}"></div>
+
+<script src="js/validator.js"></script>
+<script>
+    const validator = new Validator()
+
+    const fee_container = document.querySelector('#shipper-delivery-fee')
+    const fee_input = fee_container.querySelector('#shipper-delivery-fee-input')
+    let value = ''
+
+    validator.add(fee_container, () => {
+        value = fee_input.value.match(/\d+/gm)
+
+        if (value) {
+            value = value.join("")
+            return value < 1000 ? false : true
+        } else {
+            return false
+        }
+
+    }, "Invalid value", "", ".3rem")
+
+    function validateFee() {
+        validator.validate()
+
+        let dval = [];
+        for (let i = value.length - 1; i >= 0; i--) {
+            dval.push(value[i])
+            if (i > 0 && (value.length - i) % 3 === 0)
+                dval.push(' ')
+        }
+        dval = dval.reverse().join('')
+        fee_input.value = dval + ' (VND)'
+    }
+
+
+</script>
+
 </body>
 </html>

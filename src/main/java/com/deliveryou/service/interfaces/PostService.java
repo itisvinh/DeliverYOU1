@@ -14,6 +14,10 @@ public interface PostService {
 
     Post getPost(int id);
 
-    List<Post> getPendingPosts();
+    List<Post> getPendingPostsForShipper(String shipperPhone);
+    List<Post> getAwaitUserAcceptPostForShipper(String shipperPhone);
 
+    List<Post> getUserAcceptedPostsForShipper(String shipperPhone);
+
+    boolean updatePostState(Post post);
 }

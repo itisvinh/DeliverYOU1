@@ -78,6 +78,7 @@
 
         <div class="slider"><div class="indicator"></div></div>
         <div class="content">
+            <%--            --------------------------------------------------------------------------------------------------%>
             <section>
                 <h2>Ongoing</h2>
                 <div class="container">
@@ -87,7 +88,9 @@
                             <c:forEach items="${ongoing}" var="stat_ongoings">
                                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                                     <div class="card shadow" style="width: 14rem;">
-                                        <img src="${stat_ongoings.postImages.get(0)}" class="card-img-top img-thumbnail m-auto">
+<%--                                            ${stat_ongoings.postImages.get(0)}--%>
+
+                                        <img src="${ (stat_ongoings.postImages != null && stat_ongoings.postImages.size() > 0) ? stat_ongoings.postImages.get(0).image : no_img}" class="card-img-top img-thumbnail m-auto">
                                         <div class="card-body">
                                             <div class="card-title d-flex flex-wrap" style="position: relative;">
                                                 <span>Date:</span>
@@ -111,7 +114,7 @@
                     </div>
                 </div>
             </section>
-
+            <%-- --------------------------------------------------------------------------------------------------%>
             <section>
                 <h2>Pending</h2>
                 <div class="container">
@@ -147,16 +150,84 @@
                     </div>
                 </div>
             </section>
+                <%--            --------------------------------------------------------------------------------------------------%>
 
             <section>
                 <h2>Delivered</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quas adipisci a accusantium eius ut voluptatibus ad impedit nulla, ipsa qui. Quasi temporibus eos commodi aliquid impedit amet, similique nulla.
+                <div class="container">
+                    <div class="row">
+
+                        <c:if test="${delivered.size() > 0}">
+                            <c:forEach items="${delivered}" var="stat_delivered">
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                    <div class="card shadow" style="width: 14rem;">
+
+                                        <img src="${ (stat_delivered.postImages != null && stat_delivered.postImages.size() > 0) ? stat_delivered.postImages.get(0).image : no_img}" class="card-img-top img-thumbnail m-auto">
+
+                                        <div class="card-body">
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                                <span>Date:</span>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_delivered.orderDate.toGMTString()}</h6>
+                                            </div>
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                                <span>Time:</span>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_delivered.orderDate.toString()}</h6>
+                                            </div>
+                                            <div>Content:</div>
+                                            <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                    ${stat_delivered.content}
+                                            </p>
+                                            <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>')" data-post-id=${stat_delivered.id}>More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
+
+                    </div>
+                </div>
             </section>
+
+            <%--            --------------------------------------------------------------------------------------------------%>
 
             <section>
                 <h2>Canceled</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt voluptate labore, excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.
+                <div class="container">
+                    <div class="row">
+
+                        <c:if test="${canceled.size() > 0}">
+                            <c:forEach items="${canceled}" var="stat_canceled">
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                    <div class="card shadow" style="width: 14rem;">
+
+                                        <img src="${ (stat_canceled.postImages != null && stat_canceled.postImages.size() > 0) ? stat_canceled.postImages.get(0).image : no_img}" class="card-img-top img-thumbnail m-auto">
+
+                                        <div class="card-body">
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                                <span>Date:</span>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_canceled.orderDate.toGMTString()}</h6>
+                                            </div>
+                                            <div class="card-title d-flex flex-wrap" style="position: relative;">
+                                                <span>Time:</span>
+                                                <h6 class="text-end" style="flex-grow: 1;">${stat_canceled.orderDate.toString()}</h6>
+                                            </div>
+                                            <div>Content:</div>
+                                            <p class="card-text mt-2" style="color: rgb(137, 137, 137); font-size: .9rem; width: 100%; height: 3rem; word-wrap: break-word; overflow-y: hidden;">
+                                                    ${stat_canceled.content}
+                                            </p>
+                                            <button class="btn btn-primary w-100" onclick="displayDetailsModal(this, '<c:url value="/common/api/get-post/"/>')" data-post-id=${stat_canceled.id}>More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
+
+                    </div>
+                </div>
             </section>
+
+            <%--            --------------------------------------------------------------------------------------------------%>
+
         </div>
 
         <div class="add-post-modal-content d-none">
@@ -276,7 +347,7 @@
         </button>
 
     <div>
-        <div class="modal fade" id="mainPostDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="mainPostDetailsModal" data-current-post-id="-1" tabindex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -287,11 +358,11 @@
 
                         <div class="modal-tab-container">
                             <div class="modal-tab-header">
-                                <button class="modal-tab fw-bold" onclick="tab_clicked(this)" data-tab-index=0 >Details</button>
-                                <button class="modal-tab" onclick="tab_clicked(this)" data-tab-index=1 >Auctions</button>
+                                <button class="modal-tab fw-bold" onclick="tab_clicked(this, '<c:url value="/user/api"></c:url>')" data-tab-index=0 >Details</button>
+                                <button class="modal-tab" onclick="tab_clicked(this, '<c:url value="/user/api"></c:url>')" data-tab-index=1 >Auctions</button>
                             </div>
                             <div class="modal-tab-body">
-                                <div id="modal-tab-details" class="modal-tab-content d-none">
+                                <div id="modal-tab-details" class="modal-tab-content d-non">
 
                                     <div class="container-fluid d-flex flex-column mt-2" style="gap: .2rem;">
                                         <div id="modal-img-container" class="d-flex flex-wrap mb-2" style="border: 2px dashed rgb(203, 203, 203); gap: .5rem">
@@ -327,17 +398,17 @@
                                     </div>
 
                                 </div>
-                                <div id="modal-tab-auctions" class="modal-tab-content d-non">
+                                <div id="modal-tab-auctions" class="modal-tab-content d-none">
 
-                                    <div class="container-fluid d-flex flex-column p-1" style="gap: .4rem;">
+                                    <div class="modal-tab-auctions-content container-fluid d-flex flex-column p-1" style="gap: .4rem;">
 
                                         <div class="card rounded-3 p-2 d-flex flex-row" style="align-items: center; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                            <img src="https://cf.ppt-online.org/files/slide/s/skmlQrY3gCnpTvhceW5aOXDLK2F14biVGMutHU/slide-18.jpg"
-                                                 class="rounded-circle img-thumbnail me-3 shadow" style="width: 4rem; height: 4rem;"/>
+                                            <img src="..."
+                                                 class="shipper-avatar rounded-circle img-thumbnail me-3 shadow" style="width: 4rem; height: 4rem;"/>
                                             <div class="d-flex flex-column w-100" style="gap: .2rem;">
-                                                <h6 class="m-0 ms-1">Kayla Mcqueen</h6>
-                                                <div class="ms-1">34.000</div>
-                                                <button class="w-100 btn btn-info rounded-pill text-white p-0">Choose this driver</button>
+                                                <h6 class="shipper-name m-0 ms-1">Kayla Mcqueen</h6>
+                                                <div class="shipper-delivery-fee ms-1">34.000</div>
+                                                <button type="button" onclick="chooseDriver(this)" class="w-100 btn btn-info rounded-pill text-white p-0">Choose this driver</button>
                                             </div>
                                         </div>
 

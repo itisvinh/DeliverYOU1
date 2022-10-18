@@ -11,7 +11,7 @@ function closeModal() {
 //         modal.classList.add('show')
 // }
 
-function displayDetailsModal(button, endpoint) {
+function displayDetailsModal(button, endpoint, type) {
     const modal = document.querySelector('#mainPostModal')
     const postId = button.dataset.postId
     endpoint += postId
@@ -56,7 +56,7 @@ function displayDetailsModal(button, endpoint) {
                 category.innerHTML = data.cat_name
                 modal.setAttribute("data-postId", postId)
 
-                doDisplayDetailsModal(modal)
+                doDisplayDetailsModal(modal, type)
             }
         })
 }
@@ -71,11 +71,26 @@ async function fetchPost(endpoint) {
         })
 }
 
-function doDisplayDetailsModal(modal) {
+function doDisplayDetailsModal(modal, type) {
     if (!modal.classList.contains('d-block'))
         modal.classList.add('d-block')
     if (!modal.classList.contains('show'))
         modal.classList.add('show')
+
+    const group_set_fee = modal.querySelector('#group-set-fee')
+    const group_confirm_delivering = modal.querySelector('#group-confirm-finish')
+
+    group_set_fee.classList.remove('d-none')
+    if (!group_confirm_delivering.classList.contains('d-none'))
+        group_confirm_delivering.classList.add('d-none')
+
+    if (type == 'pending') {
+        group_set_fee.setAttribute('disabled', '')
+    } else if (type == 'history') {
+        if (!group_set_fee.classList.contains('d-none'))
+            group_set_fee.classList.add('d-none')
+        group_confirm_delivering.classList.remove('d-none')
+    }
 }
 
 // function closeDetailsModal() {
@@ -84,7 +99,7 @@ function doDisplayDetailsModal(modal) {
 //     modal.style.display = 'none'
 // }
 
-function addPostAuction() {
+function addPostAuction(endpoint) {
     const modal = document.querySelector('#mainPostModal')
     const modal_footer = modal.querySelector('.modal-footer')
     const user_phone = document.querySelector("#current_user_phone_number").dataset.currentUserPhone
@@ -97,4 +112,62 @@ function addPostAuction() {
         post_id: postId,
         fee
     }
+
+    // call api
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify(upload_obj);
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'manual'
+    };
+
+    fetch(endpoint + "/add-post-auction", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            if (data.successful) {
+                //2343534583459863459693568359935395683598695685935693
+            } else {
+
+            }
+        })
+        .catch(error => {
+            console.error(error)
+        })
+
+}
+
+function confirmFinishDelivering(endpoint) {
+    const modal = document.querySelector('#mainPostModal')
+    const postId = modal.dataset.postId
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "post-id" : postId
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'manual'
+    };
+
+    fetch(endpoint + "/confirm-finish-delivering", requestOptions)
+        .then(res => {
+            if (res.status == 200) {
+
+            } else {
+
+            }
+        })
+        .catch(err => {
+            console.error(err)
+        })
 }

@@ -1,5 +1,6 @@
 package com.deliveryou.configuration;
 
+import com.deliveryou.pojo.User;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -8,7 +9,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         return new Class[] {
             HibernateConfiguration.class,
             TilesConfiguration.class,
-            SpringSecurityConfiguration.class
+            SpringSecurityConfiguration.class,
+            AdminSecurityConfiguration.class,
+            UserSecurityConfiguration.class
         };
     }
 

@@ -182,7 +182,7 @@
                 <sec:authorize access="hasRole('ROLE_SHIPPER')">
                     <c:set value="/shipper/app/shipper-posts-12iefv92yygCGYC6758ygcfGUXCTUYX8769ckvb" var="user_f"/>
                 </sec:authorize>
-                <iframe class="frame" src='<c:url value="${user_f}"/>'></iframe>
+                <iframe id="window-iframe" class="frame" src='<c:url value="${user_f}"/>'></iframe>
             </main>
 
         </div>
