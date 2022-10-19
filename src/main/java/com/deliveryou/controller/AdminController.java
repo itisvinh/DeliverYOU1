@@ -24,4 +24,10 @@ public class AdminController {
     public String adminReportsPage() {
         return "admin_reports";
     }
+
+    @Transactional
+    @GetMapping("/admin")
+    public String adminLoginPage() {
+        return "administrator";
+    }
 }

@@ -9,9 +9,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         return new Class[] {
             HibernateConfiguration.class,
             TilesConfiguration.class,
-            SpringSecurityConfiguration.class,
-            AdminSecurityConfiguration.class,
-            UserSecurityConfiguration.class
+            SpringSecurityConfiguration.class
         };
     }
 

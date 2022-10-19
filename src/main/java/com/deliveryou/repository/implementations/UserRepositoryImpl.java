@@ -44,6 +44,7 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
 
     @Override
     public User getUser(String phoneNumber) {
+        System.out.println("PHONE: " + phoneNumber);
         Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
@@ -55,7 +56,14 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
             criteriaQuery = criteriaQuery.where(predicate);
         }
 
-        return session.createQuery(criteriaQuery).getSingleResult();
+        Object result = null;
+        try {
+            result = session.createQuery(criteriaQuery).getSingleResult();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return result == null ? null : (User) result;
     }
 
     @Override
