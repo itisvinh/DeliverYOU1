@@ -22,7 +22,7 @@
 <div id="main-container" class="d-flex flex-column w-100 vh-100">
     <div id="top-nav" class="w-100 bg-info d-flex px-2 align-items-center justify-content-center"
          style="height: 3rem">
-        <img src="<c:url value="/images/brand_name.svg"/>" style="width: 7rem;">
+        <img src="<c:url value="/img/brand_name.svg"/>" style="width: 7rem;">
         <i class="bi bi-dot fs-3"></i>
         <div class="fw-semibold">Administrator</div>
         <div class="dropdown position-absolute" style="right: 2rem; cursor: pointer;">

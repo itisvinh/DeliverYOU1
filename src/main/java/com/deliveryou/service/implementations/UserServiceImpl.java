@@ -3,8 +3,10 @@ package com.deliveryou.service.implementations;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.deliveryou.exception.UnimplementedException;
+import com.deliveryou.pojo.DriverRegistration;
 import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
+import com.deliveryou.pojo.auxiliary.RegistrationFilter;
 import com.deliveryou.repository.interfaces.RoleRepository;
 import com.deliveryou.repository.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +88,21 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
     @Override
     public int getIdByPhoneNumber(String phone) {
         return userRepository.getIdByPhone(phone);
+    }
+
+    @Override
+    public List<User> getUsersWithinRange(String role_name, int start, int end) {
+        return userRepository.getUsersWithinRange(role_name, start, end);
+    }
+
+    @Override
+    public boolean createDriverRegistration(DriverRegistration registration) {
+        return userRepository.createDriverRegistration(registration);
+    }
+
+    @Override
+    public List<DriverRegistration> getDriverRegistrations(RegistrationFilter filter) {
+        return userRepository.getDriverRegistrations(filter);
     }
 
 //    @Override

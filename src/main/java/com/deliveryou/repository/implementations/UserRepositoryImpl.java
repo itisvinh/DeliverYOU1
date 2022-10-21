@@ -1,6 +1,9 @@
 package com.deliveryou.repository.implementations;
 
+import com.deliveryou.pojo.DriverRegistration;
+import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
+import com.deliveryou.pojo.auxiliary.RegistrationFilter;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,10 +73,15 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
     public User getUser(int id) {
         Session session = sessionFactory.getObject().getCurrentSession();
 
-        return (User) session
-                .createQuery("from User where id=:value")
-                .setParameter("value", id)
-                .getSingleResult();
+        try {
+            return (User) session
+                    .createQuery("from User where id=:value")
+                    .setParameter("value", id)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     @Override
@@ -96,5 +104,48 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
             e.printStackTrace();
             return -1;
         }
+    }
+
+    @Override
+    public List<User> getUsersWithinRange(String role_name, int start, int end) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        return session.createQuery("from User where role.name=:role")
+                .setParameter("role", role_name)
+                .setMaxResults(end)
+                .setFirstResult(start)
+                .getResultList();
+    }
+
+    @Override
+    public boolean createDriverRegistration(DriverRegistration registration) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        try {
+            session.merge(registration);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public List<DriverRegistration> getDriverRegistrations(RegistrationFilter filter) {
+        // dang lam
+//        Session session = sessionFactory.getObject().getCurrentSession();
+//        Query query = null;
+//        final String pre = "from DriverRegistration "
+//
+//        switch (filter) {
+//            case IS_NOT_PROCESSED:
+//                query = session.createQuery(pre + " where isProcessed=:p").setParameter("p", 0);
+//                break;
+//            case IS_PROCESSED:
+//                query = session.createQuery(pre + " where isProcessed=:p").setParameter("p", 0);
+//                break;
+//        }
+
+        return null;
     }
 }

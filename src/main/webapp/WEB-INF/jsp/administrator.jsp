@@ -225,7 +225,7 @@
 </style>
 
 <div class="w-100 p-2 d-flex justify-content-center bg-secondary">
-    <img src="/img/brand_name.svg" style="width: 8rem;">
+    <img src="<c:url value="/img/brand_name.svg"/>" style="width: 8rem;">
 </div>
 
 <div class="modal fade show d-block" id="modalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle"

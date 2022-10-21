@@ -47,18 +47,23 @@ public class SpringSecurityConfiguration {
                     .usernameParameter("phone_number")
                     .passwordParameter("password")
                     .successHandler((request, response, authentication) -> {
-                        response.setStatus(HttpStatus.OK.value());
                         User user = userDetailsService.getUser(authentication.getName());
-                        request.getSession().setAttribute("current_user", user);
-                        System.out.println("current user: " + user);
 
-                        switch (user.getRole().getName()) {
-                            case Role.REGULAR_USER:
-                                response.sendRedirect("/deliveryou_war_exploded/user/app");
-                                break;
-                            case Role.SHIPPER:
-                                response.sendRedirect("/deliveryou_war_exploded/shipper/app");
-                                break;
+                        if (user.getRole().getName().equals(Role.ADMIN))
+                            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                        else {
+                            response.setStatus(HttpStatus.OK.value());
+                            request.getSession().setAttribute("current_user", user);
+                            System.out.println("current user: " + user);
+
+                            switch (user.getRole().getName()) {
+                                case Role.REGULAR_USER:
+                                    response.sendRedirect("/deliveryou_war_exploded/user/app");
+                                    break;
+                                case Role.SHIPPER:
+                                    response.sendRedirect("/deliveryou_war_exploded/shipper/app");
+                                    break;
+                            }
                         }
                     })
                     .failureHandler(((request, response, exception) -> {
@@ -128,12 +133,7 @@ public class SpringSecurityConfiguration {
                             response.setStatus(HttpStatus.OK.value());
                             request.getSession().setAttribute("current_user", user);
                             System.out.println("current user: " + user);
-
-                            switch (user.getRole().getName()) {
-                                case Role.ADMIN:
-                                    response.sendRedirect("/deliveryou_war_exploded/admin/app");
-                                    break;
-                            }
+                            response.sendRedirect("/deliveryou_war_exploded/admin/app");
                         }
                     } )
                     .failureHandler( ((request, response, exception) -> {

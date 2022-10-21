@@ -46,6 +46,8 @@ public class User {
     private MultipartFile file;
     @Transient
     private String confirmPassword;
+    @Transient
+    private boolean changesDetected = false;
 
     public MultipartFile getFile() {
         return file;
@@ -200,5 +202,32 @@ public class User {
                 ", role=" + role +
                 ", address=" + address +
                 '}';
+    }
+
+    private String detectChangeString(String o1, String o2) {
+        if (o2 != null && !o2.equals(o1)) {
+            changesDetected = true;
+            return o2;
+        }
+        return o1;
+    }
+
+    public boolean update(User user){
+        if (user == null)
+            return false;
+        else {
+            firstname = detectChangeString(firstname, user.firstname);
+            lastname = detectChangeString(lastname, user.lastname);
+            citizenId = detectChangeString(citizenId, user.citizenId);
+            email = detectChangeString(email, user.email);
+            phoneNumber = detectChangeString(phoneNumber, user.phoneNumber);
+            avatar = detectChangeString(avatar, user.avatar);
+
+            if (changesDetected) {
+                changesDetected = false;
+                return true;
+            }
+            return false;
+        }
     }
 }

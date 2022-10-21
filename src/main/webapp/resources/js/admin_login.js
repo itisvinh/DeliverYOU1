@@ -114,7 +114,7 @@ function ajaxSubmitForm(form, args) {
         }
     });
 
-    xhr.open("POST", args.urlPrefix);
+    xhr.open("POST", args.urlPrefix, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.send(data);
