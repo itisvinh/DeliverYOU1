@@ -104,4 +104,9 @@ public class UserController {
         return "user_profile";
     }
 
+    @GetMapping("/user/app/rating-shipper")
+    @Transactional
+    public String rateShipper(ModelMap modelMap) {
+        return "rating_shipper";
+    }
 }

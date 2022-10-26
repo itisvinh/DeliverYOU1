@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -24,6 +25,7 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
+    @Transactional
     public boolean addUser(User user) {
         Session session = sessionFactory.getObject().getCurrentSession();
 
@@ -132,20 +134,54 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
 
     @Override
     public List<DriverRegistration> getDriverRegistrations(RegistrationFilter filter) {
-        // dang lam
-//        Session session = sessionFactory.getObject().getCurrentSession();
-//        Query query = null;
-//        final String pre = "from DriverRegistration "
-//
-//        switch (filter) {
-//            case IS_NOT_PROCESSED:
-//                query = session.createQuery(pre + " where isProcessed=:p").setParameter("p", 0);
-//                break;
-//            case IS_PROCESSED:
-//                query = session.createQuery(pre + " where isProcessed=:p").setParameter("p", 0);
-//                break;
-//        }
+        Session session = sessionFactory.getObject().getCurrentSession();
+        Query query = null;
+        final String pre = "select dr from DriverRegistration dr ";
 
+        switch (filter) {
+            case IS_NOT_PROCESSED:
+                query = session.createQuery(pre + " where dr.isProcessed=:p").setParameter("p", (byte) 0);
+                break;
+            case IS_PROCESSED:
+                query = session.createQuery(pre + " where dr.isProcessed=:p").setParameter("p", (byte) 1);
+                break;
+            case ALL:
+                query = session.createQuery(pre);
+                break;
+        }
+
+        if (query != null) {
+            List<DriverRegistration> list = query.getResultList();
+            System.out.println("Reg list: " + list);
+            return list != null && list.size() > 0 ? list : null;
+        }
+        System.err.println("Failed to create query [getDriverRegistrations(...)]");
         return null;
+    }
+
+    @Override
+    public boolean processDriverRegistration(DriverRegistration registration) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        try {
+            session.merge(registration);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public DriverRegistration getDriverRegistration(int id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        try {
+            return (DriverRegistration) session.createQuery("from DriverRegistration where id=:id")
+                    .setParameter("id", id).getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

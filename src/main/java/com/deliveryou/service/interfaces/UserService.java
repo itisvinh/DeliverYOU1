@@ -24,4 +24,8 @@ public interface UserService extends UserDetailsService {
     boolean createDriverRegistration(DriverRegistration registration);
 
     List<DriverRegistration> getDriverRegistrations(RegistrationFilter filter);
+
+    boolean processDriverRegistration(DriverRegistration registration);
+
+    DriverRegistration getDriverRegistration(int id);
 }

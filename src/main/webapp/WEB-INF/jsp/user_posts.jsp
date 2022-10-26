@@ -423,6 +423,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="rating-shipper-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body" style="height: 23rem">
+                        <iframe src="<c:url value="/user/app/rating-shipper"/>" class="w-100 h-100"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     </div>

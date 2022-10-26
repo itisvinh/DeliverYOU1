@@ -19,10 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service("UserDetailsService")
 @Transactional
@@ -63,10 +60,15 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Role role = roleRepository.getRole(2);
         user.setRole(role);
+        user.setDeleted((byte) 0);
         try {
-            Map r = cloudinary.uploader().upload(user.getFile().getBytes(),
-                    ObjectUtils.asMap("resource_type", "auto"));
-            user.setAvatar((String) r.get("secure_url"));
+            if (user.getAvatar() != null && user.getAvatar().length() > 0) {
+                Base64.getDecoder().decode(user.getAvatar());
+                Map r = cloudinary.uploader()
+                        .upload(user.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
+                user.setAvatar((String) r.get("secure_url"));
+            } else
+                user.setAvatar("");
 
             return userRepository.addUser(user);
         } catch (IOException e) {
@@ -103,6 +105,19 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
     @Override
     public List<DriverRegistration> getDriverRegistrations(RegistrationFilter filter) {
         return userRepository.getDriverRegistrations(filter);
+    }
+
+    @Override
+    public boolean processDriverRegistration(DriverRegistration registration) {
+        if (registration == null)
+            return false;
+        registration.setIsProcessed((byte) 1);
+        return userRepository.processDriverRegistration(registration);
+    }
+
+    @Override
+    public DriverRegistration getDriverRegistration(int id) {
+        return userRepository.getDriverRegistration(id);
     }
 
 //    @Override

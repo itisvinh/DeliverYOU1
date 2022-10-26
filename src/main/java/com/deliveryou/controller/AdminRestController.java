@@ -3,6 +3,7 @@ package com.deliveryou.controller;
 import com.deliveryou.pojo.DriverRegistration;
 import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
+import com.deliveryou.pojo.auxiliary.RegistrationFilter;
 import com.deliveryou.service.interfaces.UserService;
 import com.deliveryou.util.JSONConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 import static java.util.Arrays.asList;
 
@@ -139,7 +137,7 @@ public class AdminRestController {
                 return _500;
             }
         }
-        
+
     }
 
     @Transactional
@@ -148,6 +146,47 @@ public class AdminRestController {
         boolean result = userServiceImpl.createDriverRegistration(registration);
 
         return result ? _200 : _500;
+    }
+
+    /**
+     *
+     * @param filter_code: 0 for IS_PROCESSED, 1 for IS_NOT_PROCESSED, 2 for ALL,
+     * @return JSON
+     */
+    @Transactional
+    @PostMapping(value = "/admin/api/get-driver-registrations", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getDriverRegistrations(@RequestBody int filter_code) {
+        if (!new HashSet<Integer>(asList(0,1,2)).contains(filter_code))
+            return _400;
+        else {
+            final List<DriverRegistration> list = userServiceImpl.getDriverRegistrations(RegistrationFilter.values()[filter_code]);
+
+            if (list == null)
+                return _500;
+            else {
+                try {
+                    return responseEntity(HttpStatus.OK,
+                            asList("list"),
+                            asList(list));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return _500;
+                }
+            }
+        }
+    }
+
+    @Transactional
+    @PostMapping(value = "/admin/api/process-registration/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity processRegistration(@PathVariable int id) {
+        DriverRegistration registration = userServiceImpl.getDriverRegistration(id);
+
+        if (registration != null) {
+            if (userServiceImpl.processDriverRegistration(registration))
+                return _200;
+            return _500;
+        }
+        return _400;
     }
 
 }

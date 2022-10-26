@@ -12,9 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer src="<c:url value="/js/admin_driver.js"/>"></script>
-    <script async src="<c:url value="/js/Base64Converter.js"/>"></script>
-    <script async src="<c:url value="/js/ImagePreviewer.js"/>"></script>
+    <script src="<c:url value="/js/Base64Converter.js"/>"></script>
+    <script src="<c:url value="/js/util.js"/>"></script>
+    <script src="<c:url value="/js/ImagePreviewer.js"/>"></script>
 </head>
 
 <body class="h-100 w-100">
@@ -148,6 +148,40 @@
         border: 1px solid rgb(166, 166, 166);
         background: white;
     }
+
+    .reload {
+        background-color: #8e8e8edb;
+        cursor: pointer;
+        width: 2.2rem;
+        position: relative;
+        transition: all .15s ease-in-out;
+        overflow: hidden;
+        white-space: nowrap;
+        margin: auto;
+        text-decoration: none;
+    }
+
+    .reload .text {
+        /* display: none; */
+        opacity: 0;
+        position: absolute;
+        transition: all .15s ease-in-out;
+        right: .5rem;
+        word-wrap: normal;
+    }
+
+    .reload:hover {
+        width: 8rem;
+        background-color: #636363;
+    }
+
+    .reload:hover .text {
+        display: inline-block !important;
+        position: relative;
+        opacity: 1;
+        margin-left: .5rem;
+    }
+
 </style>
 
 <div class="container-fluid w-100 h-100 p-4 d-flex justify-content-center align-items-center"
@@ -181,6 +215,14 @@
     </div>
 
     <div class="offcanvas-body">
+
+        <div class="w-100 mb-1">
+            <a href="javascript:void(0)" onclick="reloadRegistrations()" class="reload d-flex align-items-center rounded-pill ps-2 pe-2 text-white">
+                <i class="icon bi bi-arrow-repeat me-1" style="font-size: 1.2rem;"></i>
+                <span class="text">Reload list</span>
+            </a>
+        </div>
+
         <div id="regs-container" class="w-100 h-100 p-1 d-flex flex-column align-items-center" style="overflow-y: auto;">
 
             <div class="card p-2 w-100 shadow" style="max-width: 50rem; min-width: 20rem;">
@@ -383,6 +425,7 @@
 
 <!-- ------------------------------------- -->
 <div id="endpoint" data-endpoint="<c:url value="/admin"/>"></div>
+<script src="<c:url value="/js/admin_driver.js"/>"></script>
 </body>
 
 </html>

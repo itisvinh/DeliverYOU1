@@ -3,6 +3,7 @@ package com.deliveryou.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
@@ -40,6 +41,10 @@ public class DriverRegistration {
     @ManyToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
+
+    @Basic
+    @Column(name = "applied_date")
+    private Date appliedDate;
 
     public int getId() {
         return id;
@@ -123,16 +128,25 @@ public class DriverRegistration {
         this.address = address;
     }
 
+
+    public Date getAppliedDate() {
+        return appliedDate;
+    }
+
+    public void setAppliedDate(Date appliedDate) {
+        this.appliedDate = appliedDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof DriverRegistration)) return false;
         DriverRegistration that = (DriverRegistration) o;
-        return id == that.id && isProcessed == that.isProcessed && firstname.equals(that.firstname) && lastname.equals(that.lastname) && Objects.equals(email, that.email) && phoneNumber.equals(that.phoneNumber) && citizenId.equals(that.citizenId) && avatar.equals(that.avatar) && Objects.equals(message, that.message) && Objects.equals(address, that.address);
+        return id == that.id && isProcessed == that.isProcessed && firstname.equals(that.firstname) && lastname.equals(that.lastname) && Objects.equals(email, that.email) && phoneNumber.equals(that.phoneNumber) && citizenId.equals(that.citizenId) && avatar.equals(that.avatar) && Objects.equals(message, that.message) && Objects.equals(address, that.address) && appliedDate.equals(that.appliedDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname, email, phoneNumber, citizenId, avatar, isProcessed, message, address);
+        return Objects.hash(id, firstname, lastname, email, phoneNumber, citizenId, avatar, isProcessed, message, address, appliedDate);
     }
 }

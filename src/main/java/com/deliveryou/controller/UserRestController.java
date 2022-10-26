@@ -21,6 +21,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.asList;
+
 @RestController
 public class UserRestController {
     @Autowired
@@ -355,6 +357,40 @@ public class UserRestController {
             return _500;
         }
 
+    }
+
+    private ResponseEntity responseEntity(HttpStatus status) {
+        return responseEntity(status, null, null);
+    }
+
+    private ResponseEntity responseEntity(HttpStatus status, List<String> keys, List<Object> values) {
+        if (keys != null && values != null) {
+            if (keys.size() != values.size())
+                throw new IllegalArgumentException("Keys and Values have different size");
+
+            return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
+                for (int i = 0; i < keys.size(); i++) {
+                    put(keys.get(i), values.get(i));
+                }
+            }}), status);
+
+        } else
+            return new ResponseEntity(status);
+
+    }
+
+    @Transactional
+    @PostMapping(value = "/test/api/sign-up")
+    public ResponseEntity signUp(@RequestBody User user) {
+        try {
+            if (userServiceImpl.addUser(user))
+                return responseEntity(HttpStatus.OK);
+            return responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

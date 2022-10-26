@@ -12,18 +12,22 @@
     <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="Register_upload Avatar to cloudinary">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/QuocTestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/DriverRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/DriverRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/RoleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/RoleRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_driver.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_driver.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/administrator.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/administrator.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/base.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin_driver.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin_driver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin_login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin_login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +40,10 @@
         <option value="spring-beans.schema" />
         <option value="Interface" />
         <option value="CSS File" />
-        <option value="Jsp File" />
-        <option value="JavaScript File" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="JavaScript File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -273,7 +277,10 @@
       <workItem from="1665475837174" duration="4084000" />
       <workItem from="1665650878976" duration="2380000" />
       <workItem from="1665982808655" duration="73983000" />
-      <workItem from="1666317626519" duration="12003000" />
+      <workItem from="1666317626519" duration="34030000" />
+      <workItem from="1666682426662" duration="6628000" />
+      <workItem from="1666804478740" duration="137000" />
+      <workItem from="1666804710728" duration="489000" />
     </task>
     <task id="LOCAL-00001" summary="Register_upload Avatar to cloudinary">
       <created>1664445596270</created>
@@ -310,6 +317,11 @@
           <url>jar://$USER_HOME$/.jdks/corretto-11.0.15/lib/src.zip!/java.base/java/lang/Double.java</url>
           <line>505</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

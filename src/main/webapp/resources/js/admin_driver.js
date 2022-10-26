@@ -200,7 +200,7 @@ async function saveChanges() {
     const email = DRIVER_DETAIL_MODAL.querySelector('#driver-email')
     const phone = DRIVER_DETAIL_MODAL.querySelector('#driver-phone')
     const driver_id = DRIVER_DETAIL_MODAL.querySelector('#modal-driver-id').dataset.id
-    const changes = { id : driver_id }
+    const changes = {id: driver_id}
     const elements_w_changes = []
 
     if (detectChange(avatar, true)) {
@@ -249,8 +249,7 @@ async function saveChanges() {
                         else
                             persistChange(i)
                     }
-                }
-                else
+                } else
                     showToast("Failed to update driver's information")
             })
             .catch(error => {
@@ -298,8 +297,8 @@ function persistChange(element, isIMG) {
         else {
             element.dataset.content = element.value = element.value.replace(/\s+/gm, ' ').trim()
         }
-    }
-    throw "Null element"
+    } else
+        throw "Null element"
 }
 
 function assignListeners() {
@@ -317,7 +316,7 @@ function deleteUser() {
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-        "id" : driver_id
+        "id": driver_id
     });
 
     const requestOptions = {
@@ -339,11 +338,142 @@ function deleteUser() {
 //------------------------------------------------------
 const DRIVER_REGISTRATION_OFFCANVAS = document.querySelector('#driver-reg-pending-offcanvas')
 const DRIVER_REGISTRATIONS_CONTAINER = DRIVER_REGISTRATION_OFFCANVAS.querySelector('#regs-container')
+const REGS_ALL = 2
+const REGS_IS_PROCESSED = 0
+const REGS_IS_NOT_PROCESSED = 1
+const MONTHS_NAME = ['Jan', 'Feb', 'Mar', 'April', "May", "Jun", "July", 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+let set_year = new Date().getFullYear()
 
-function loadRegistrations() {
+function loadRegistrations(regs) {
+    const driver_id = DRIVER_DETAIL_MODAL.querySelector('#modal-driver-id').dataset.id
 
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify( regs ? regs : REGS_IS_NOT_PROCESSED);
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'manual'
+    };
+
+    fetch(ENDPOINT + '/api/get-driver-registrations', requestOptions)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json()
+            } else {
+                showToast("Failed to fetch driver registration", true)
+                return undefined
+            }
+        })
+        .then(data => {
+            if (data && data.list) {
+                for (let i of data.list) {
+
+                    DRIVER_REGISTRATIONS_CONTAINER.innerHTML +=
+                        `
+                        <div data-reg-id="${i.id}" class="card p-2 w-100 shadow" style="max-width: 50rem; min-width: 20rem;">
+                            <div class="d-flex flex-row align-items-center">
+                                <img class="img-thumbnail rounded-circle shadow" style="width: 8rem; height: 8rem"
+                                     src="${i.avatar}">
+                                <div class="ms-3 me-1">
+                                    <h5>${i.firstname + ' ' + i.lastname}</h5>
+                                    <p class="m-0 p-0" style="font-size: .9rem;">
+                                        <span class="birth-date">${MONTHS_NAME[Util.randomInt(0, 11)]} ${Util.randomInt(1, 28)}, ${set_year = Util.randomInt(1980, 2000)}</span>
+                                        (<span class="age">${new Date().getFullYear() - set_year}</span> years)
+                                    <p>
+                                    <div class="m-0 p-0">
+                                        <span class="fw-semibold">Citizen ID:</span>
+                                        <span>${i.citizenId}</span>
+                                    </div>
+                                </div>
+                                <div style="flex-grow: 1;">
+                                    <button class="btn btn-info rounded-pill fw-semibold float-end" data-bs-toggle="collapse"
+                                            href="#collapseExample" role="button" aria-expanded="false"
+                                            aria-controls="collapseExample">Details
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="collapse mt-2" id="collapseExample">
+                                <div class="card card-body">
+                                    <div class="m-0 p-0">
+                                        <span class="fw-semibold">Phone number:</span>
+                                        <span>${i.phoneNumber}</span>
+                                    </div>
+                                    <div class="m-0 p-0">
+                                        <span class="fw-semibold">Applied date:</span>
+                                        <span>${formatDate(i.appliedDate)}</span>
+                                    </div>
+                                    <div class="m-0 p-0 d-none">
+                                        <span class="fw-semibold">Address:</span>
+                                        <span>123456789012</span>
+                                    </div>
+                                    <div class="m-0 p-0 text-wrap">
+                                        <span class="fw-semibold">Message:</span>
+                                        <span>${i.message}</span>
+                                    </div>
+                                    <button onclick="confirmRegistration(${i.id})" class="mt-3 btn btn-info fw-semibold rounded-pill">Confirm This
+                                        Registration
+                                    </button>
+                                    <div class="text-danger text-center" style="font-size: 0.9rem;">*Password will be
+                                        automatically generated and will be
+                                        sent to driver
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+
+                }
+            } else
+                showToast("No registration to show",)
+        })
+        .catch(error => {
+            console.error(error)
+        })
 
 }
+
+function formatDate(milliseconds) {
+    const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+    return new Date(milliseconds).toLocaleDateString("en-US", options)
+}
+
+function confirmRegistration(id) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({}),
+        redirect: 'manual'
+    };
+
+    fetch(ENDPOINT + `/api/process-registration/${id}`, requestOptions)
+        .then(res => {
+            if (res.status === 200) {
+                showToast('Registration has been confirmed')
+                document.querySelector(`.card[data-reg-id="${id}"]`).remove()
+            } else
+                showToast('Failed to confirm the registration', true)
+        })
+        .catch(error => {
+            console.error(error)
+            showToast('Error has occurred', true)
+        })
+}
+
+function reloadRegistrations() {
+    DRIVER_REGISTRATIONS_CONTAINER.innerHTML = ""
+    loadRegistrations()
+    showToast("The list has been reloaded")
+}
+
+reloadRegistrations()
 
 
 

@@ -11,7 +11,9 @@
             <form class="search-bar" action="" method="post">
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
-                    <button class="search-icon" onclick="activateSearch(event)"><span></span></button>
+                    <button class="search-icon" onclick="activateSearch(event)" data-bs-toggle="modal" data-bs-target="#tracking-modal">
+                        <span></span>
+                    </button>
                 </div>
                 <span class="close" onclick="deactivateSearch()"></span>
             </form>
