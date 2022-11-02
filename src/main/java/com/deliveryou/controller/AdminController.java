@@ -33,7 +33,7 @@ public class AdminController {
     }
 
     @Transactional
-    @GetMapping("/admin/admin-reports-2398JHVCJHVJHK98702970JHVJHV9e")
+    @GetMapping("/admin/app/admin-reports-2398JHVCJHVJHK98702970JHVJHV9e")
     public String adminReportsPage() {
         return "admin_reports";
     }

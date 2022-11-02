@@ -3,10 +3,12 @@ package com.deliveryou.service.implementations;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.deliveryou.exception.UnimplementedException;
+import com.deliveryou.pojo.Address;
 import com.deliveryou.pojo.DriverRegistration;
 import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
 import com.deliveryou.pojo.auxiliary.RegistrationFilter;
+import com.deliveryou.repository.interfaces.AddressRepository;
 import com.deliveryou.repository.interfaces.RoleRepository;
 import com.deliveryou.repository.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
+    @Autowired
+    private AddressRepository addressRepository;
     @Autowired
     private Cloudinary cloudinary;
     @Autowired
@@ -58,14 +62,21 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
     @Transactional
     public boolean addUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Role role = roleRepository.getRole(2);
+        Role role = roleRepository.getRole(1);
+        Address address = addressRepository.getAddress(12);
         user.setRole(role);
+        user.setAddress(address);
         user.setDeleted((byte) 0);
         try {
             if (user.getAvatar() != null && user.getAvatar().length() > 0) {
                 Base64.getDecoder().decode(user.getAvatar());
+
+                byte[] decodedImg = Base64.getDecoder().decode(user.getAvatar());
+
                 Map r = cloudinary.uploader()
-                        .upload(user.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
+                        .upload(
+                                decodedImg,
+                                ObjectUtils.asMap("resource_type", "auto"));
                 user.setAvatar((String) r.get("secure_url"));
             } else
                 user.setAvatar("");
@@ -118,6 +129,11 @@ public class UserServiceImpl implements com.deliveryou.service.interfaces.UserSe
     @Override
     public DriverRegistration getDriverRegistration(int id) {
         return userRepository.getDriverRegistration(id);
+    }
+
+    @Override
+    public long countUsers(String role_name) {
+        return userRepository.countUsers(role_name);
     }
 
 //    @Override

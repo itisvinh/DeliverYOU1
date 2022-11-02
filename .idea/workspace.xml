@@ -12,22 +12,34 @@
     <list default="true" id="c399dbe6-ef6d-4fd2-9a90-2b346dded811" name="Changes" comment="Register_upload Avatar to cloudinary">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7dcb3bf1-e6d4-466b-8804-fd058a49a61d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/configuration/SpringSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/AdminRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/QuocTestController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/controller/UserRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/DriverRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/pojo/DriverRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/RoleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/RoleRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/CategoryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/CategoryRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/implementations/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/repository/interfaces/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostAuctionsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/PostAuctionsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostAuctionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/PostAuctionsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deliveryou/service/interfaces/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_driver.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_driver.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_reports.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin_reports.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_posts.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user_profile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/base.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layout/top-navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin_driver.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin_driver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/homePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/homePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/user_posts_add_post.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/user_posts_add_post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/util.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +52,10 @@
         <option value="spring-beans.schema" />
         <option value="Interface" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Enum" />
-        <option value="JavaScript File" />
+        <option value="Class" />
         <option value="Jsp File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -109,7 +121,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.intentionPowerPack&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;8f8d480fba94c049c8bd91840a23d2a2&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -281,6 +293,15 @@
       <workItem from="1666682426662" duration="6628000" />
       <workItem from="1666804478740" duration="137000" />
       <workItem from="1666804710728" duration="489000" />
+      <workItem from="1666859392100" duration="1195000" />
+      <workItem from="1667016814415" duration="869000" />
+      <workItem from="1667018191746" duration="2284000" />
+      <workItem from="1667020599371" duration="30520000" />
+      <workItem from="1667188136536" duration="12589000" />
+      <workItem from="1667272042467" duration="25492000" />
+      <workItem from="1667363979188" duration="1459000" />
+      <workItem from="1667365643382" duration="9328000" />
+      <workItem from="1667381979526" duration="1602000" />
     </task>
     <task id="LOCAL-00001" summary="Register_upload Avatar to cloudinary">
       <created>1664445596270</created>
@@ -318,12 +339,11 @@
           <line>505</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/deliveryou/service/implementations/UserServiceImpl.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

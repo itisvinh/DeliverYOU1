@@ -439,6 +439,7 @@
 
 
 </main>
+<div class="d-none" id="endpoint" data-endpoint="<c:url value="/"/>"></div>
 
 
 </body>

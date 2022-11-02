@@ -1,5 +1,7 @@
 package com.deliveryou.controller;
 
+import com.cloudinary.utils.ObjectUtils;
+import com.deliveryou.controller.util.ControllerUtil;
 import com.deliveryou.pojo.*;
 import com.deliveryou.pojo.deliveryobject.PostDeliveryObject;
 import com.deliveryou.serializer.PostAuctionListSerializer;
@@ -126,7 +128,7 @@ public class UserRestController {
     }
 
     @Transactional
-    @GetMapping(path = "/user/api/get-total-posts", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/common/api/get-total-posts", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity totalPosts() {
         long totalPost = postServiceImpl.getTotalPosts();
         return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
@@ -181,12 +183,19 @@ public class UserRestController {
     }
 
     @Transactional
-    @PostMapping(path = "/user/api/update-user", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity updateUser(@RequestBody User user) {
-        userServiceImpl.updateUser(user);
-        return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
-            put("user", user);
-        }}), HttpStatus.OK);
+    @PostMapping(path = "/common/api/update-user", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateUser(Principal principal,@RequestBody User user) {
+        User real_user = userServiceImpl.getUser(principal.getName());
+
+        if (real_user != null) {
+            if (real_user.update(user)) {
+                if (userServiceImpl.updateUser(real_user))
+                    return ControllerUtil.responseEntity(HttpStatus.OK);
+                return ControllerUtil.responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            return ControllerUtil.responseEntity(HttpStatus.NOT_MODIFIED);
+        }
+        return ControllerUtil.responseEntity(HttpStatus.BAD_REQUEST);
     }
 
 //    @PostMapping("/common/api/get-id-by-phone")
@@ -359,38 +368,74 @@ public class UserRestController {
 
     }
 
-    private ResponseEntity responseEntity(HttpStatus status) {
-        return responseEntity(status, null, null);
-    }
 
-    private ResponseEntity responseEntity(HttpStatus status, List<String> keys, List<Object> values) {
-        if (keys != null && values != null) {
-            if (keys.size() != values.size())
-                throw new IllegalArgumentException("Keys and Values have different size");
-
-            return new ResponseEntity(JSONConverter.convert(new HashMap<String, Object>() {{
-                for (int i = 0; i < keys.size(); i++) {
-                    put(keys.get(i), values.get(i));
-                }
-            }}), status);
-
-        } else
-            return new ResponseEntity(status);
-
-    }
 
     @Transactional
-    @PostMapping(value = "/test/api/sign-up")
+    @PostMapping(value = "/public/api/sign-up")
     public ResponseEntity signUp(@RequestBody User user) {
+        System.out.println(user);
         try {
             if (userServiceImpl.addUser(user))
-                return responseEntity(HttpStatus.OK);
-            return responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+                return ControllerUtil.responseEntity(HttpStatus.OK);
+            return ControllerUtil.responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
 
         } catch (Exception e) {
             e.printStackTrace();
-            return responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ControllerUtil.responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @Transactional
+    @PostMapping(value = "/public/api/get-tracking/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getTracking(@PathVariable int id) {
+        try {
+            Post post = postServiceImpl.getPost(id);
+
+            if (post == null)
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            else {
+                PostAuction postAuction = postAuctionsServiceImpl.getAssignedPostAuction(post.getId());
+
+                if (postAuction == null)
+                    return new ResponseEntity(JSONConverter.convert(ObjectUtils.asMap(
+                            "error", "Post is not assigned to any driver"
+                    )), HttpStatus.OK);
+                else {
+                    return new ResponseEntity(JSONConverter.convert(ObjectUtils.asMap(
+                            "sender_address", post.getSenderAddress(),
+                            "receiver_address", post.getReceiverAddress(),
+                            "fee", postAuction.getShippingFee(),
+                            "status", post.getStatus().getName()
+                    )), HttpStatus.OK);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Transactional
+    @PostMapping(value = "/user/api/report-posts-per-category", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getTracking(Principal principal) {
+        List<Object[]> list = categoryService.postsPerCategory(principal.getName());
+
+        if (list != null && list.size() > 0) {
+            try {
+                List<String> categories = new ArrayList<>();
+                List<Object> counted_values = new ArrayList<>();
+                list.forEach(item -> {
+                    categories.add(String.valueOf(item[0]));
+                    counted_values.add(item[1]);
+                });
+
+                return ControllerUtil.responseEntity(HttpStatus.OK, categories, counted_values);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ControllerUtil.responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return ControllerUtil.responseEntity(HttpStatus.NO_CONTENT);
     }
 
 }

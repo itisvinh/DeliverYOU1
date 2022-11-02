@@ -44,7 +44,7 @@
         </div>
     </div>
     <div id="bottom-nav" class="fixed-bottom">
-        <button class="nav-item active" data-tab-index="0">
+        <button class="nav-item active" data-tab-index="0" data-href="/app/admin-reports-2398JHVCJHVJHK98702970JHVJHV9e">
             <i class="bi bi-house-fill"></i>
             <div>Home</div>
         </button>
@@ -54,12 +54,12 @@
             <div>User</div>
         </button>
 
-        <button class="nav-item" data-tab-index="2">
+        <button class="nav-item" data-tab-index="2" data-href="/app/admin-driver-3249738HJVHSG87629GCUYC987">
             <i class="bi bi-people-fill"></i>
             <div>Driver</div>
         </button>
     </div>
-    <iframe id="tab-iframe" class="w-100 h-100" src="<c:url value="/admin/app/admin-driver-3249738HJVHSG87629GCUYC987"/>"></iframe>
+    <iframe id="tab-iframe" class="w-100 h-100" src="<c:url value="/admin/app/admin-reports-2398JHVCJHVJHK98702970JHVJHV9e"/>"></iframe>
 
     <div id="endpoint" class="d-none" data-endpoint="<c:url value="/admin"/>"></div>
 </div>

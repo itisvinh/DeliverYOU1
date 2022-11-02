@@ -28,15 +28,16 @@ function navItemClicked(a) {
     }
 }
 
-function tabClicked(div , endpoint) {
-    const { tabIndex } = div.dataset
-    if (tabIndex) {
+function tabClicked(button , endpoint) {
+    const { tabIndex, href } = button.dataset
 
-        if (tabIndex == TAB_DRIVER) {
-            IFRAME.src = endpoint + "/app/admin-driver-3249738HJVHSG87629GCUYC987"
-        }
-
-    } else
-        throw "No tab index data specified"
+    // if (tabIndex) {
+    //     if (tabIndex == TAB_DRIVER) {
+    //         IFRAME.src = endpoint + "/app/admin-driver-3249738HJVHSG87629GCUYC987"
+    //     }
+    //
+    // } else
+    //     throw "No tab index data specified"
+    IFRAME.src = endpoint + href
 }
 

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CategoryServiceImpl implements com.deliveryou.service.interfaces.CategoryService {
@@ -22,5 +24,10 @@ public class CategoryServiceImpl implements com.deliveryou.service.interfaces.Ca
         name = name.trim();
         Category category = categoryRepository.getCategory(name);
         return category;
+    }
+
+    @Override
+    public List<Object[]> postsPerCategory(String phoneNumber) {
+        return categoryRepository.postsPerCategory(phoneNumber);
     }
 }

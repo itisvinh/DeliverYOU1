@@ -98,9 +98,11 @@ public class UserController {
         return "user";
     }
 
-    @GetMapping("/user/app/user-profile-29347283hvUVUVUv982uvuVUYV39e8")
+    @GetMapping("/common/app/user-profile-29347283hvUVUVUv982uvuVUYV39e8")
     @Transactional
-    public String shipperProfile(ModelMap modelMap) {
+    public String shipperProfile(Principal principal, ModelMap modelMap) {
+        modelMap.addAttribute("current_phone_number", principal.getName());
+        modelMap.addAttribute("user", userDetailsService.getUser(principal.getName()));
         return "user_profile";
     }
 
@@ -108,5 +110,25 @@ public class UserController {
     @Transactional
     public String rateShipper(ModelMap modelMap) {
         return "rating_shipper";
+    }
+
+    @GetMapping("/login")
+    @Transactional
+    public String loginPage() {
+        return "redirect:/";
+    }
+
+    @GetMapping("/")
+    @Transactional
+    public String homePage() {
+        return "homePage";
+    }
+
+    @GetMapping("/common/app/user-reports-236JHCHC83629HFVHJFJHF0987326498")
+    @Transactional
+    public String userReportsPage(Principal principal, ModelMap modelMap) {
+        modelMap.addAttribute("user_phone", principal.getName());
+        modelMap.addAttribute("", postServiceImpl.getTotalPosts());
+        return "user_reports";
     }
 }

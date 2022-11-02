@@ -235,7 +235,9 @@ function showToast(content, toastType) {
 }
 
 async function getTotalPosts(endpoint) {
-    return fetch(endpoint + "/get-total-posts")
+    const ENDPOINT = document.querySelector('#endpoint').dataset.endpoint
+
+    return fetch(ENDPOINT + "common/api/get-total-posts")
         .then(res => res.json())
         .catch(reason => {
             console.log("[FETCH ERROR]", "cannot fetch the total number of posts")

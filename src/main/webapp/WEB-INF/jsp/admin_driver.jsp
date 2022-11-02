@@ -45,7 +45,7 @@
     }
 
     .card.top-node:after {
-        content: "0";
+        content: "1";
         position: absolute;
         top: -.7rem;
         right: -.7rem;
@@ -282,7 +282,7 @@
 </div>
 
 <!-- ----------------------------------   -->
-<div class="offcanvas offcanvas-start vw-100 show" tabindex="-1" id="driver-management-offcanvas"
+<div class="offcanvas offcanvas-start vw-100" tabindex="-1" id="driver-management-offcanvas"
      aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         <i class="px-1"></i>

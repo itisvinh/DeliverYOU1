@@ -70,4 +70,9 @@ public class PostAuctionsServiceImpl implements PostAuctionsService {
     public boolean updatePostAuction(PostAuction postAuction) {
         return postAuctionsRepositoryImpl.updatePostAuction(postAuction);
     }
+
+    @Override
+    public PostAuction getAssignedPostAuction(int post_id) {
+        return postAuctionsRepositoryImpl.getAssignedPostAuction(post_id);
+    }
 }

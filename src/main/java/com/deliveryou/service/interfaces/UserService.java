@@ -28,4 +28,6 @@ public interface UserService extends UserDetailsService {
     boolean processDriverRegistration(DriverRegistration registration);
 
     DriverRegistration getDriverRegistration(int id);
+
+    long countUsers(String role_name);
 }

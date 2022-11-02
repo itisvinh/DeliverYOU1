@@ -26,4 +26,6 @@ public interface UserRepository {
     boolean processDriverRegistration(DriverRegistration registration);
 
     DriverRegistration getDriverRegistration(int id);
+
+    long countUsers(String role_name);
 }

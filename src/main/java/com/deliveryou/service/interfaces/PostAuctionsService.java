@@ -21,4 +21,6 @@ public interface PostAuctionsService {
     public PostAuction getPostAuction(PostAuctionKey postAuctionKey);
 
     boolean updatePostAuction(PostAuction postAuction);
+
+    PostAuction getAssignedPostAuction(int post_id);
 }

@@ -38,8 +38,12 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
     public boolean updateUser(User user) {
         Session session = sessionFactory.getObject().getCurrentSession();
 
-        session.update(user);
-        return true;
+        try {
+            return session.merge(user) != null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -182,6 +186,20 @@ public class UserRepositoryImpl implements com.deliveryou.repository.interfaces.
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public long countUsers(String role_name) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        try {
+            return (long) session.createQuery("select count(p.id) from User p where  p.role.name = :role")
+                    .setParameter("role", role_name)
+                    .getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.deliveryou.controller;
 
+import com.deliveryou.controller.util.ControllerUtil;
 import com.deliveryou.pojo.DriverRegistration;
 import com.deliveryou.pojo.Role;
 import com.deliveryou.pojo.User;
@@ -54,15 +55,15 @@ public class AdminRestController {
         }
     }
 
-    private String normalizeRole(String role) {
-        if (Pattern.matches("^(role_)?(shipper|driver)$", role.toLowerCase()))
-            return Role.SHIPPER;
-        if (Pattern.matches("^(role_)?(admin|administrator)$", role.toLowerCase()))
-            return Role.ADMIN;
-        if (Pattern.matches("^(role_)?(user|regular_user)$", role.toLowerCase()))
-            return Role.REGULAR_USER;
-        return null;
-    }
+//    private String normalizeRole(String role) {
+//        if (Pattern.matches("^(role_)?(shipper|driver)$", role.toLowerCase()))
+//            return Role.SHIPPER;
+//        if (Pattern.matches("^(role_)?(admin|administrator)$", role.toLowerCase()))
+//            return Role.ADMIN;
+//        if (Pattern.matches("^(role_)?(user|regular_user)$", role.toLowerCase()))
+//            return Role.REGULAR_USER;
+//        return null;
+//    }
 
     private ResponseEntity responseEntity(HttpStatus status) {
         return responseEntity(status, null, null);
@@ -99,7 +100,7 @@ public class AdminRestController {
         if (role == null || real_user == null)
             return _400;
         else {
-            String nRole = normalizeRole(role);
+            String nRole = ControllerUtil.normalizeRole(role);
             if (nRole == null || !nRole.equals(real_user.getRole().getName()))
                 return responseEntity(HttpStatus.BAD_REQUEST, asList("error"), asList("requested role and user's role are different"));
 
@@ -127,7 +128,7 @@ public class AdminRestController {
             if (user == null)
                 return _400;
             else {
-                String nRole = normalizeRole(role);
+                String nRole = ControllerUtil.normalizeRole(role);
                 if (nRole == null || !nRole.equals(user.getRole().getName()))
                     return responseEntity(HttpStatus.BAD_REQUEST, asList("error"), asList("requested role and user's role are different"));
 
@@ -187,6 +188,42 @@ public class AdminRestController {
             return _500;
         }
         return _400;
+    }
+
+    @Transactional
+    @PostMapping(value = "/admin/api/count-users/{role}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity countUsers(@PathVariable String role) {
+        String nRole = ControllerUtil.normalizeRole(role);
+
+        if (nRole != null) {
+            long result = userServiceImpl.countUsers(nRole);
+            if (result == -1)
+                return ControllerUtil.responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ControllerUtil.responseEntity(HttpStatus.OK, asList("count"), asList(result));
+        }
+        return ControllerUtil.responseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+
+
+    @Transactional
+    @PostMapping(value = "/public/api/get-user-info/{phoneNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getUserInfo(@PathVariable String phoneNumber) {
+        try {
+            User user = userServiceImpl.getUser(phoneNumber);
+
+            if (user == null)
+                return ControllerUtil.responseEntity(HttpStatus.BAD_REQUEST);
+
+            return ControllerUtil.responseEntity(HttpStatus.OK, asList("user"), asList(user));
+
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+            return ControllerUtil.responseEntity(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ControllerUtil.responseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

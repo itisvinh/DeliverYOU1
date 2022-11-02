@@ -90,7 +90,8 @@ public class SpringSecurityConfiguration {
                     .antMatchers("/common/**").authenticated();
 
             http.authorizeRequests()
-                    .antMatchers("/test/**").permitAll();
+                    .antMatchers("/test/**").permitAll()
+                    .antMatchers("/public/**").permitAll();
         }
 
         @Override

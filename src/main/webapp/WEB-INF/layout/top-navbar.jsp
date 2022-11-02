@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html" language="java" pageEncoding="utf-8" %>
 
 <nav class="local-navbar navbar navbar-expand-sm navbar-light sticky-top mask-custom shadow-0">
@@ -7,9 +8,10 @@
         <a class="navbar-brand" href="#!">
             <!-- <span style="color: #5e9693;">Psycho</span>
             <span style="color: #fff;">logist</span> -->
-            <img class="brand-logo" src='<c:url value="/img/brand_name.svg"/>' alt="logo" />
+            <img class="brand-logo" src='<c:url value="/img/brand_name.svg"/>' alt="logo"/>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,82 +27,32 @@
                 </li>
             </ul>
             <ul class="navbar-nav d-flex flex-row">
-                <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="#!">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </li>
-                <li class="nav-item me-3 me-lg-0">
-                    <button class="btn btn-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modalCenter">Log In</button>
-                </li>
+<%--                <li class="nav-item me-3 me-lg-0">--%>
+<%--                    <a class="nav-link" href="#!">--%>
+<%--                        <i class="fas fa-shopping-cart"></i>--%>
+<%--                    </a>--%>
+<%--                </li>--%>
+                <sec:authorize access="!isAuthenticated()">
+                    <li class="nav-item me-3 me-lg-0">
+                        <button class="btn btn-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modalCenter">Log
+                            In
+                        </button>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated() && (hasRole('ROLE_USER') || hasRole('ROLE_SHIPPER'))">
+                    <li class="nav-item me-3 me-lg-0">
+                        <sec:authorize access="hasRole('ROLE_USER')">
+                            <a class="btn btn-dark rounded-pill" href="<c:url value="/user/app"/>">Continue</a>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ROLE_SHIPPER')">
+                            <a class="btn btn-dark rounded-pill" href="<c:url value="/shipper/app"/>">Continue</a>
+                        </sec:authorize>
+                    </li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
 </nav>
-<!-- Navbar -->
-
-<%--modal placeholder--%>
-<%--<div class="modal fade" id="modalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">--%>
-<%--    <div class="modal-dialog modal-dialog-centered">--%>
-<%--        <div class="modal-content d-flex justify-content-center align-items-center" style="background-color: transparent; border: none">--%>
-<%--            &lt;%&ndash;------------------------------login form---------------------------------&ndash;%&gt;--%>
-<%--            <form action="javascript:void(0)" method="post" id="mainLoginForm" onsubmit="return ajaxSubmitForm(this, { urlPrefix:'<c:url value="/"/>'})">--%>
-<%--                <div class="container-blurry-glass m-3 rounded">--%>
-<%--                    <div class="avatar-container">--%>
-<%--                        <img class="avatar-img img-thumbnail rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"/>--%>
-<%--                    </div>--%>
-<%--                    <div class="login-header">Welcome</div>--%>
-
-<%--                    <div class="input-group">--%>
-<%--                        <input class="input-content" type="text" name="phone_number" onkeyup="autoValidatePhoneNumber(this.value)" required/>--%>
-<%--                        <label class="input-label">Phone number</label>--%>
-<%--                        <i class="input-icon fa-solid fa-phone-flip"></i>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="input-group">--%>
-<%--                        <input class="input-content" type="password" name="password" required/>--%>
-<%--                        <label class="input-label">Password</label>--%>
-<%--                        <button id="submit-btn" type="submit" class="input-icon clickable fa-solid fa-arrow-right-long"></button>--%>
-<%--                    </div>--%>
-
-<%--                    <div style="display: none; width: 100%;" class="alert alert-danger" role="alert" >--%>
-<%--                        <i class="fa-solid fa-circle-info"></i>--%>
-<%--                        <span class="alert-msg">message</span>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="checkbox-group">--%>
-<%--                        <input class="input-checkbox form-check-input" type="checkbox" id="check1" name="remember_me" value="remember" checked>--%>
-<%--                        <span>Remember me</span>--%>
-<%--                    </div>--%>
-
-<%--                    <a href="#" class="reset-passwd-lbl">Forgot password?</a>--%>
-<%--                </div>--%>
-
-<%--                <div class="container-blurry-glass no-children m-3 rounded text-center">--%>
-<%--                    <span>Don't have an account? <a href="javascript:void(0)" data-bs-target="#signUpModal" data-bs-toggle="modal" class="text-info text-decoration-none">Sign up</a></span>--%>
-<%--                </div>--%>
-<%--            </form>--%>
-<%--            &lt;%&ndash;------------------------------end of login form---------------------------------&ndash;%&gt;--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<%--end of modal placeholder--%>
-<%--<div class="modal fade" id="signUpModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">--%>
-<%--    <div class="modal-dialog modal-dialog-centered">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>--%>
-<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                Hide this modal and show the first with the button below.--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 <!-- ********************************* -->
 <style>
@@ -112,24 +64,26 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center align-items-center"
              style="background-color: transparent; border: none">
-            <form action="javascript:void(0)" method="post" id="mainLoginForm" onsubmit="return ajaxSubmitForm(this, { urlPrefix:'<c:url value="/"/>'})">
+            <form action="javascript:void(0)" method="post" id="mainLoginForm"
+                  onsubmit="return ajaxSubmitForm(this, { urlPrefix:'<c:url value="/"/>'})">
                 <div class="container-blurry-glass m-3 rounded">
                     <div class="avatar-container">
                         <img class="avatar-img img-thumbnail rounded-circle"
-                             src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" />
+                             src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"/>
                     </div>
                     <div class="login-header">Welcome</div>
 
                     <div class="input-group">
-                        <input class="input-content" type="text" name="phone_number" required />
+                        <input class="input-content" type="text" name="phone_number" required/>
                         <label class="input-label">Phone number</label>
                         <i class="input-icon fa-solid fa-phone-flip"></i>
                     </div>
 
                     <div class="input-group">
-                        <input class="input-content" type="password" name="password" required />
+                        <input class="input-content" type="password" name="password" required/>
                         <label class="input-label">Password</label>
-                        <button id="submit-btn" type="submit" class="input-icon clickable fa-solid fa-arrow-right-long"></button>
+                        <button id="submit-btn" type="submit"
+                                class="input-icon clickable fa-solid fa-arrow-right-long"></button>
                     </div>
 
                     <div style="display: none; width: 100%;" class="alert alert-danger" role="alert">
@@ -148,7 +102,8 @@
 
                 <div class="container-blurry-glass no-children m-3 rounded text-center">
                     <span>Don't have an account?
-                        <button type="button" data-bs-target="#signUpModal" data-bs-toggle="modal" class="fw-semibold text-info btn">
+                        <button type="button" data-bs-target="#signUpModal" data-bs-toggle="modal"
+                                class="fw-semibold text-info btn">
                             Sign Up
                         </button>
                     </span>
@@ -172,31 +127,32 @@
 
                             <div class="avatar-container">
                                 <img id="main-avatar-img" class="avatar-img img-thumbnail rounded-circle"
-                                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" />
+                                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"/>
                                 <i class="bi bi-pencil-fill rounded-circle d-flex"
                                    onclick="document.querySelector('#avatar-selector').click()" style="width: 2rem; height: 2rem; background-color: rgb(137, 137, 137);
                           justify-content: center; align-items: center; position: absolute;
                           transform: translate(2rem, 2rem); border: 1px solid rgba(96, 96, 96, 0.862);
                           cursor: pointer;">
                                 </i>
-                                <input id="avatar-selector" class="d-none" type="file" onchange="avatarSelectorChanged()">
+                                <input id="avatar-selector" class="d-none" type="file"
+                                       onchange="avatarSelectorChanged()">
 
                             </div>
 
                             <div id="first-name" class="input-group mt-3">
-                                <input class="input-content" type="text" name="phone_number" required />
+                                <input class="input-content" type="text" name="phone_number" required/>
                                 <label class="input-label">First name</label>
                                 <i class="input-icon bi bi-person-circle"></i>
                             </div>
 
                             <div id="last-name" class="input-group mt-2">
-                                <input class="input-content" type="text" name="phone_number" required />
+                                <input class="input-content" type="text" name="phone_number" required/>
                                 <label class="input-label">Last name</label>
                                 <i class="input-icon bi bi-person-circle"></i>
                             </div>
 
                             <div id="email" class="input-group mt-2">
-                                <input class="input-content" type="text" name="phone_number" required />
+                                <input class="input-content" type="text" name="phone_number" required/>
                                 <label class="input-label">Email</label>
                                 <i class="input-icon bi bi-envelope-fill"></i>
                             </div>
@@ -205,19 +161,19 @@
 
                         <div class="tab d-none">
                             <div id="phone-number" class="input-group mt-2">
-                                <input class="input-content" type="password" name="password" required />
+                                <input class="input-content" type="password" name="password" required/>
                                 <label class="input-label">Phone number</label>
                                 <i class="input-icon bi bi-telephone-fill"></i>
                             </div>
 
                             <div id="password" class="input-group mt-2">
-                                <input class="input-content" type="password" name="password" required />
+                                <input class="input-content" type="password" name="password" required/>
                                 <label class="input-label">Password</label>
                                 <i class="input-icon bi bi-key-fill"></i>
                             </div>
 
                             <div id="confirm-password" class="input-group mt-2">
-                                <input class="input-content" type="password" name="password" required />
+                                <input class="input-content" type="password" name="password" required/>
                                 <label class="input-label">Confirm password</label>
                                 <i class="input-icon bi bi-check-circle-fill"></i>
                             </div>
@@ -230,7 +186,8 @@
                         <i id="previous-tab" onclick="prevTab()" class="step-nav bi bi-caret-left d-none"></i>
                         <i id="next-tab" onclick="nextTab()" class="step-nav bi-caret-right"></i>
                         <button type="button" id="sign-up" onclick="signUp()" class="step-nav px-3 fw-semibold d-none"
-                                style="width: auto; font-size: .95rem;">SIGN UP</button>
+                                style="width: auto; font-size: .95rem;">SIGN UP
+                        </button>
                     </div>
                 </form>
             </div>
@@ -244,11 +201,13 @@
     </div>
 </div>
 
+<div id="endpoint" data-endpoint="<c:url value="/"/>"></div>
 
 
 <!-- ********************************* -->
 <script src="<c:url value="/js/validator.js"/>"></script>
 <script defer>
+    const ENDPOINT = document.querySelector('#endpoint').dataset.endpoint
     const prev_tab = document.querySelector('#previous-tab')
     const next_tab = document.querySelector('#next-tab')
     const sign_up = document.querySelector('#sign-up')
@@ -362,14 +321,31 @@
             reader.onloadend = () => {
                 file = reader.result.replace('data:', '').replace(/^.+,/, ''); // return a base64 string of the file
 
-                const first_name = fname.querySelector('input').value.replace(/\s+/gm, ' ').trim() // ****
-                const last_name = lname.querySelector('input').value.replace(/\s+/gm, ' ').trim() // ****
+                const firstname = fname.querySelector('input').value.replace(/\s+/gm, ' ').trim() // ****
+                const lastname = lname.querySelector('input').value.replace(/\s+/gm, ' ').trim() // ****
                 const i_email = email.querySelector('input').value.replace(/\s+/gm, ' ').trim() // ****
-                const i_phone = phone.querySelector('input').value.replace(/\s+/gm, ' ').trim() // ****
-                const i_pass = password.querySelector('input').value // ****
-                const i_cpass = cpassword.querySelector('input').value // ****
+                const phoneNumber = phone.querySelector('input').value.replace(/\s+/gm, ' ').trim() // ****
+                const i_password = password.querySelector('input').value // ****
+                const confirm_password = cpassword.querySelector('input').value // ****
 
-                // code here
+                const upload_obj = {
+                    firstname,
+                    lastname,
+                    email: i_email,
+                    phoneNumber,
+                    password: i_password,
+                    avatar: file
+                }
+
+                callSignUpAPI(upload_obj)
+                    .then(status => {
+                        if (status) {
+                            performLogin(phoneNumber, i_password)
+                        } else {
+                            alert("Failed to sign up")
+                        }
+                    })
+                    .catch(error => console.error(error))
             }
             reader.readAsDataURL(files[0])
         } else {
@@ -378,6 +354,52 @@
             prevTab()
             return
         }
+    }
+
+    async function callSignUpAPI(upload_obj) {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify(upload_obj)
+
+        const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'manual'
+        };
+
+        return fetch(ENDPOINT + "public/api/sign-up", requestOptions)
+            .then(response => {
+                if (response.status === 200)
+                    return true
+                return false
+            })
+    }
+
+    function performLogin(phone, password) {
+        // WARNING: For POST requests, body is set to null by browsers.
+        const data = "phone_number=" + phone + "&password=" + password;
+
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                console.log(this)
+                if (this.status === 200) {
+                    alert("Login successfully")
+                    window.location.href = this.responseURL
+                } else {
+                    alert("Signed up successfully but failed to sign in")
+                }
+            }
+        });
+
+        xhr.open("POST", ENDPOINT + "login");
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.send(data);
     }
 </script>
 

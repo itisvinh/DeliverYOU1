@@ -129,7 +129,7 @@
                         </a>
                     </li>
                     <li onclick="selectNavItem(this)">
-                        <a href="#" class="nav-link link-dark p-2">
+                        <a href="javascript:void(0)" onclick="changeFrameContent('<c:url value="/common/app/user-reports-236JHCHC83629HFVHJFJHF0987326498"/>')" class="nav-link link-dark p-2">
                                   <span class="nav-icon">
                                       <svg width="100%" height="100%"><use xlink:href="#speedometer2"></use></svg>
                                   </span>
@@ -139,10 +139,11 @@
                     <li onclick="selectNavItem(this)">
                         <c:set value="#" var="profile_link"/>
                         <sec:authorize access="hasRole('ROLE_USER')">
-                            <c:url value="/user/app/user-profile-29347283hvUVUVUv982uvuVUYV39e8" var="profile_url"/>
+                            <c:url value="/common/app/user-profile-29347283hvUVUVUv982uvuVUYV39e8" var="profile_url"/>
                             <c:set value="${profile_url}" var="profile_link"/>
                         </sec:authorize>
-                        <a href="javascript:void(0)" onclick="changeFrameContent('${profile_link}')" class="nav-link link-dark p-2">
+<%--                        onclick="changeFrameContent('${profile_link}')" --%>
+                        <a href="javascript:void(0)" onclick="changeFrameContent('<c:url value="/common/app/user-profile-29347283hvUVUVUv982uvuVUYV39e8"/>')" class="nav-link link-dark p-2">
                                   <span class="nav-icon">
                                       <svg width="100%" height="100%"><use xlink:href="#people-circle"></use></svg>
                                   </span>

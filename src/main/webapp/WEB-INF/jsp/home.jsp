@@ -8,10 +8,10 @@
     <section class="top-sect" style="background-image: url('<c:url value="/img/home_bg.jpg"/>');">
         <div class="w-100 text-center m-2" id="search-bar-title">Track your package</div>
         <div class="w-100">
-            <form class="search-bar" action="" method="post">
+            <form class="search-bar" action="javascript:void(0)" onsubmit="showTrackingModal()" method="post">
                 <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type to search" />
-                    <button class="search-icon" onclick="activateSearch(event)" data-bs-toggle="modal" data-bs-target="#tracking-modal">
+                    <input id="tracking-search-field" type="text" class="search-input" placeholder="Type to search" />
+                    <button class="search-icon" onclick="activateSearch(event)">
                         <span></span>
                     </button>
                 </div>
@@ -22,5 +22,5 @@
 
     <div style="height: 200vh;"></div>
 </div>
-
+<div id="endpoint" data-endpoint="<c:url value="/"/>"></div>
 <script async src="<c:url value="/js/homePage.js"/>"></script>

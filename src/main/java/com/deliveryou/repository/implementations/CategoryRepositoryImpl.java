@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
+import java.util.List;
 
 @Repository
 public class CategoryRepositoryImpl implements com.deliveryou.repository.interfaces.CategoryRepository {
@@ -43,5 +44,17 @@ public class CategoryRepositoryImpl implements com.deliveryou.repository.interfa
         }
         return null;
 
+    }
+
+    @Override
+    public List<Object[]> postsPerCategory(String phoneNumber) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+
+        return (List<Object[]>) session.createQuery("select p.category.name, count(p.category) " +
+                        " from Post p " +
+                        " where p.user.phoneNumber = :phone " +
+                        " group by p.category ")
+                .setParameter("phone", phoneNumber)
+                .getResultList();
     }
 }
